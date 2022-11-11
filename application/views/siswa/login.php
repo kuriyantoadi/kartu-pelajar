@@ -1,117 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>MPLS 2022</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="<?= base_url() ?>assets/login/css/style.css">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Kartu Pelajar</title>
+    <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon.png" />
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="img js-fullheight" style="background-image: url(<?= base_url() ?>assets/login/images/bg.jpg);">
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Cetak Sertifikat MPLS 2022</h2>
-                    <p style="color: white;">SMK Negeri 1 Kragilan</p>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container-xl px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <!-- Basic login form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h3 align="center" class="fw-light my-2">Login Kartu Pelajar</h3>
+                                    <h3 align="center" class="fw-light my-2">SMK Negeri 1 Kragilan</h3>
 
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="login-wrap p-0">
-                        <!-- <h3 class="mb-4 text-center">Have an account?</h3> -->
-                        <?= $this->session->flashdata('msg') ?>
-
-                        <?= form_open('Login/login_siswa'); ?>
-                        <form class="signin-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="NISN" name='nisn' required>
-                            </div>
-                            <div class="form-group">
-                                <input id="password-field" type="text" class="form-control" placeholder="Password" name="password" required>
-                                <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="form-control btn btn-primary submit px-3" value="Login">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="form-control btn btn-success px-3" data-toggle="modal" data-target="#exampleModal">
-                                    Informasi Login
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Informasi Login</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p style="color: black;">
-                                                    Silahkan login dengan ketentuan berikut :
-                                                <ul style="color: black;">
-                                                    <li>Login menggunakan NISN masing-masing siswa.</li>
-                                                    <li>Password menggunakan 4 digit angka NISN dari belakang, contoh NISN 12345678 maka password 5678</li>
-                                                    <li>Jika masih gagal bisa hubungi <a href="https://wa.link/edpv3y" class="btn btn-sm btn-primary">Bantuan</a></li>
-                                                </ul>
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Login form-->
+                                    <form>
+                                        <!-- Form Group (email address)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">NISN</label>
+                                            <input class="form-control" name="nisn" id="inputEmailAddress" type="text" placeholder="NISN" />
+                                        </div>
+                                        <!-- Form Group (password)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputPassword">Password</label>
+                                            <input class="form-control" name="password" id="inputPassword" type="password" placeholder="password" />
+                                        </div>
+                                        <!-- Form Group (remember password checkbox)-->
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" id="rememberPasswordCheck" type="checkbox" value="" />
+                                                <label class="form-check-label" for="rememberPasswordCheck">Remember password</label>
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- Form Group (login box)-->
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="auth-password-basic.html">Forgot Password?</a>
+                                            <a class="btn btn-primary" href="dashboard-1.html">Login</a>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small"><a href="auth-register-basic.html">Need an account? Sign up!</a></div>
                                 </div>
                             </div>
-
-
-                            <div id="block1" style="display:none;">
-                                <div class="card">
-
-                                    <div class="card-body">
-                                        <p style="color: black;">Login menggunakan NISN dan Passowrd 4 angka digit NISN dari belakang.
-                                            <br>Contoh NISN 12345678 maka password 5678.
-                                            <br>Jika masih gagal bisa hubungi <a href="https://wa.link/edpv3y" class="btn btn-primary">Bantuan</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div style="margin-top: 100px;"></div> -->
-                            <?= form_close() ?>
-
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
-    </section>
-
-    <script src="<?= base_url() ?>assets/login/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/popper.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/main.js"></script>
-
-    <script>
-        function js_block1() {
-            var x = document.getElementById("block1");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
-
+        <div id="layoutAuthentication_footer">
+            <footer class="footer-admin mt-auto footer-dark">
+                <div class="container-xl px-4">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &copy; SMK Negeri 1 Kragilan</div>
+                        <div class="col-md-6 text-md-end small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ?>assets/js/scripts.js"></script>
 </body>
 
 </html>
