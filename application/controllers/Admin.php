@@ -11,14 +11,14 @@ class Admin extends CI_Controller
 
         // session login
         //if ($this->session->userdata('admin') != true) {
-            // $url = base_url('Admin/f');
-            // redirect($url);
+        // $url = base_url('Admin/f');
+        // redirect($url);
         //}
     }
 
     public function index()
     {
-         $this->load->view('admin/login');
+        $this->load->view('admin/login');
     }
 
     public function f()
@@ -29,9 +29,9 @@ class Admin extends CI_Controller
 
     public function dashboard()
     {
-        $this->load->view('template/header-admin');
+        // $this->load->view('template/header-admin');
         $this->load->view('admin/dashboard');
-        $this->load->view('template/footer');
+        // $this->load->view('template/footer');
     }
 
     public function siswa()
@@ -90,5 +90,4 @@ class Admin extends CI_Controller
         $data['tampil'] = $this->M_admin->sertifikat_cetak($id_siswa);
         $this->load->view('siswa/sertifikat', $data);
     }
-    
 }

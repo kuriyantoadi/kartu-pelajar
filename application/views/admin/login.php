@@ -1,62 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>MPLS 2022</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="<?= base_url() ?>assets/login/css/style.css">
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Kartu Pelajar</title>
+    <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon.png" />
+    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="img js-fullheight" style="background-image: url(<?= base_url() ?>assets/login/images/bg.jpg);">
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Admin Sertifikat MPLS 2022</h2>
-                    <p style="color: white;">SMK Negeri 1 Kragilan</p>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container-xl px-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <!-- Basic login form-->
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header justify-content-center">
+                                    <h3 align="center" class="fw-light my-2">Login Kartu Pelajar</h3>
+                                    <h3 align="center" class="fw-light my-2">Akun Admin</h3>
+                                </div>
+                                <div class="card-body">
 
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4">
-                    <div class="login-wrap p-0">
-                        <!-- <h3 class="mb-4 text-center">Have an account?</h3> -->
-                        <?= $this->session->flashdata('msg') ?>
+                                    <?= $this->session->flashdata('msg') ?>
+                                    <?= form_open('Login/login_admin'); ?>
 
-                        <?= form_open('Login/login_admin'); ?>
-                        <form class="signin-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" name='username' required>
-                            </div>
-                            <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" placeholder="Password" name="password" required>
-                                <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="form-control btn btn-primary submit px-3" value="Login">
-                            </div>
-                            <!-- <div style="margin-top: 100px;"></div> -->
-                            <?= form_close() ?>
+                                    <!-- Login form-->
+                                    <form>
+                                        <!-- Form Group (email address)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputEmailAddress">Username</label>
+                                            <input class="form-control" name="username" type="text" placeholder="username" />
+                                        </div>
+                                        <!-- Form Group (password)-->
+                                        <div class="mb-3">
+                                            <label class="small mb-1" for="inputPassword">Password</label>
+                                            <input class="form-control" name="password" type="password" placeholder="password" />
+                                        </div>
 
-                        </form>
+
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <input type="submit" class="btn btn-primary" value="Login">
+                                        </div>
+                                    </form>
+
+                                    <?= form_close() ?>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
-    </section>
-
-    <script src="<?= base_url() ?>assets/login/js/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/popper.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/bootstrap.min.js"></script>
-    <script src="<?= base_url() ?>assets/login/js/main.js"></script>
-
+        <div id="layoutAuthentication_footer">
+            <footer class="footer-admin mt-auto footer-dark">
+                <div class="container-xl px-4">
+                    <div class="row">
+                        <!-- <div class="col-md-6 small">Copyright &copy; SMK Negeri 1 Kragilan</div> -->
+                        <div class="col-md-6 text-md-end small">
+                            <a href="#!">Privacy Policy</a>
+                            &middot;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="<?= base_url() ?>assets/js/scripts.js"></script>
 </body>
 
 </html>
