@@ -46,8 +46,6 @@
                                     <a class="btn btn-sm btn-rounded btn-danger" href=""><i class="fa fa-times"></i></a>
                                     <a class="btn btn-sm btn-rounded btn-warning" href=""><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-sm btn-rounded btn-info" href=""><i class="fa fa-eye"></i></a>
-
-
                                 </td>
 
                             </tr>

@@ -34,7 +34,7 @@ class Login extends CI_Controller
                 redirect('Siswa');
                 // echo "test'";
 
-               
+
             } else {
                 $url = base_url('Login1');
                 echo $this->session->set_flashdata('msg', '
@@ -77,6 +77,11 @@ class Login extends CI_Controller
 
             if ($data['status'] == 'admin') {
                 $this->session->set_userdata('admin', true);
+                $this->session->set_userdata('ses_id', $data['id_admin']);
+                $this->session->set_userdata('ses_user', $data['username']);
+                redirect('Admin/dashboard');
+            } elseif ($data['status'] == 'guru_bk') {
+                $this->session->set_userdata('guru_bk', true);
                 $this->session->set_userdata('ses_id', $data['id_admin']);
                 $this->session->set_userdata('ses_user', $data['username']);
                 redirect('Admin/dashboard');
