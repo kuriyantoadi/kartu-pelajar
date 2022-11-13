@@ -126,9 +126,11 @@
                         <li class="nav-small-cap">ADMIN</li>
 
                         <li>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i>Dashboard</a>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i>Dashboard</a>
-                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-email"></i>Dashboard</a>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i>Siswa</a>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
+                            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i>Operator</a>
 
                         </li>
 
