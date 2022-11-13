@@ -43,6 +43,23 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function pelanggaran()
+    {
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/pelanggaran', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function prestasi()
+    {
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/prestasi', $data);
+        $this->load->view('template/footer');
+    }
 
     // tekno awal
     public function siswa_detail($id_siswa)
