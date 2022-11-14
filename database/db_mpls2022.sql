@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2022 at 10:00 
+-- Generation Time: Nov 14, 2022 at 08:56 
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_mpls2022`
+-- Database: `db_kartu_pelajar`
 --
 
 -- --------------------------------------------------------
@@ -28,17 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_admin` (
   `id_admin` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `username` varchar(50) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `status_akun` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_admin`
 --
 
-INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `status`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin');
+INSERT INTO `tb_admin` (`id_admin`, `username`, `nama`, `password`, `status_akun`, `status`) VALUES
+(1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -48,7 +50,55 @@ INSERT INTO `tb_admin` (`id_admin`, `username`, `password`, `status`) VALUES
 
 CREATE TABLE `tb_kelas` (
   `id_kelas` int(11) NOT NULL,
-  `nama_kelas` varchar(50) NOT NULL
+  `tingkatan` varchar(50) NOT NULL,
+  `jumlah` varchar(50) NOT NULL,
+  `kode_kelas` varchar(50) NOT NULL,
+  `angkatan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_pelanggaran`
+--
+
+CREATE TABLE `tb_pelanggaran` (
+  `id_pelangaran` int(11) NOT NULL,
+  `nama_pelanggaran` varchar(50) NOT NULL,
+  `point` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_point`
+--
+
+CREATE TABLE `tb_point` (
+  `id_point` int(11) NOT NULL,
+  `tgl_pelanggaran` varchar(50) NOT NULL,
+  `nama_pelanggaran` varchar(50) NOT NULL,
+  `point` varchar(50) NOT NULL,
+  `nama_input` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_prestasi`
+--
+
+CREATE TABLE `tb_prestasi` (
+  `id_prestasi` int(11) NOT NULL,
+  `id_siswa` varchar(5) NOT NULL,
+  `nama_siswa` varchar(50) NOT NULL,
+  `tanggal_pelaksanaan` varchar(50) NOT NULL,
+  `nama_kegiatan` varchar(50) NOT NULL,
+  `juara_ke` varchar(10) NOT NULL,
+  `tingkat` varchar(10) NOT NULL,
+  `tempat_lomba` varchar(50) NOT NULL,
+  `tim_individual` varchar(10) NOT NULL,
+  `penyelenggara_acara` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -59,523 +109,18 @@ CREATE TABLE `tb_kelas` (
 
 CREATE TABLE `tb_siswa` (
   `id_siswa` int(11) NOT NULL,
-  `nisn` varchar(10) NOT NULL,
-  `password` varchar(10) NOT NULL,
+  `nisn` varchar(15) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `nama_siswa` varchar(50) NOT NULL,
+  `tempat_lahir` varchar(100) NOT NULL,
+  `tgl_lahir` varchar(20) NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `kompetensi_keahlian` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `photo` varchar(15) NOT NULL,
   `status` varchar(15) NOT NULL,
-  `kelas` varchar(50) NOT NULL,
-  `kondisi_mpls` varchar(20) NOT NULL
+  `id_kelas` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_siswa`
---
-
-INSERT INTO `tb_siswa` (`id_siswa`, `nisn`, `password`, `nama_siswa`, `status`, `kelas`, `kondisi_mpls`) VALUES
-(2, '0066488322', '88322', 'ADELIA SAFITRI', 'siswa', 'X AKL1', 'selesai'),
-(3, '0062216466', '16466', 'AHMAD HAIKAL', 'siswa', 'X AKL1', 'selesai'),
-(4, '0079049995', '49995', 'AHMAD SUPENDI ', 'siswa', 'X AKL1', 'selesai'),
-(5, '0079516024', '16024', 'ANISATUS SAFUROH', 'siswa', 'X AKL1', 'selesai'),
-(6, '0062505371', '05371', 'BELA RISMA', 'siswa', 'X AKL1', 'selesai'),
-(7, '0067111781', '11781', 'DEA SINTIAWATI', 'siswa', 'X AKL1', 'selesai'),
-(8, '0054298904', '98904', 'DESTIRANI AGRILYA', 'siswa', 'X AKL1', 'selesai'),
-(9, '0061353163', '53163', 'DIAN ASTUTI', 'siswa', 'X AKL1', 'selesai'),
-(10, '0073293671', '93671', 'DIANI', 'siswa', 'X AKL1', 'selesai'),
-(11, '0074188401', '88401', 'FUTIHATUL JANAH', 'siswa', 'X AKL1', 'selesai'),
-(12, '0072934698', '34698', 'ILAH DAHLIA', 'siswa', 'X AKL1', 'selesai'),
-(13, '0088220383', '03837', 'JANI', 'siswa', 'X AKL1', 'selesai'),
-(14, '0072602182', '02182', 'KENZIE CAHYA NIRVANA', 'siswa', 'X AKL1', 'selesai'),
-(15, '0079032448', '32448', 'LINDA WIJAYANTI', 'siswa', 'X AKL1', 'selesai'),
-(16, '0077773767', '73767', 'MELI RAHMAWATI', 'siswa', 'X AKL1', 'selesai'),
-(17, '0076270450', '70450', 'MITA', 'siswa', 'X AKL1', 'selesai'),
-(18, '0072861834', '61834', 'MUTIA PEBRIANI', 'siswa', 'X AKL1', 'selesai'),
-(19, '0068688012', '88012', 'NIKEN AYU SAPUTRI', 'siswa', 'X AKL1', 'selesai'),
-(20, '0073098784', '98784', 'NIMAS RADIN PANDAN AYU', 'siswa', 'X AKL1', 'selesai'),
-(21, '0075209443', '09443', 'OLIVIA FATHIMATUZ ZAHRA', 'siswa', 'X AKL1', 'selesai'),
-(22, '0067494170', '94170', 'RATNA SARI', 'siswa', 'X AKL1', 'selesai'),
-(23, '0068073718', '73718', 'RORO AYU WULANDARI', 'siswa', 'X AKL1', 'selesai'),
-(24, '0068882458', '82458', 'SABRINA AULIA AL AJABA', 'siswa', 'X AKL1', 'selesai'),
-(25, '0073477155', '77155', 'SAKINAH', 'siswa', 'X AKL1', 'selesai'),
-(26, '0074496668', '96668', 'SEFTIYA NASUHA', 'siswa', 'X AKL1', 'selesai'),
-(27, '0073340591', '40591', 'SINDI', 'siswa', 'X AKL1', 'selesai'),
-(28, '0069143879', '43879', 'SINTIYA', 'siswa', 'X AKL1', 'selesai'),
-(29, '0075123370', '23370', 'SITI ALAWIYAH', 'siswa', 'X AKL1', 'selesai'),
-(30, '0062773190', '73190', 'SITI ALPIAH NURHIDAYAH', 'siswa', 'X AKL1', 'selesai'),
-(31, '0069343452', '43452', 'SITI NUR AISYAH', 'siswa', 'X AKL1', 'selesai'),
-(32, '0062819840', '19840', 'SRI RAHAYU ', 'siswa', 'X AKL1', 'selesai'),
-(33, '0079257376', '57376', 'STEFANY RIA AGUSTIN', 'siswa', 'X AKL1', 'selesai'),
-(34, '0074321535', '21535', 'SUHERNI', 'siswa', 'X AKL1', 'selesai'),
-(35, '0072640097', '40097', 'SYIFA\'NI', 'siswa', 'X AKL1', 'selesai'),
-(36, '0075663127', '63127', 'TANIA PRABUDI ISLAMI', 'siswa', 'X AKL1', 'selesai'),
-(37, '0062302043', '02043', 'UMI ROHMAH', 'siswa', 'X AKL1', 'selesai'),
-(38, '0076692463', '92463', 'AGNIA JELITA SALSABILA', 'siswa', 'X AKL 2', 'selesai'),
-(39, '0076263139', '63139', 'AISAH', 'siswa', 'X AKL 2', 'selesai'),
-(40, '0063028973', '28973', 'AISYAH NUR AGUSTIN ', 'siswa', 'X AKL 2', 'selesai'),
-(41, '0051065609', '65609', 'AMELIA RAHMAN', 'siswa', 'X AKL 2', 'selesai'),
-(42, '0065593763', '93763', 'ANGGA DAROJATUN PAHRI', 'siswa', 'X AKL 2', 'selesai'),
-(43, '0055016407', '16407', 'ANISAH', 'siswa', 'X AKL 2', 'selesai'),
-(44, '0065952437', '52437', 'ARSALI', 'siswa', 'X AKL 2', 'selesai'),
-(45, '0069439967', '39967', 'ARUMAWATI', 'siswa', 'X AKL 2', 'selesai'),
-(46, '0077239346', '39346', 'AYLA AZZURA BUDI INDRIANI', 'siswa', 'X AKL 2', 'selesai'),
-(47, '0079743627', '43627', 'CAHAYA MULYA', 'siswa', 'X AKL 2', 'selesai'),
-(48, '0064147565', '47565', 'CHIKA LAURA ALVIANA', 'siswa', 'X AKL 2', 'selesai'),
-(49, '0069075657', '75657', 'CHIKA PERMANA', 'siswa', 'X AKL 2', 'selesai'),
-(50, '0075944632', '44632', 'DIANA', 'siswa', 'X AKL 2', 'selesai'),
-(51, '0071414298', '14298', 'ELISA LARASSATI', 'siswa', 'X AKL 2', 'selesai'),
-(52, '0078600265', '00265', 'FENI YULIANTI', 'siswa', 'X AKL 2', 'selesai'),
-(53, '0068468203', '68203', 'FITRIAH', 'siswa', 'X AKL 2', 'selesai'),
-(54, '0078490795', '90795', 'GAYATRI DEWI', 'siswa', 'X AKL 2', 'selesai'),
-(55, '0064365045', '65045', 'INTAN', 'siswa', 'X AKL 2', 'selesai'),
-(56, '0075392625', '92625', 'KEISYA FATMAWATI', 'siswa', 'X AKL 2', 'selesai'),
-(57, '0085323585', '23585', 'KLAUDIA SINTIA BELA', 'siswa', 'X AKL 2', 'selesai'),
-(58, '0067123025', '23025', 'MARSANDA', 'siswa', 'X AKL 2', 'selesai'),
-(59, '3063527604', '27604', 'MARSHA DESTIANI', 'siswa', 'X AKL 2', 'selesai'),
-(60, '0084571301', '71301', 'MELIYANA SARI', 'siswa', 'X AKL 2', 'selesai'),
-(61, '0067574446', '74446', 'MIA FANESA', 'siswa', 'X AKL 2', 'selesai'),
-(62, '0075846254', '46254', 'NAJWA ANGELINA', 'siswa', 'X AKL 2', 'selesai'),
-(63, '0064176543', '76543', 'NURAISYAH', 'siswa', 'X AKL 2', 'selesai'),
-(64, '0067331654', '31654', 'RADJA MALIK HADID', 'siswa', 'X AKL 2', 'selesai'),
-(65, '0073729462', '29462', 'SARI', 'siswa', 'X AKL 2', 'selesai'),
-(66, '0071964132', '64132', 'SELLA INDRIANI', 'siswa', 'X AKL 2', 'selesai'),
-(67, '0054344403', '44403', 'SELVIA IS YULIANI', 'siswa', 'X AKL 2', 'selesai'),
-(68, '0068361108', '61108', 'SEPTIANA DWI RAMADHANI', 'siswa', 'X AKL 2', 'selesai'),
-(69, '0078100630', '00630', 'SHAFIA NADHIRA FATIHAH TRIANI', 'siswa', 'X AKL 2', 'selesai'),
-(70, '0058802906', '02906', 'SISKA AYU WULANDARI', 'siswa', 'X AKL 2', 'selesai'),
-(71, '0069723474', '23474', 'SITI NURUL FADLIYAH', 'siswa', 'X AKL 2', 'selesai'),
-(72, '0063986738', '86738', 'SUCI RAMADHANI', 'siswa', 'X AKL 2', 'selesai'),
-(73, '0064695134', '95134', 'SUSI SULISTIA', 'siswa', 'X AKL 2', 'selesai'),
-(74, '0069035518', '35518', 'ANGGUN DARA ANJELITA', 'siswa', 'X OTKP 1', 'selesai'),
-(75, '0071916220', '16220', 'ANISA', 'siswa', 'X OTKP 1', 'selesai'),
-(76, '0078918753', '18753', 'ANNIDA AZKIYA', 'siswa', 'X OTKP 1', 'selesai'),
-(77, '0078951950', '51950', 'APRILIA AGUSTIN', 'siswa', 'X OTKP 1', 'selesai'),
-(78, '0064722318', '22318', 'ARDANIA PUTRI', 'siswa', 'X OTKP 1', 'selesai'),
-(79, '0076974821', '74821', 'AULYA SAMSUDIN', 'siswa', 'X OTKP 1', 'selesai'),
-(80, '0066890908', '90908', 'AWUDYNA VISTA', 'siswa', 'X OTKP 1', 'selesai'),
-(81, '0078498881', '98881', 'AYU NOFITA SARI ', 'siswa', 'X OTKP 1', 'selesai'),
-(82, '0062499486', '99486', 'BILQIS MAHARANI SAFITRI', 'siswa', 'X OTKP 1', 'selesai'),
-(83, '0079618042', '18042', 'CHELSEA AULIA PUTERI AZ-ZAHRA ', 'siswa', 'X OTKP 1', 'selesai'),
-(84, '0079191377', '91377', 'CIKA NOVITA SARI', 'siswa', 'X OTKP 1', 'selesai'),
-(85, '0071718632', '18632', 'DEBIE LUKITALANJAR KINASIH', 'siswa', 'X OTKP 1', 'selesai'),
-(86, '0073496861', '96861', 'DEBORA GRACIA ESTERINA', 'siswa', 'X OTKP 1', 'selesai'),
-(87, '0062944252', '44252', 'DEVIYANI', 'siswa', 'X OTKP 1', 'selesai'),
-(88, '0064448575', '48575', 'DIAN OKTOVIANY', 'siswa', 'X OTKP 1', 'selesai'),
-(89, '0062014344', '14344', 'DINDA AYU KOMALA', 'siswa', 'X OTKP 1', 'selesai'),
-(90, '0067782627', '82627', 'DWI OKTA FITRIANI', 'siswa', 'X OTKP 1', 'selesai'),
-(91, '0074844545', '44545', 'DWI VIOLA', 'siswa', 'X OTKP 1', 'selesai'),
-(92, '0063117241', '17241', 'ELISA NURAINI', 'siswa', 'X OTKP 1', 'selesai'),
-(93, '0076515758', '15758', 'ELYNA ERIANTI', 'siswa', 'X OTKP 1', 'selesai'),
-(94, '0072290248', '90248', 'FADYA MASHABAYA', 'siswa', 'X OTKP 1', 'selesai'),
-(95, '0067938079', '38079', 'FASA AMALIA', 'siswa', 'X OTKP 1', 'selesai'),
-(96, '0071053208', '53208', 'FITRI AURA SHIFA ROJUDIN ', 'siswa', 'X OTKP 1', 'selesai'),
-(97, '0073616747', '16747', 'FRIZKA SAFITRI', 'siswa', 'X OTKP 1', 'selesai'),
-(98, '0076277285', '77285', 'GUSTININGDYAH APRILLA RIZKY', 'siswa', 'X OTKP 1', 'selesai'),
-(99, '0071715021', '15021', 'HANA AMELIA ', 'siswa', 'X OTKP 1', 'selesai'),
-(100, '0071075418', '75418', 'HESTI SETIAWATI', 'siswa', 'X OTKP 1', 'selesai'),
-(101, '0072743581', '43581', 'ISWATUN HASANAH', 'siswa', 'X OTKP 1', 'selesai'),
-(102, '0079276696', '76696', 'KEMISTIARA', 'siswa', 'X OTKP 1', 'selesai'),
-(103, '0063873305', '73305', 'KHAERUN NISA', 'siswa', 'X OTKP 1', 'selesai'),
-(104, '0079901057', '01057', 'KIKI FATIMAHTUN ZAHROH', 'siswa', 'X OTKP 1', 'selesai'),
-(105, '0071587873', '87873', 'LILIS SAFITRI', 'siswa', 'X OTKP 1', 'selesai'),
-(106, '0063800035', '00035', 'LUTPIYAH SUNKAR', 'siswa', 'X OTKP 1', 'selesai'),
-(107, '0051030470', '30470', 'MAIDAH', 'siswa', 'X OTKP 1', 'selesai'),
-(108, '0069639790', '39790', 'MIKATUL AENI', 'siswa', 'X OTKP 1', 'selesai'),
-(109, '0063532425', '32425', 'MULYATI', 'siswa', 'X OTKP 1', 'selesai'),
-(110, '0063693638', '93638', 'NABILA SEPTIA PUTRI ', 'siswa', 'X OTKP 2', 'selesai'),
-(111, '0072779567', '79567', 'NAZLA ATIKA SHABRINA', 'siswa', 'X OTKP 2', 'selesai'),
-(112, '0063357034', '57034', 'NILAM CAHYA RAMADHANI ', 'siswa', 'X OTKP 2', 'selesai'),
-(113, '0079460434', '60434', 'NUR AYU MAULIDIA', 'siswa', 'X OTKP 2', 'selesai'),
-(114, '0065619979', '19979', 'NURUL AINI', 'siswa', 'X OTKP 2', 'selesai'),
-(115, '0066521909', '21909', 'NURYATI', 'siswa', 'X OTKP 2', 'selesai'),
-(116, '0076754044', '54044', 'PUTRI NABILA AULIA', 'siswa', 'X OTKP 2', 'selesai'),
-(117, '0066533007', '30075', 'PUTRI TRI HERYANTI', 'siswa', 'X OTKP 2', 'selesai'),
-(118, '0072517662', '17662', 'RANI INDRIYANI', 'siswa', 'X OTKP 2', 'selesai'),
-(119, '0064857535', '57535', 'RENI YUNITA', 'siswa', 'X OTKP 2', 'selesai'),
-(120, '0075810886', '10886', 'RESTI AYU WANDIRA', 'siswa', 'X OTKP 2', 'selesai'),
-(121, '0061634989', '34989', 'RINA DWI ANDINI', 'siswa', 'X OTKP 2', 'selesai'),
-(122, '0068194836', '94836', 'RIVKA NOVIYATI ', 'siswa', 'X OTKP 2', 'selesai'),
-(123, '0063086535', '86535', 'ROHMANIA ALIFA', 'siswa', 'X OTKP 2', 'selesai'),
-(124, '0062464529', '64529', 'ROSELLA', 'siswa', 'X OTKP 2', 'selesai'),
-(125, '0075713992', '13992', 'SALSA NABILA ', 'siswa', 'X OTKP 2', 'selesai'),
-(126, '0067358749', '58749', 'SANOPI', 'siswa', 'X OTKP 2', 'selesai'),
-(127, '0064327774', '27774', 'SAPINAH INDRIYANI', 'siswa', 'X OTKP 2', 'selesai'),
-(128, '0079389995', '89995', 'SELI RANTIKA', 'siswa', 'X OTKP 2', 'selesai'),
-(129, '0072326504', '26504', 'SELIA FEBRIANA ', 'siswa', 'X OTKP 2', 'selesai'),
-(130, '0049240563', '40563', 'SERA YUNIARTY', 'siswa', 'X OTKP 2', 'selesai'),
-(131, '0074378329', '78329', 'SHAFINA', 'siswa', 'X OTKP 2', 'selesai'),
-(132, '0078877593', '77593', 'SISKA HERLINDA', 'siswa', 'X OTKP 2', 'selesai'),
-(133, '0057505399', '05399', 'SITI HALIMAH', 'siswa', 'X OTKP 2', 'selesai'),
-(134, '0066739229', '39229', 'SITI NOVA SALSABILA ARIFIN', 'siswa', 'X OTKP 2', 'selesai'),
-(135, '0087438083', '38083', 'SITI NUR PADJRINAH', 'siswa', 'X OTKP 2', 'selesai'),
-(136, '0065863355', '63355', 'SITI ROHMAWATI ', 'siswa', 'X OTKP 2', 'selesai'),
-(137, '0077295061', '95061', 'SITI SAIDAH', 'siswa', 'X OTKP 2', 'selesai'),
-(138, '0071504268', '04268', 'SONIA REZALIA', 'siswa', 'X OTKP 2', 'selesai'),
-(139, '0048574539', '74539', 'SRI KAWATI', 'siswa', 'X OTKP 2', 'selesai'),
-(140, '0063209551', '09551', 'SRIYANTI', 'siswa', 'X OTKP 2', 'selesai'),
-(141, '0073371419', '71419', 'SYIFA NUR KHAIRIYAH', 'siswa', 'X OTKP 2', 'selesai'),
-(142, '0062215199', '15199', 'SYIFA UROHMAH ', 'siswa', 'X OTKP 2', 'selesai'),
-(143, '0065393260', '93260', 'ULFIANA', 'siswa', 'X OTKP 2', 'selesai'),
-(144, '0073804780', '04780', 'UUSWATUN HASANAH', 'siswa', 'X OTKP 2', 'selesai'),
-(145, '0077749260', '49260', 'ZAHIRAH PUTRI YUANISYAH', 'siswa', 'X OTKP 2', 'selesai'),
-(146, '0074502973', '02973', 'AHMAD DANY SAPUTRA', 'siswa', 'X RPL 1', 'selesai'),
-(147, '0075975855', '75855', 'AHMAD DHAEROBY', 'siswa', 'X RPL 1', 'selesai'),
-(148, '0074155726', '55726', 'AYU MARDIANA', 'siswa', 'X RPL 1', 'selesai'),
-(149, '0076885998', '85998', 'BAMBANG SUTRISNO', 'siswa', 'X RPL 1', 'selesai'),
-(150, '0073461064', '61064', 'DIANA', 'siswa', 'X RPL 1', 'selesai'),
-(151, '0064163733', '63733', 'EFI SAFITRI', 'siswa', 'X RPL 1', 'selesai'),
-(152, '0071027125', '27125', 'FAJAR AKBAR', 'siswa', 'X RPL 1', 'selesai'),
-(153, '0075452117', '52117', 'FAREL DEAS IMMANUEL', 'siswa', 'X RPL 1', 'selesai'),
-(154, '0061453057', '53057', 'FIKA DWI ALYANTI', 'siswa', 'X RPL 1', 'selesai'),
-(155, '0071529701', '29701', 'FIRDAN ADITIYA', 'siswa', 'X RPL 1', 'selesai'),
-(156, '0063964858', '64858', 'HERA WATI SAFITRI', 'siswa', 'X RPL 1', 'selesai'),
-(157, '0077514581', '14581', 'HIKMAH AMALIYAH', 'siswa', 'X RPL 1', 'selesai'),
-(158, '0078597445', '97445', 'IPAN', 'siswa', 'X RPL 1', 'selesai'),
-(159, '0054339323', '39323', 'LIA ROYANAH', 'siswa', 'X RPL 1', 'selesai'),
-(160, '0072761429', '61429', 'MOHAMAD IBNU SABIL', 'siswa', 'X RPL 1', 'selesai'),
-(161, '0073138159', '38159', 'MUHAMAD AMARUDIN', 'siswa', 'X RPL 1', 'selesai'),
-(162, '0067712341', '12341', 'MUHAMAD INDRA KURNIAWAN', 'siswa', 'X RPL 1', 'selesai'),
-(163, '0058286657', '86657', 'MUHAMMAD DODI', 'siswa', 'X RPL 1', 'selesai'),
-(164, '0073903023', '03023', 'MUHAMMAD ILHAM', 'siswa', 'X RPL 1', 'selesai'),
-(165, '0061322345', '22345', 'MUHAMMAD SALIM', 'siswa', 'X RPL 1', 'selesai'),
-(166, '0079099496', '99496', 'MUJAH SAFITRI', 'siswa', 'X RPL 1', 'selesai'),
-(167, '0065215508', '15508', 'NUR HIDAYAT', 'siswa', 'X RPL 1', 'selesai'),
-(168, '0063697050', '97050', 'PURWATI', 'siswa', 'X RPL 1', 'selesai'),
-(169, '0078717753', '17753', 'REFANSYAH', 'siswa', 'X RPL 1', 'selesai'),
-(170, '0072363915', '63915', 'RENO ANDRIAN', 'siswa', 'X RPL 1', 'selesai'),
-(171, '0076453299', '53299', 'RIKI MARTIN', 'siswa', 'X RPL 1', 'selesai'),
-(172, '0058516237', '16237', 'RIZKI SAPUTRA', 'siswa', 'X RPL 1', 'selesai'),
-(173, '0112638521', '38521', 'SALPINAH', 'siswa', 'X RPL 1', 'selesai'),
-(174, '0071950938', '50938', 'SEKAR DWI GIANI', 'siswa', 'X RPL 1', 'selesai'),
-(175, '0074764896', '64896', 'SITI ANIYAH', 'siswa', 'X RPL 1', 'selesai'),
-(176, '0062613288', '13288', 'SITI FAUZIAH', 'siswa', 'X RPL 1', 'selesai'),
-(177, '0072942711', '42711', 'SITI LUTFIAH', 'siswa', 'X RPL 1', 'selesai'),
-(178, '0075594959', '94959', 'SOPIAN', 'siswa', 'X RPL 1', 'selesai'),
-(179, '0077739797', '39797', 'SULIS TIYA WATI', 'siswa', 'X RPL 1', 'selesai'),
-(180, '0075907339', '07339', 'SUTIANINGSIH', 'siswa', 'X RPL 1', 'selesai'),
-(181, '0064414520', '14520', 'SYAHRUL RIZAL', 'siswa', 'X RPL 1', 'selesai'),
-(182, '0074678860', '78860', 'ADEN RIFYAL KONENDA', 'siswa', 'X RPL 2', 'selesai'),
-(183, '0074998057', '98057', 'AGISCA BAREN MARSUS', 'siswa', 'X RPL 2', 'selesai'),
-(184, '0071142963', '42963', 'ALDI MAERUDIN', 'siswa', 'X RPL 2', 'selesai'),
-(185, '0069306323', '06323', 'ARIL SYAIFULLOH', 'siswa', 'X RPL 2', 'selesai'),
-(186, '0077497402', '97402', 'ARINA ZULFA AZIZAH', 'siswa', 'X RPL 2', 'selesai'),
-(187, '0073829603', '29603', 'DEWI LESTARI', 'siswa', 'X RPL 2', 'selesai'),
-(188, '0063490253', '90253', 'ENDI KUSUMA', 'siswa', 'X RPL 2', 'selesai'),
-(189, '0072948785', '48785', 'ETI MUNAWAROH', 'siswa', 'X RPL 2', 'selesai'),
-(190, '0062359029', '59029', 'HILMAN', 'siswa', 'X RPL 2', 'selesai'),
-(191, '0075861414', '61414', 'INDAH RATNA SARI', 'siswa', 'X RPL 2', 'selesai'),
-(192, '0074572882', '72882', 'INTAN APRILIA', 'siswa', 'X RPL 2', 'selesai'),
-(193, '0057784782', '84782', 'JIHAN PRATAMA', 'siswa', 'X RPL 2', 'selesai'),
-(194, '0068505138', '05138', 'JUNAEDI', 'siswa', 'X RPL 2', 'selesai'),
-(195, '0069490024', '90024', 'KHUMAIROH ', 'siswa', 'X RPL 2', 'selesai'),
-(196, '0068428784', '28784', 'M.ALIUDIN', 'siswa', 'X RPL 2', 'selesai'),
-(197, '0044261370', '61370', 'MANIAH', 'siswa', 'X RPL 2', 'selesai'),
-(198, '0082505840', '05840', 'MELDA MISNAWATI', 'siswa', 'X RPL 2', 'selesai'),
-(199, '0069206882', '06882', 'MIFTAHUR RIFKI', 'siswa', 'X RPL 2', 'selesai'),
-(200, '0068099602', '99602', 'MUHAMAD ROSSIDIK', 'siswa', 'X RPL 2', 'selesai'),
-(201, '0063165517', '65517', 'MUHAMAD SAHRIAN', 'siswa', 'X RPL 2', 'selesai'),
-(202, '0075334530', '34530', 'MUHAMAD SEPTIAN HADI', 'siswa', 'X RPL 2', 'selesai'),
-(203, '0072668740', '68740', 'MUHAMMAD DZAKI FEBRIANSYAH', 'siswa', 'X RPL 2', 'selesai'),
-(204, '0071855669', '55669', 'MURODI', 'siswa', 'X RPL 2', 'selesai'),
-(205, '0077391068', '91068', 'NAZAR', 'siswa', 'X RPL 2', 'selesai'),
-(206, '0076726627', '26627', 'NURHAYATI DWI PUTRI', 'siswa', 'X RPL 2', 'selesai'),
-(207, '0062281479', '81479', 'NURI FITRIANI', 'siswa', 'X RPL 2', 'selesai'),
-(208, '0073640352', '40352', 'RASIYAH', 'siswa', 'X RPL 2', 'selesai'),
-(209, '0063113530', '13530', 'RIZKAN BUDIYANTO ', 'siswa', 'X RPL 2', 'selesai'),
-(210, '0086735851', '35851', 'RUMYANAH', 'siswa', 'X RPL 2', 'selesai'),
-(211, '0075954593', '54593', 'SAEFUL', 'siswa', 'X RPL 2', 'selesai'),
-(212, '0062131869', '31869', 'SELY', 'siswa', 'X RPL 2', 'selesai'),
-(213, '0082753166', '53166', 'SITI SAEDAH', 'siswa', 'X RPL 2', 'selesai'),
-(214, '0063259161', '59161', 'TIARA', 'siswa', 'X RPL 2', 'selesai'),
-(215, '0078599300', '99300', 'YUNI AMALIA RAHMAWATI', 'siswa', 'X RPL 2', 'selesai'),
-(216, '0072710360', '10360', 'ZAIDAN AMRULLAH', 'siswa', 'X RPL 2', 'selesai'),
-(217, '0077601987', '01987', 'ZAZOU ZHIBRAN FIRDAUS', 'siswa', 'X RPL 2', 'selesai'),
-(218, '0075766431', '66431', 'ABDUL RAYHAN', 'siswa', 'X TKJ 1', 'selesai'),
-(219, '0069873709', '73709', 'ALDO ADE PRATAMA', 'siswa', 'X TKJ 1', 'selesai'),
-(220, '0063037529', '37529', 'ALIFAH DWI RAMADHANI', 'siswa', 'X TKJ 1', 'selesai'),
-(221, '0068750874', '50874', 'DEDE RUHIYANTO', 'siswa', 'X TKJ 1', 'selesai'),
-(222, '0071218407', '18407', 'DIMAS SAPUTRA', 'siswa', 'X TKJ 1', 'selesai'),
-(223, '0063171290', '71290', 'EGA PASHA', 'siswa', 'X TKJ 1', 'selesai'),
-(224, '0075060362', '60362', 'FAUZAN NAJMI ARTANSYAH', 'siswa', 'X TKJ 1', 'selesai'),
-(225, '0069910270', '10270', 'GILANG AL FATH ABDILLAH', 'siswa', 'X TKJ 1', 'selesai'),
-(226, '0077265251', '65251', 'HARUN AL RASID', 'siswa', 'X TKJ 1', 'selesai'),
-(227, '0073155381', '55381', 'INTAN AMELIA', 'siswa', 'X TKJ 1', 'selesai'),
-(228, '0074114311', '14311', 'IRFAN FAISAL ARIFIANTO', 'siswa', 'X TKJ 1', 'selesai'),
-(229, '0054392263', '92263', 'IRMA HANDAYANI ', 'siswa', 'X TKJ 1', 'selesai'),
-(230, '0078610780', '10780', 'JIHAN SALSABILA AZAHRA', 'siswa', 'X TKJ 1', 'selesai'),
-(231, '006998409', '98409', 'JUNIYANTI', 'siswa', 'X TKJ 1', 'selesai'),
-(232, '0065935635', '35635', 'LARASATI', 'siswa', 'X TKJ 1', 'selesai'),
-(233, '0063052500', '52500', 'MAHESSA SANGKAL', 'siswa', 'X TKJ 1', 'selesai'),
-(234, '0077514403', '14403', 'MARDOTILLAH ', 'siswa', 'X TKJ 1', 'selesai'),
-(235, '007234814', '34814', 'MIA  APRILIA', 'siswa', 'X TKJ 1', 'selesai'),
-(236, '0054371821', '71821', 'MUHAMAD AZIS SAPUTRA', 'siswa', 'X TKJ 1', 'selesai'),
-(237, '0077688314', '88314', 'NADIA AULIA JUNIANA', 'siswa', 'X TKJ 1', 'selesai'),
-(238, '0067090176', '90176', 'NADILAH', 'siswa', 'X TKJ 1', 'selesai'),
-(239, '0079839477', '39477', 'NURAINI', 'siswa', 'X TKJ 1', 'selesai'),
-(240, '0073432763', '32763', 'RADHI RIZQIULLAH', 'siswa', 'X TKJ 1', 'selesai'),
-(241, '0073725657', '25657', 'RAFFIZA REHANNO BRONSON', 'siswa', 'X TKJ 1', 'selesai'),
-(242, '0062579933', '79933', 'RANI RAMDHANI', 'siswa', 'X TKJ 1', 'selesai'),
-(243, '0076017769', '17769', 'RIANTO', 'siswa', 'X TKJ 1', 'selesai'),
-(244, '0068193864', '93864', 'RIZKI ADI NUGROHO ', 'siswa', 'X TKJ 1', 'selesai'),
-(245, '0062183209', '83209', 'SAMSIAH', 'siswa', 'X TKJ 1', 'selesai'),
-(246, '0079393462', '93462', 'SANDRA MUSTIKA AYURINI', 'siswa', 'X TKJ 1', 'selesai'),
-(247, '0074039003', '39003', 'SANGGITA  APRILIA SARNO', 'siswa', 'X TKJ 1', 'selesai'),
-(248, '0061568585', '68585', 'SANTI', 'siswa', 'X TKJ 1', 'selesai'),
-(249, '0078255274', '55274', 'SATRIO SETIAWAN', 'siswa', 'X TKJ 1', 'selesai'),
-(250, '0065943371', '43371', 'SITI MASRIYAH', 'siswa', 'X TKJ 1', 'selesai'),
-(251, '0064238456', '38456', 'SITI OKTAVIA FITRIYANI', 'siswa', 'X TKJ 1', 'selesai'),
-(252, '0063320117', '20117', 'TRIANA OKTAFIANI', 'siswa', 'X TKJ 1', 'selesai'),
-(253, '0063256432', '56432', 'UUS USWATUN HASANAH', 'siswa', 'X TKJ 1', 'selesai'),
-(254, '0066341811', '41811', 'ADINDA SEPTIANI', 'siswa', 'X TKJ 2', 'selesai'),
-(255, '0061372464', '72464', 'ALIF FADHILAH', 'siswa', 'X TKJ 2', 'selesai'),
-(256, '0074953906', '53906', 'AUZA KHALIFAH', 'siswa', 'X TKJ 2', 'selesai'),
-(257, '0077162085', '62085', 'DHEA YULIA ANANDA', 'siswa', 'X TKJ 2', 'selesai'),
-(258, '0072806710', '06710', 'DINI HADRIANI', 'siswa', 'X TKJ 2', 'selesai'),
-(259, '0076164547', '64547', 'ELIYANTI', 'siswa', 'X TKJ 2', 'selesai'),
-(260, '0064554354', '54354', 'GADIS PUTRI CAHYONO', 'siswa', 'X TKJ 2', 'selesai'),
-(261, '0064745100', '45100', 'GITA NOVIYANTI', 'siswa', 'X TKJ 2', 'selesai'),
-(262, '0065898450', '98450', 'IBROHIM', 'siswa', 'X TKJ 2', 'selesai'),
-(263, '0077506717', '06717', 'INTAN DWI NURCAHYANI', 'siswa', 'X TKJ 2', 'selesai'),
-(264, '0062429962', '29962', 'IRHAM RODOTU SYIFA', 'siswa', 'X TKJ 2', 'selesai'),
-(265, '0079802797', '02797', 'JENI\'AH', 'siswa', 'X TKJ 2', 'selesai'),
-(266, '0064412927', '12927', 'JULIA RISTIANTI DEWI', 'siswa', 'X TKJ 2', 'selesai'),
-(267, '0066850020', '50020', 'KASBIAN', 'siswa', 'X TKJ 2', 'selesai'),
-(268, '0062735354', '35354', 'LIDYA AL UJRO', 'siswa', 'X TKJ 2', 'selesai'),
-(269, '0072767540', '67540', 'MARCOE ANTONIO', 'siswa', 'X TKJ 2', 'selesai'),
-(270, '0081121664', '21664', 'MARIYA ULPA', 'siswa', 'X TKJ 2', 'selesai'),
-(271, '0072801778', '01778', 'MOHAMAD ADE FAJAR RIZQI', 'siswa', 'X TKJ 2', 'selesai'),
-(272, '0065216890', '16890', 'MUHAMAD RIZKY RAHMAN', 'siswa', 'X TKJ 2', 'selesai'),
-(273, '0076400547', '00547', 'NADILA FEBRIYANI', 'siswa', 'X TKJ 2', 'selesai'),
-(274, '0079353108', '53108', 'NAJWA FADHILAH', 'siswa', 'X TKJ 2', 'selesai'),
-(275, '0079830668', '30668', 'NUR HASIAH', 'siswa', 'X TKJ 2', 'selesai'),
-(276, '0076205125', '05125', 'NURHAYATI ROKHMAH', 'siswa', 'X TKJ 2', 'selesai'),
-(277, '0066437029', '37029', 'OKTALENTA DYAH AYU KASELA', 'siswa', 'X TKJ 2', 'selesai'),
-(278, '0074643987', '43987', 'RAMA ARYADIKA', 'siswa', 'X TKJ 2', 'selesai'),
-(279, '0076122123', '22123', 'RANI RAHMAWATI', 'siswa', 'X TKJ 2', 'selesai'),
-(280, '0063062708', '62708', 'SAEFUL ANWAR', 'siswa', 'X TKJ 2', 'selesai'),
-(281, '0078829570', '29570', 'SAKINAH', 'siswa', 'X TKJ 2', 'selesai'),
-(282, '0061147417', '47417', 'SITI PRATIWI', 'siswa', 'X TKJ 2', 'selesai'),
-(283, '0074890837', '90837', 'SOFIAN SAHURI', 'siswa', 'X TKJ 2', 'selesai'),
-(284, '0054643197', '43197', 'SOPIAH', 'siswa', 'X TKJ 2', 'selesai'),
-(285, '0063631632', '31632', 'SUBUR HAENI', 'siswa', 'X TKJ 2', 'selesai'),
-(286, '0067322081', '22081', 'SULYANAH SAFITRI', 'siswa', 'X TKJ 2', 'selesai'),
-(287, '0067786850', '86850', 'SYALMA CITRA LESTARI ', 'siswa', 'X TKJ 2', 'selesai'),
-(288, '0073853196', '53196', 'SYALOMITA AGUSTINA NAPITUPULU', 'siswa', 'X TKJ 2', 'selesai'),
-(289, '0071164440', '64440', 'YESSIKA MEILAN PUTRI SIMAMORA', 'siswa', 'X TKJ 2', 'selesai'),
-(290, '0062495250', '95250', 'ABDUROHIM', 'siswa', 'X TKRO 1', 'selesai'),
-(291, '0076132873', '32873', 'AGUNG ALI MUSA', 'siswa', 'X TKRO 1', 'selesai'),
-(292, '0079038077', '38077', 'AHMAD SAIFULLAH', 'siswa', 'X TKRO 1', 'selesai'),
-(293, '0063892335', '92335', 'AKMAL RAMDANI', 'siswa', 'X TKRO 1', 'selesai'),
-(294, '0068745490', '45490', 'ANGGA', 'siswa', 'X TKRO 1', 'selesai'),
-(295, '0079930153', '30153', 'ASRUL MULDIAN ', 'siswa', 'X TKRO 1', 'selesai'),
-(296, '0078430255', '30255', 'DEDE SUPRIATNA', 'siswa', 'X TKRO 1', 'selesai'),
-(297, '0063913797', '13797', 'DWI RAMA AFRIANSYAH', 'siswa', 'X TKRO 1', 'selesai'),
-(298, '0073379661', '79661', 'EBI FEBIANSYAH', 'siswa', 'X TKRO 1', 'selesai'),
-(299, '0071516436', '16436', 'ERVAN AFATAR', 'siswa', 'X TKRO 1', 'selesai'),
-(300, '0068228672', '28672', 'FIRDAN MUAMMAR', 'siswa', 'X TKRO 1', 'selesai'),
-(301, '0051437261', '37261', 'GANDI', 'siswa', 'X TKRO 1', 'selesai'),
-(302, '0074778078', '78078', 'HARDIYAN', 'siswa', 'X TKRO 1', 'selesai'),
-(303, '0061345204', '45204', 'IMAM MUDIN', 'siswa', 'X TKRO 1', 'selesai'),
-(304, '0074436645', '36645', 'IMRON AZMI', 'siswa', 'X TKRO 1', 'selesai'),
-(305, '0072474063', '74063', 'JUNAEDI ', 'siswa', 'X TKRO 1', 'selesai'),
-(306, '0063549942', '49942', 'M HANAFI', 'siswa', 'X TKRO 1', 'selesai'),
-(307, '0076366168', '66168', 'MOHAMAD RAMDAN', 'siswa', 'X TKRO 1', 'selesai'),
-(308, '0061891013', '91013', 'MUCHAMAD RIKI FIRGIAWAN ', 'siswa', 'X TKRO 1', 'selesai'),
-(309, '0075843723', '43723', 'MUHAMAD ALFAN AKBAR SAPUTRA', 'siswa', 'X TKRO 1', 'selesai'),
-(310, '0076616016', '16016', 'MUHAMAD GUNAWAN', 'siswa', 'X TKRO 1', 'selesai'),
-(311, '0077699857', '99857', 'MUHAMAD KASIM', 'siswa', 'X TKRO 1', 'selesai'),
-(312, '0111444382', '44382', 'MUHAMAD NIKO SAPUTRA', 'siswa', 'X TKRO 1', 'selesai'),
-(313, '0063889945', '89945', 'MUHAMMAD AGIL PRATAMA', 'siswa', 'X TKRO 1', 'selesai'),
-(314, '0066068368', '68368', 'MUHAMMAD FAUZI FADHLAN', 'siswa', 'X TKRO 1', 'selesai'),
-(315, '0077111352', '11352', 'MUHAMMAD RIZKI', 'siswa', 'X TKRO 1', 'selesai'),
-(316, '0055384056', '84056', 'NABILA PUTRI SYAHRANI', 'siswa', 'X TKRO 1', 'selesai'),
-(317, '0079294002', '94002', 'NOVRIZAL FADLI', 'siswa', 'X TKRO 1', 'selesai'),
-(318, '0073460823', '60823', 'RASYA ADITYA', 'siswa', 'X TKRO 1', 'selesai'),
-(319, '0068141725', '41725', 'RIO ANGGARA', 'siswa', 'X TKRO 1', 'selesai'),
-(320, '0065948914', '48914', 'ROBA', 'siswa', 'X TKRO 1', 'selesai'),
-(321, '0064575238', '75238', 'ROBI', 'siswa', 'X TKRO 1', 'selesai'),
-(322, '0063978184', '78184', 'SUBHAN AMIN', 'siswa', 'X TKRO 1', 'selesai'),
-(323, '0062560872', '60872', 'SURADI', 'siswa', 'X TKRO 1', 'selesai'),
-(324, '0071289183', '89183', 'UBAIDILLAH', 'siswa', 'X TKRO 1', 'selesai'),
-(325, '0065993433', '93433', 'WAWAD SAPUTRA', 'siswa', 'X TKRO 1', 'selesai'),
-(326, '0068882337', '82337', 'ABIM MIFTAHUL HUDA ', 'siswa', 'X TKRO 2', 'selesai'),
-(327, '0075267094', '67094', 'AHMAD NUR RIFAI', 'siswa', 'X TKRO 2', 'selesai'),
-(328, '0063898975', '98975', 'AJIS ASRONI', 'siswa', 'X TKRO 2', 'selesai'),
-(329, '0065428383', '28383', 'ALVIN FEBRIANSAH', 'siswa', 'X TKRO 2', 'selesai'),
-(330, '0076227800', '27800', 'ARDIYANSAH', 'siswa', 'X TKRO 2', 'selesai'),
-(331, '0068560017', '60017', 'DANI HARTANTO', 'siswa', 'X TKRO 2', 'selesai'),
-(332, '64869881', '69881', 'DENDI', 'siswa', 'X TKRO 2', 'selesai'),
-(333, '0069177159', '77159', 'DZAKI MUHAMMAD HAIFAN', 'siswa', 'X TKRO 2', 'selesai'),
-(334, '0079522726', '22726', 'EGYAT MAULANA ', 'siswa', 'X TKRO 2', 'selesai'),
-(335, '0079775924', '75924', 'FAREL JULIAN AMRIEL', 'siswa', 'X TKRO 2', 'selesai'),
-(336, '0066659171', '59171', 'FIRLI', 'siswa', 'X TKRO 2', 'selesai'),
-(337, '0062569577', '69577', 'GILANG IRAWAN', 'siswa', 'X TKRO 2', 'selesai'),
-(338, '0074142347', '42347', 'IKHTIAR RADYANA', 'siswa', 'X TKRO 2', 'selesai'),
-(339, '0058585120', '85120', 'IMAN HAMBALI ', 'siswa', 'X TKRO 2', 'selesai'),
-(340, '0075103241', '03241', 'ISKANDAR', 'siswa', 'X TKRO 2', 'selesai'),
-(341, '0069164724', '64724', 'LALAN DESTIAN', 'siswa', 'X TKRO 2', 'selesai'),
-(342, '0077889319', '89319', 'M. SAHRUL HASANI', 'siswa', 'X TKRO 2', 'selesai'),
-(343, '0067811209', '11209', 'MU\'AMARULLOHUL ADZAN', 'siswa', 'X TKRO 2', 'selesai'),
-(344, '0057836260', '36260', 'MUHAMAD ADEN', 'siswa', 'X TKRO 2', 'selesai'),
-(345, '0077647690', '47690', 'MUHAMAD BUKHORI', 'siswa', 'X TKRO 2', 'selesai'),
-(346, '0061602388', '02388', 'MUHAMAD IMRON', 'siswa', 'X TKRO 2', 'selesai'),
-(347, '0068445232', '45232', 'MUHAMAD MAS\'UD ', 'siswa', 'X TKRO 2', 'selesai'),
-(348, '0065957832', '57832', 'MUHAMAD RIANSAH', 'siswa', 'X TKRO 2', 'selesai'),
-(349, '0075312839', '12839', 'MUHAMMAD AYUBI GUFRON', 'siswa', 'X TKRO 2', 'selesai'),
-(350, '0067944869', '44869', 'MUHAMMAD RIQZAN FIRDAUS', 'siswa', 'X TKRO 2', 'selesai'),
-(351, '0078825108', '25108', 'MUZAQIE RAMADAN SAFEI', 'siswa', 'X TKRO 2', 'selesai'),
-(352, '0061589934', '89934', 'NANANG', 'siswa', 'X TKRO 2', 'selesai'),
-(353, '0061921025', '21025', 'NURAJI FIRMANSYAH', 'siswa', 'X TKRO 2', 'selesai'),
-(354, '0075214252', '14252', 'RIDWAN FIRMANSAH ', 'siswa', 'X TKRO 2', 'selesai'),
-(355, '0074470136', '70136', 'RIYAN MURYADI', 'siswa', 'X TKRO 2', 'selesai'),
-(356, '0074484830', '84830', 'ROBBY GUSNAWAN', 'siswa', 'X TKRO 2', 'selesai'),
-(357, '0074153904', '53904', 'SANDI FAZRIL DP', 'siswa', 'X TKRO 2', 'selesai'),
-(358, '0075232583', '32583', 'SUPARDI', 'siswa', 'X TKRO 2', 'selesai'),
-(359, '0085717787', '17787', 'TEGUH DWI RANDIKA', 'siswa', 'X TKRO 2', 'selesai'),
-(360, '0063501343', '01343', 'VERY SIGIT WIRATMOKO', 'siswa', 'X TKRO 2', 'selesai'),
-(361, '0085728371', '28371', 'WILDAN AL-FARIJI', 'siswa', 'X TKRO 2', 'selesai'),
-(362, '0077828551', '28551', 'ABDUL WAHID ', 'siswa', 'X TPM 1', 'selesai'),
-(363, '0063977708', '77708', 'AHMAD MA\'RIF', 'siswa', 'X TPM 1', 'selesai'),
-(364, '0078922761', '22761', 'AHMAD RANGGA WIJAYA', 'siswa', 'X TPM 1', 'selesai'),
-(365, '0063655899', '55899', 'ALDIMAS BAMBANG SOBARI ', 'siswa', 'X TPM 1', 'selesai'),
-(366, '0061171191', '71191', 'ANDELA NURUL AENI', 'siswa', 'X TPM 1', 'selesai'),
-(367, '0068527457', '27457', 'ANDHIKA PUTRA PRATAMA', 'siswa', 'X TPM 1', 'selesai'),
-(368, '3077419835', '19835', 'ANDRI PRATAMA', 'siswa', 'X TPM 1', 'selesai'),
-(369, '0052196522', '96522', 'APRIYADI', 'siswa', 'X TPM 1', 'selesai'),
-(370, '0071511409', '11409', 'ARDAN PUTRA PRATAMA ', 'siswa', 'X TPM 1', 'selesai'),
-(371, '0077292311', '92311', 'BACHTIAR WINATA', 'siswa', 'X TPM 1', 'selesai'),
-(372, '0073417514', '17514', 'BAGAS DWI NUGROHO', 'siswa', 'X TPM 1', 'selesai'),
-(373, '0068639358', '39358', 'CHRISTOFFER EKA JULIANO SIMAMORA', 'siswa', 'X TPM 1', 'selesai'),
-(374, '0068982764', '82764', 'DAFFA ALWANSYAH', 'siswa', 'X TPM 1', 'selesai'),
-(375, '0065276428', '76428', 'DANA ARDIAN SIRAJABI', 'siswa', 'X TPM 1', 'selesai'),
-(376, '0068278598', '78598', 'DIMAS DWI ARDINATA', 'siswa', 'X TPM 1', 'selesai'),
-(377, '0072802799', '02799', 'DIVA AFRIANSYAH', 'siswa', 'X TPM 1', 'selesai'),
-(378, '0074533479', '33479', 'FABIAN GALIH ALKHAYYATH', 'siswa', 'X TPM 1', 'selesai'),
-(379, '0066371454', '71454', 'FAUZAN RAMADAN', 'siswa', 'X TPM 1', 'selesai'),
-(380, '0062873509', '73509', 'FIQIH DESMATWIJAYA', 'siswa', 'X TPM 1', 'selesai'),
-(381, '0055053506', '53506', 'HAMID LESMANA', 'siswa', 'X TPM 1', 'selesai'),
-(382, '0073042028', '42028', 'HARDIANSYAH', 'siswa', 'X TPM 1', 'selesai'),
-(383, '0062407199', '07199', 'HOIRIL ANWAR', 'siswa', 'X TPM 1', 'selesai'),
-(384, '0077423916', '23916', 'MUHAMAD FAHMI', 'siswa', 'X TPM 1', 'selesai'),
-(385, '0077566871', '66871', 'MUHAMAD FARIS ALIANSYAH', 'siswa', 'X TPM 1', 'selesai'),
-(386, '0065896992', '96992', 'MUHAMMAD AGUNG STIADI', 'siswa', 'X TPM 1', 'selesai'),
-(387, '0138041518', '41518', 'MUHAMMAD ARGA KESYA PUTRA', 'siswa', 'X TPM 1', 'selesai'),
-(388, '0078520032', '20032', 'MUHAMMAD RIFAL FAELANI', 'siswa', 'X TPM 1', 'selesai'),
-(389, '0062525360', '25360', 'MUHAMMAD ROHMAT MANGKU BWANA', 'siswa', 'X TPM 1', 'selesai'),
-(390, '0067924664', '24664', 'MUTIARA', 'siswa', 'X TPM 1', 'selesai'),
-(391, '0076427328', '27328', 'PUTRI SUKMA AYU', 'siswa', 'X TPM 1', 'selesai'),
-(392, '0079489254', '89254', 'RIFQI FADILAH', 'siswa', 'X TPM 1', 'selesai'),
-(393, '0066366239', '62390', 'RIVALINA ZINGGA', 'siswa', 'X TPM 1', 'selesai'),
-(394, '0061089805', '89805', 'RIZKI HARIS IBRAHIM ', 'siswa', 'X TPM 1', 'selesai'),
-(395, '0074881809', '81809', 'TOMI ANDRIAN', 'siswa', 'X TPM 1', 'selesai'),
-(396, '0078481797', '81797', 'ULUMUDIN', 'siswa', 'X TPM 1', 'selesai'),
-(397, '0074627145', '27145', 'WILDAN IRFANSYAH', 'siswa', 'X TPM 1', 'selesai'),
-(398, '0061163655', '63655', 'ABDUL GANI MAJID', 'siswa', 'X TPM 2', 'selesai'),
-(399, '0064145757', '45757', 'ADIM ALAMSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(400, '0067536742', '36742', 'AGUNG PRASETYO', 'siswa', 'X TPM 2', 'selesai'),
-(401, '0057699095', '99095', 'AHMAD HASAN KAMIL', 'siswa', 'X TPM 2', 'selesai'),
-(402, '0064752534', '52534', 'AHMAD NAWAL TAUFIKURROHMAN', 'siswa', 'X TPM 2', 'selesai'),
-(403, '0077721682', '21682', 'ALDY ALHAFIZH SYAFIQ', 'siswa', 'X TPM 2', 'selesai'),
-(404, '0071003685', '03685', 'ANANDAR HARDIANSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(405, '0071985387', '85387', 'ANDREAN AHMAD KURNIAWAN', 'siswa', 'X TPM 2', 'selesai'),
-(406, '0068985969', '85969', 'ANGGA SAPUTRA', 'siswa', 'X TPM 2', 'selesai'),
-(407, '0066716399', '16399', 'ARIEF BAGAS SAPUTRA', 'siswa', 'X TPM 2', 'selesai'),
-(408, '0064022379', '22379', 'DENI RAHMANDANI', 'siswa', 'X TPM 2', 'selesai'),
-(409, '0052849989', '49989', 'DENI TOMAS', 'siswa', 'X TPM 2', 'selesai'),
-(410, '0071937220', '37220', 'DODI FAHRUJI', 'siswa', 'X TPM 2', 'selesai'),
-(411, '0015926838', '26838', 'FAJRI FIRMANSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(412, '0058688278', '88278', 'FAUZAN', 'siswa', 'X TPM 2', 'selesai'),
-(413, '0056811157', '11157', 'IQBAL RAMADHAN', 'siswa', 'X TPM 2', 'selesai'),
-(414, '0079904080', '04080', 'KHALID IHTIZAMUL HASAN', 'siswa', 'X TPM 2', 'selesai'),
-(415, '0066152724', '52724', 'LEXSI ENDRIAWAN', 'siswa', 'X TPM 2', 'selesai'),
-(416, '0062935510', '35510', 'MAULANA ALPIANSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(417, '0077080551', '80551', 'MIFTAHUL ULUM', 'siswa', 'X TPM 2', 'selesai'),
-(418, '0073472822', '72822', 'MUHAMAD FATUL AJIM', 'siswa', 'X TPM 2', 'selesai'),
-(419, '0078744749', '44749', 'MUHAMAD IZUL MUSLIMIN', 'siswa', 'X TPM 2', 'selesai'),
-(420, '0065317499', '17499', 'MUHAMAD RIJALLUDIN', 'siswa', 'X TPM 2', 'selesai'),
-(421, '0078265832', '65832', 'MUHAMMAD ABDUL RAUF', 'siswa', 'X TPM 2', 'selesai'),
-(422, '0078138846', '38846', 'MUHAMMAD AGIL FIRMANSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(423, '0084955839', '55839', 'MUHAMMAD FAJRI ', 'siswa', 'X TPM 2', 'selesai'),
-(424, '0073862495', '62495', 'MUHAMMAD IBNU NOVRIYANTO', 'siswa', 'X TPM 2', 'selesai'),
-(425, '0079674308', '74308', 'MUHAMMAD NOECH ARFANSYAH', 'siswa', 'X TPM 2', 'selesai'),
-(426, '7002002039', '02039', 'OLOAN SIGALINGGING', 'siswa', 'X TPM 2', 'selesai'),
-(427, '0000006201', '62019', 'RAHMAT FAISAL', 'siswa', 'X TPM 2', 'selesai'),
-(428, '0079060204', '60204', 'RIZKI SETIAWAN', 'siswa', 'X TPM 2', 'selesai'),
-(429, '0074777392', '77392', 'SUGENG ARIF SETIAWAN', 'siswa', 'X TPM 2', 'selesai'),
-(430, '0073529244', '29244', 'SURYANTO', 'siswa', 'X TPM 2', 'selesai'),
-(431, '0076482365', '82365', 'TRI MULYA SETIAWAN', 'siswa', 'X TPM 2', 'selesai'),
-(432, '0068300566', '00566', 'YEHUDA JHON GLEN WONDIWOY', 'siswa', 'X TPM 2', 'selesai'),
-(433, '0071485260', '85260', 'ZAIN ZAIDAN AL\'AZIZ', 'siswa', 'X TPM 2', 'selesai'),
-(434, '0134322137', '22137', 'ADINDA GHIFARI AZHAR', 'siswa', 'X TPM 3', 'selesai'),
-(435, '0071890864', '90864', 'ADITIA HUSEIN', 'siswa', 'X TPM 3', 'selesai'),
-(436, '0068178026', '78026', 'AHMAD MUKHIT FIRDAUS ', 'siswa', 'X TPM 3', 'selesai'),
-(437, '0067065257', '65257', 'AJI SAPUTRA', 'siswa', 'X TPM 3', 'selesai'),
-(438, '0072102138', '02138', 'ALI RAMDHAN', 'siswa', 'X TPM 3', 'selesai'),
-(439, '0064844295', '44295', 'ANGGA DWIYANA', 'siswa', 'X TPM 3', 'selesai'),
-(440, '0064326962', '26962', 'DENIS OKTANIU DATU', 'siswa', 'X TPM 3', 'selesai'),
-(441, '0065515291', '15291', 'DENNIS AFWAN', 'siswa', 'X TPM 3', 'selesai'),
-(442, '0065211991', '11991', 'FAINAL SYAHRUL RAMADHAN ', 'siswa', 'X TPM 3', 'selesai'),
-(443, '0067353301', '53301', 'FAJAR ROSSIHAN', 'siswa', 'X TPM 3', 'selesai'),
-(444, '0073807760', '07760', 'HIZKIA RULEN SANTOSO', 'siswa', 'X TPM 3', 'selesai'),
-(445, '0075833594', '33594', 'JUMADI', 'siswa', 'X TPM 3', 'selesai'),
-(446, '0066340723', '40723', 'KHOLIS', 'siswa', 'X TPM 3', 'selesai'),
-(447, '0074493189', '93189', 'MOCHAMMAD WILDAN NUGRAHA', 'siswa', 'X TPM 3', 'selesai'),
-(448, '0079911870', '11870', 'MUHAMAD ALDI', 'siswa', 'X TPM 3', 'selesai'),
-(449, '0074911066', '11066', 'MUHAMAD ARIFIN', 'siswa', 'X TPM 3', 'selesai'),
-(450, '0068441441', '41441', 'MUHAMAD ARIYA PEMBAYUN', 'siswa', 'X TPM 3', 'selesai'),
-(451, '0074703312', '03312', 'MUHAMAD EKO', 'siswa', 'X TPM 3', 'selesai'),
-(452, '0064858826', '58826', 'MUHAMAD FIKRI', 'siswa', 'X TPM 3', 'selesai'),
-(453, '0068057178', '57178', 'MUHAMAD FIQIH FADLAN', 'siswa', 'X TPM 3', 'selesai'),
-(454, '0068051630', '51630', 'MUHAMAD NAZRIL ILHAM', 'siswa', 'X TPM 3', 'selesai'),
-(455, '0063435061', '35061', 'MUHAMMAD RAFI IRAWAN', 'siswa', 'X TPM 3', 'selesai'),
-(456, '0069711343', '11343', 'MUHAMMAD RAFI PRATAMA', 'siswa', 'X TPM 3', 'selesai'),
-(457, '0052877435', '77435', 'MUHAMMAD RIZKI EKA SAPUTRA', 'siswa', 'X TPM 3', 'selesai'),
-(458, '0065732906', '32906', 'MUHAMMAD SAEFUDIN', 'siswa', 'X TPM 3', 'selesai'),
-(459, '0072233530', '33530', 'MUHAMMAD ZIDAN PURNAMA', 'siswa', 'X TPM 3', 'selesai'),
-(460, '0065017221', '17221', 'MULYADI', 'siswa', 'X TPM 3', 'selesai'),
-(461, '0067256754', '56754', 'NOFA GILANG ARDIANSYAH', 'siswa', 'X TPM 3', 'selesai'),
-(462, '0077270553', '70553', 'NUR SHIFA KAMAL', 'siswa', 'X TPM 3', 'selesai'),
-(463, '0062414708', '14708', 'OKTA DWI PUTRA', 'siswa', 'X TPM 3', 'selesai'),
-(464, '0073996572', '96572', 'REYHAN JAELANI', 'siswa', 'X TPM 3', 'selesai'),
-(465, '0066648743', '48743', 'RIKI SAPUTRA', 'siswa', 'X TPM 3', 'selesai'),
-(466, '0063136106', '36106', 'SAEFUL ARIFIN', 'siswa', 'X TPM 3', 'selesai'),
-(467, '0033105102', '05102', 'SAHROJI', 'siswa', 'X TPM 3', 'selesai'),
-(468, '0079431145', '31145', 'WAFA FATHUL HUDA', 'siswa', 'X TPM 3', 'selesai'),
-(469, '0063752731', '52731', 'YAHADI', 'siswa', 'X TPM 3', 'selesai'),
-(470, '0068323180', '23180', 'ACHMAD SANDI ALFARIZQI', 'siswa', 'X TPM 4', 'selesai'),
-(471, '0076992291', '92291', 'AHMAD FAOZI', 'siswa', 'X TPM 4', 'selesai'),
-(472, '0076367482', '67482', 'AHMAD MUBDHI MUHAIMIN', 'siswa', 'X TPM 4', 'selesai'),
-(473, '0079847873', '47873', 'AKHMAD ALFIAN SAPUTRA', 'siswa', 'X TPM 4', 'selesai'),
-(474, '0065880699', '80699', 'ANDRI', 'siswa', 'X TPM 4', 'selesai'),
-(475, '1920100027', '00027', 'APRIYANSYAH SAPUTRA', 'siswa', 'X TPM 4', 'selesai'),
-(476, '0071988401', '88401', 'BINTANG RAFA CATUR YURISKO', 'siswa', 'X TPM 4', 'selesai'),
-(477, '0063708201', '08201', 'DANU ALDHAFI ADHWA SAPUTRA ', 'siswa', 'X TPM 4', 'selesai'),
-(478, '0075114869', '14869', 'DIMAS TRI UTOMO', 'siswa', 'X TPM 4', 'selesai'),
-(479, '0077322620', '22620', 'FIKRI WALLYYU OKTAMA', 'siswa', 'X TPM 4', 'selesai'),
-(480, '0072983205', '83205', 'GALANG BAGASKARA', 'siswa', 'X TPM 4', 'selesai'),
-(481, '0079499113', '99113', 'GARDA WISNU JUNIANTO', 'siswa', 'X TPM 4', 'selesai'),
-(482, '0077463891', '63891', 'IMAM SUDRAJAT', 'siswa', 'X TPM 4', 'selesai'),
-(483, '0072699511', '99511', 'IYAN ALHALIM', 'siswa', 'X TPM 4', 'selesai'),
-(484, '0074689239', '89239', 'MAULANA RIZWAR', 'siswa', 'X TPM 4', 'selesai'),
-(485, '0068226125', '26125', 'MUHAMAD AZIS RAMADAN ', 'siswa', 'X TPM 4', 'selesai'),
-(486, '0068022617', '22617', 'MUHAMAD RIZKY MUSTAHIK', 'siswa', 'X TPM 4', 'selesai'),
-(487, '0072794039', '94039', 'MUHAMAD UKI', 'siswa', 'X TPM 4', 'selesai'),
-(488, '0074431444', '31444', 'MUHAMMAD AZWAR ZACHRIL', 'siswa', 'X TPM 4', 'selesai'),
-(489, '0062887971', '87971', 'MUHAMMAD DANDA WIJAYA', 'siswa', 'X TPM 4', 'selesai'),
-(490, '0073702243', '02243', 'MUHAMMAD FAOZAN', 'siswa', 'X TPM 4', 'selesai'),
-(491, '0069391779', '91779', 'MUHAMMAD FIRMAN GUNAWAN', 'siswa', 'X TPM 4', 'selesai'),
-(492, '0069748860', '48860', 'MUHAMMAD IHSAN  ABIDULLAH', 'siswa', 'X TPM 4', 'selesai'),
-(493, '0075074774', '74774', 'MUHAMMAD LUTFI YASKUR', 'siswa', 'X TPM 4', 'selesai'),
-(494, '0068182290', '82290', 'MUHAMMAD RANGGA ALIYUSUF', 'siswa', 'X TPM 4', 'selesai'),
-(495, '0072638057', '38057', 'MUHAMMAD RAZZAN', 'siswa', 'X TPM 4', 'selesai'),
-(496, '0079507270', '07270', 'MULYADI', 'siswa', 'X TPM 4', 'selesai'),
-(497, '0074630754', '30754', 'NZZARIO ANGGALA PUTRA', 'siswa', 'X TPM 4', 'selesai'),
-(498, '0067497882', '97882', 'RIZQI FADHILHA', 'siswa', 'X TPM 4', 'selesai'),
-(499, '0058621652', '21652', 'SAHRUL HIDAYATULLOH', 'siswa', 'X TPM 4', 'selesai'),
-(500, '0078550228', '50228', 'SUNARTA', 'siswa', 'X TPM 4', 'selesai'),
-(501, '0074378988', '78988', 'TEJA SUAR HIDAYATUL FATIH', 'siswa', 'X TPM 4', 'selesai'),
-(502, '0073851075', '51075', 'TITUT HENRI HARJANTO', 'siswa', 'X TPM 4', 'selesai'),
-(503, '0078065476', '65476', 'TUBAGUS RIDHO AL GIFARI', 'siswa', 'X TPM 4', 'selesai'),
-(504, '0079567676', '67676', 'WANDA GUNAWAN', 'siswa', 'X TPM 4', 'selesai'),
-(505, '0073278318', '78318', 'YUSRIL IZAH MAHENDRA', 'siswa', 'X TPM 4', 'selesai');
 
 --
 -- Indexes for dumped tables
@@ -592,6 +137,24 @@ ALTER TABLE `tb_admin`
 --
 ALTER TABLE `tb_kelas`
   ADD PRIMARY KEY (`id_kelas`);
+
+--
+-- Indexes for table `tb_pelanggaran`
+--
+ALTER TABLE `tb_pelanggaran`
+  ADD PRIMARY KEY (`id_pelangaran`);
+
+--
+-- Indexes for table `tb_point`
+--
+ALTER TABLE `tb_point`
+  ADD PRIMARY KEY (`id_point`);
+
+--
+-- Indexes for table `tb_prestasi`
+--
+ALTER TABLE `tb_prestasi`
+  ADD PRIMARY KEY (`id_prestasi`);
 
 --
 -- Indexes for table `tb_siswa`
@@ -614,10 +177,25 @@ ALTER TABLE `tb_admin`
 ALTER TABLE `tb_kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tb_pelanggaran`
+--
+ALTER TABLE `tb_pelanggaran`
+  MODIFY `id_pelangaran` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_point`
+--
+ALTER TABLE `tb_point`
+  MODIFY `id_point` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tb_prestasi`
+--
+ALTER TABLE `tb_prestasi`
+  MODIFY `id_prestasi` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=506;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
