@@ -34,6 +34,11 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+
+
+    // awal function siswa
+
     public function siswa()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
@@ -50,6 +55,160 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function siswa_tambah_up()
+    {
+        $nisn = $this->input->post('nisn');
+        $nama_siswa = $this->input->post('nama_siswa');
+        $password = $this->input->post('password');
+        $tgl_lahir = $this->input->post('tgl_lahir');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $agama = $this->input->post('agama');
+        $kompetensi_keahlian = $this->input->post('kompetensi_keahlian');
+        $alamat = $this->input->post('alamat');
+
+        $data_tambah = array(
+            'nisn' => $nisn,
+            'nama_siswa' => $nama_siswa,
+            'password' => $password,
+            'tgl_lahir' => $tgl_lahir,
+            'tempat_lahir' => $tempat_lahir,
+            'agama' => $agama,
+            'kompetensi_keahlian' => $kompetensi_keahlian,
+            'alamat' => $alamat
+        );
+
+        $this->M_admin->siswa_tambah_up($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/siswa');
+    }
+
+    public function siswa_detail($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/siswa_detail', $data);
+        $this->load->view('template/footer');
+    }
+
+    // akhir function siswa
+
+
+    // awal function kelas
+
+    public function kelas()
+    {
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function kelas_tambah()
+    {
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/kelas_tambah');
+        $this->load->view('template/footer');
+    }
+
+    public function kelas_tambah_up()
+    {
+        $tingkatan = $this->input->post('tingkatan');
+        $jurusan = $this->input->post('jurusan');
+        $kode_kelas = $this->input->post('kode_kelas');
+        $angkatan = $this->input->post('angkatan');
+
+        $data_tambah = array(
+            'tingkatan' => $tingkatan,
+            'jurusan' => $jurusan,
+            'kode_kelas' => $kode_kelas,
+            'angkatan' => $angkatan
+        );
+
+        $this->M_admin->kelas_tambah_up($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Kelas Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/kelas');
+    }
+
+
+    public function kelas_hapus($id_kelas)
+    {
+        $id_kelas = array('id_kelas' => $id_kelas);
+
+        $success = $this->M_admin->kelas_hapus($id_kelas);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/kelas');
+    }
+
+    public function kelas_edit($id_kelas)
+    {
+        $data['kelas_edit'] = $this->M_admin->kelas_edit($id_kelas);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/kelas_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function kelas_edit_up()
+    {
+        $id_kelas = $this->input->post('id_kelas');
+        $tingkatan = $this->input->post('tingkatan');
+        $jurusan = $this->input->post('jurusan');
+        $kode_kelas = $this->input->post('kode_kelas');
+        $angkatan = $this->input->post('angkatan');
+
+        // echo $id_kelas . $tingkatan . $jurusan . $kode_kelas . $angkatan;
+
+        $data_edit = array(
+            'tingkatan' => $tingkatan,
+            'jurusan' => $jurusan,
+            'kode_kelas' => $kode_kelas,
+            'angkatan' => $angkatan
+        );
+
+        $id_kelas = array('id_kelas' => $id_kelas);
+        $this->M_admin->kelas_edit_up($data_edit, $id_kelas);
+
+        $this->session->set_flashdata('msg', '
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>Edit Kelas Berhasil</strong>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+        redirect('Admin/kelas');
+    }
+
+
+    // akhir function kelas
+
+
+    //
     public function pelanggaran()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
@@ -84,14 +243,7 @@ class Admin extends CI_Controller
     }
 
     // tekno awal
-    public function siswa_detail($id_siswa)
-    {
-        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
 
-        $this->load->view('template/header-admin');
-        $this->load->view('admin/siswa_detail', $data);
-        $this->load->view('template/footer');
-    }
 
 
     public function siswa_edit_up()

@@ -126,11 +126,19 @@ $ses_id = $this->session->userdata('ses_id');
                         <li class="nav-small-cap">ADMIN</li>
 
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
+                            <!-- <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i>Siswa</a>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/operator" aria-expanded="false"><i class="mdi mdi-account"></i>Operator</a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/operator" aria-expanded="false"><i class="mdi mdi-account"></i>Operator</a> -->
+
+                            <!-- <a href="<?= base_url() ?>Admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i>Dashboard</a> -->
+                            <a href="<?= base_url() ?>Admin/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i>Siswa</a>
+                            <a href="<?= base_url() ?>Admin/kelas" aria-expanded="false"><i class="mdi mdi-school"></i>Kelas</a>
+                            <a href="<?= base_url() ?>Admin/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
+                            <a href="<?= base_url() ?>Admin/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
+                            <a href="<?= base_url() ?>Admin/operator" aria-expanded="false"><i class="mdi mdi-account"></i>Operator</a>
+
 
                         </li>
 
