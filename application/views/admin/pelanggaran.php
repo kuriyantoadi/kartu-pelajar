@@ -27,7 +27,7 @@
                 <h4 class="card-title">Data Pelanggaran</h4>
                 <div class="table-responsive m-t-40">
 
-                    <button class=" btn btn-rounded btn-sm btn-primary">Tambah</button>
+                    <a href="<?= base_url() ?>Admin/pelanggaran_tambah" class="btn btn-rounded btn-sm btn-primary">Tambah</a>
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>

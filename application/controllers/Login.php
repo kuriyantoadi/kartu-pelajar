@@ -60,10 +60,6 @@ class Login extends CI_Controller
 
     // Login Admin
 
-    public function fa()
-    {
-        $this->load->view('admin/login');
-    }
 
     public function login_admin()
     {
@@ -116,6 +112,6 @@ class Login extends CI_Controller
     public function admin_logout()
     {
         $this->session->sess_destroy();
-        redirect('Login/fa');
+        redirect('Admin');
     }
 }
