@@ -104,79 +104,61 @@
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-themecolor">Halaman Admin</h3>
                 </div>
-                
                 <div>
                     <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
                 </div>
             </div>
-            <div class="container-fluid">                
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Tambah Siswa</h4>
+                                <h4 class="card-title">Tambah Prestasi <b>Agus Sucipto</b></h4>
                                 <form class="m-t-40" novalidate>
                                     <div class="form-group">
-                                        <h5>Nisn <span class="text-danger">*</span></h5>
+                                        <h5>Nama Kegiatan <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="number" name="nisn" class="form-control" required data-validation-required-message="This field is required">
+                                            <input type="text" name="nama_kegiatan" class="form-control" required data-validation-required-message="This field is required">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Password <span class="text-danger">*</span></h5>
+                                        <h5>Tanggal Pelaksanaan <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="password" name="password" class="form-control" required data-validation-required-message="This field is required">
+                                            <input type="date" name="tanggal_pelaksanaan" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Nama Siswa <span class="text-danger">*</span></h5>
+                                        <h5>Juara <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="nama_siswa" class="form-control" required data-validation-required-message="This field is required">
+                                            <input type="text" name="juara_ke" class="form-control" required data-validation-required-message="This field is required">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Tempat Lahir <span class="text-danger">*</span></h5>
+                                        <h5>Tingkat <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="tempat_lahir" class="form-control" required data-validation-required-message="This field is required">
+                                            <select name="tingkat" id="tingkat" required class="form-control">
+                                                <option value="">Pilih Tingkat</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Tanggal Lahir <span class="text-danger">*</span></h5>
+                                        <h5>Tempat Lomba <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="date" name="tgl_lahir" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
+                                            <input type="text" name="tempat_lomba" class="form-control" required data-validation-required-message="This field is required">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Agama <span class="text-danger">*</span></h5>
+                                        <h5>Tim Individual <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="agama" class="form-control" required data-validation-required-message="This field is required">
+                                            <input type="text" name="tim_individual" class="form-control" required data-validation-required-message="This field is required">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <h5>Kompetensi Keahlian <span class="text-danger">*</span></h5>
+                                        <h5>Penyelenggara Acara <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text" name="kompetensi_keahlian" class="form-control" required data-validation-required-message="This field is required">
+                                            <input type="text" name="penyelenggara_acara" class="form-control" required data-validation-required-message="This field is required">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <h5>Alamat <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <textarea name="alamat" id="alamat" class="form-control" required placeholder="Alamat siswa"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>Foto <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="file" accept="image/*" name="photo" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>Status <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="status" class="form-control" required data-validation-required-message="This field is required">
-                                        </div>
-                                    </div>
-                                    
                                     <div class="text-xs-right">
                                         <button type="submit" class="btn btn-sm btn-info">Submit</button>
                                         <button type="reset" class="btn btn-sm btn-inverse">Cancel</button>
@@ -232,21 +214,21 @@
                         if (last !== group) {
                             $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
                             last = group;
-                            }
-                        });
-                    }
-                });
-                $('#example tbody').on('click', 'tr.group', function() {
-                    var currentOrder = table.order()[0];
-                    if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                        table.order([2, 'desc']).draw();
-                    } else {
-                        table.order([2, 'asc']).draw();
-                    }
-                });
+                        }
+                    });
+                }
+            });
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
             });
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>
