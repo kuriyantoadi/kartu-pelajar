@@ -16,12 +16,18 @@ class Login extends CI_Controller
         $this->load->view('siswa/login');
     }
 
+
     public function login_siswa()
     {
         $nisn = htmlspecialchars($this->input->post('nisn', true), ENT_QUOTES);
         $password = htmlspecialchars($this->input->post('password', true), ENT_QUOTES);
 
+        // echo $nisn;
+        // echo $password;
+
         $cek_login = $this->M_login->login_siswa($nisn, $password);
+
+        // var_dump($cek_login);
 
         if ($cek_login->num_rows() > 0) {
             $data = $cek_login->row_array();
@@ -29,32 +35,75 @@ class Login extends CI_Controller
             if ($data['status'] == 'siswa') {
                 $this->session->set_userdata('siswa', true);
                 $this->session->set_userdata('ses_id', $data['id_siswa']);
-                $this->session->set_userdata('ses_nisn', $data['nisn']);
-
-                redirect('Siswa');
-                // echo "test'";
-
-
+                $this->session->set_userdata('ses_user', $data['nisn']);
+                redirect('siswa/dashboard');
+            } elseif ($data['status'] == 'guru_bk') {
+                $this->session->set_userdata('guru_bk', true);
+                $this->session->set_userdata('ses_id', $data['id_admin']);
+                $this->session->set_userdata('ses_user', $data['username']);
+                redirect('Admin/dashboard');
             } else {
-                $url = base_url('Login1');
+                $url = base_url('Login/fa');
                 echo $this->session->set_flashdata('msg', '
 
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-          NISN atau Password Salah<br> Silahkan Login Kembali
+          Username atau Password Salah<br> Silahkan Login Kembali
         </div>
         ');
-                // redirect($url);
+                redirect($url);
             }
         }
 
         $this->session->set_flashdata('msg', '
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      NISN atau Password Salah<br> Silahkan Login Kembali
+      Username atau Password Salah<br> Silahkan Login Kembali
     </div>
     ');
-        // $url = base_url('C_login/siswa_tekno');
+        // $url = base_url('Login/fa');
         // redirect($url);
     }
+
+    // public function login_siswa()
+    // {
+    //     $nisn = htmlspecialchars($this->input->post('nisn', true), ENT_QUOTES);
+    //     $password = htmlspecialchars($this->input->post('password', true), ENT_QUOTES);
+
+    //     // $password = sha1($pass);
+    //     $cek_login = $this->M_login->login_siswa($nisn, $password);
+
+    //     // echo $password;
+
+    //     if ($cek_login->num_rows() > 0) {
+    //         $data = $cek_login->row_array();
+
+    //         if ($data['status'] == 'siswa') {
+    //             $this->session->set_userdata('siswa', true);
+    //             $this->session->set_userdata('ses_id', $data['id_siswa']);
+    //             $this->session->set_userdata('ses_nisn', $data['nisn']);
+
+    //             echo "test";
+    //             // redirect('Siswa');
+    //         } else {
+    //             $url = base_url('Login');
+
+    //             echo $this->session->set_flashdata('msg', '
+
+    //     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    //       NISN atau Password Salah<br> Silahkan Login Kembali
+    //     </div>
+    //     ');
+    //             // redirect($url);
+    //         }
+    //     }
+
+    //     $this->session->set_flashdata('msg', '
+    // <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    //   NISN atau Password Salah<br> Silahkan Login Kembali
+    // </div>
+    // ');
+    //     // $url = base_url('C_login/siswa_tekno');
+    //     // redirect($url);
+    // }
     //Login Siswa Tekno Akhir
 
 

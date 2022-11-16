@@ -2,85 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Kartu Pelajar</title>
-    <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/img/favicon.png" />
-    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/images/favicon.png">
+    <title>Login Admin</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="<?= base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="<?= base_url() ?>assets/css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
-<body class="bg-primary">
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                <div class="container-xl px-4">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5">
-                            <!-- Basic login form-->
-                            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header justify-content-center">
-                                    <h3 align="center" class="fw-light my-2">Login Kartu Pelajar</h3>
-                                    <h3 align="center" class="fw-light my-2">SMK Negeri 1 Kragilan</h3>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <section id="wrapper">
+        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register.jpg);">
+            <div class="login-box card">
+                <div class="card-body">
 
-                                </div>
-                                <div class="card-body">
-                                    <!-- Login form-->
-                                    <form>
-                                        <!-- Form Group (email address)-->
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="inputEmailAddress">NISN</label>
-                                            <input class="form-control" name="nisn" id="inputEmailAddress" type="text" placeholder="NISN" />
-                                        </div>
-                                        <!-- Form Group (password)-->
-                                        <div class="mb-3">
-                                            <label class="small mb-1" for="inputPassword">Password</label>
-                                            <input class="form-control" name="password" id="inputPassword" type="password" placeholder="password" />
-                                        </div>
-                                        <!-- Form Group (remember password checkbox)-->
-                                        <div class="mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="rememberPasswordCheck" type="checkbox" value="" />
-                                                <label class="form-check-label" for="rememberPasswordCheck">Remember password</label>
-                                            </div>
-                                        </div>
-                                        <!-- Form Group (login box)-->
-                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="auth-password-basic.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="dashboard-1.html">Login</a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="card-footer text-center">
-                                    <div class="small"><a href="auth-register-basic.html">Need an account? Sign up!</a></div>
-                                </div>
+                    <?= $this->session->flashdata('msg') ?>
+
+                    <?= form_open('Login/login_siswa'); ?>
+
+                    <form class="form-horizontal form-material" id="loginform" action="index.html">
+                        <h3 style="text-align:center" class="box-title m-b-5">Login Siswa</h3>
+                        <h4 style="text-align:center" class="box-title m-b-20">Kartu Pelajar</h4>
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" required="NISN" placeholder="Username" name="nisn">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-        <div id="layoutAuthentication_footer">
-            <footer class="footer-admin mt-auto footer-dark">
-                <div class="container-xl px-4">
-                    <div class="row">
-                        <div class="col-md-6 small">Copyright &copy; SMK Negeri 1 Kragilan</div>
-                        <div class="col-md-6 text-md-end small">
-                            <a href="#!">Privacy Policy</a>
-                            &middot;
-                            <a href="#!">Terms &amp; Conditions</a>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="password" required="Password" placeholder="Password" name="password">
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="form-group text-center m-t-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-sm btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+
                 </div>
-            </footer>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="<?= base_url() ?>assets/js/scripts.js"></script>
+    </section>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?= base_url() ?>assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="<?= base_url() ?>assets/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="<?= base_url() ?>assets/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="<?= base_url() ?>assets/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="<?= base_url() ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="<?= base_url() ?>assets/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="<?= base_url() ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 
 </html>

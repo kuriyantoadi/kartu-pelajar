@@ -25,6 +25,14 @@ class Siswa extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function profil()
+    {
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/profil');
+        $this->load->view('template/footer');
+    }
+
     public function download()
     {
         $ses_id = $this->session->userdata('ses_id');
@@ -32,7 +40,7 @@ class Siswa extends CI_Controller
 
         $this->load->view('template/header-siswa');
         $this->load->view('siswa/download', $data);
-        $this->load->view('template/footer');    
+        $this->load->view('template/footer');
     }
 
     public function bantuan()
@@ -49,6 +57,4 @@ class Siswa extends CI_Controller
 
         $this->load->view('siswa/sertifikat', $data);
     }
-
-    
 }

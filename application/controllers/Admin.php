@@ -69,7 +69,7 @@ class Admin extends CI_Controller
         $data_tambah = array(
             'nisn' => $nisn,
             'nama_siswa' => $nama_siswa,
-            'password' => $password,
+            'password' => sha1($password),
             'tgl_lahir' => $tgl_lahir,
             'tempat_lahir' => $tempat_lahir,
             'agama' => $agama,
