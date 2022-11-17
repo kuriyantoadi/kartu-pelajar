@@ -104,8 +104,8 @@
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="../Admin/password"><i class="ti-settings"></i> Password</a></li>
-                                    <li><a href="../Login/admin_logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="<?= base_url() ?>Siswa/password"><i class="ti-settings"></i> Password</a></li>
+                                    <li><a href="<?= base_url() ?>Login/siswa_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>

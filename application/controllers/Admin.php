@@ -208,7 +208,6 @@ class Admin extends CI_Controller
     // akhir function kelas
 
 
-    //
     public function pelanggaran()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
@@ -225,6 +224,8 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    // awal prestasi
     public function prestasi()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
@@ -233,6 +234,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/prestasi', $data);
         $this->load->view('template/footer');
     }
+
+    // akhir prestasi
+
 
     // Password
     public function password()

@@ -25,7 +25,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        This is some text within a card block.
+                        Selamat di Sistem Kartu Pelajar SMK Negeri 1 Kragilan
                     </div>
                 </div>
             </div>

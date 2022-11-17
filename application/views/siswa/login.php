@@ -42,13 +42,15 @@
             <div class="login-box card">
                 <div class="card-body">
 
-                    <?= $this->session->flashdata('msg') ?>
 
                     <?= form_open('Login/login_siswa'); ?>
 
                     <form class="form-horizontal form-material" id="loginform" action="index.html">
                         <h3 style="text-align:center" class="box-title m-b-5">Login Siswa</h3>
                         <h4 style="text-align:center" class="box-title m-b-20">Kartu Pelajar</h4>
+
+                        <?= $this->session->flashdata('msg') ?>
+
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" required="NISN" placeholder="Username" name="nisn">

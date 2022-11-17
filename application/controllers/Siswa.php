@@ -20,35 +20,73 @@ class Siswa extends CI_Controller
     //Login User
     public function index()
     {
+        $ses_id = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
+
         $this->load->view('template/header-siswa');
-        $this->load->view('siswa/dashboard');
+        $this->load->view('siswa/dashboard', $data);
         $this->load->view('template/footer');
     }
 
-
-    public function profil()
-    {
-        $this->load->view('template/header-siswa');
-        $this->load->view('siswa/profil');
-        $this->load->view('template/footer');
-    }
-
-    public function download()
+    public function password()
     {
         $ses_id = $this->session->userdata('ses_id');
-        $data['tampil'] = $this->M_siswa->data_siswa($ses_id);
+        $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
 
         $this->load->view('template/header-siswa');
-        $this->load->view('siswa/download', $data);
+        $this->load->view('siswa/password', $data);
         $this->load->view('template/footer');
     }
 
-    public function bantuan()
+    public function password_up()
     {
+        $id_siswa = $this->input->post('id_siswa');
+        $password_baru = $this->input->post('password_baru');
+
+        $data_edit = array(
+            'password' => sha1($password_baru),
+        );
+
+        $this->M_siswa->siswa_password($data_edit, $id_siswa);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Ganti Password Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Siswa/password');
+    }
+
+
+    //awal prestasi
+    public function prestasi()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+        $data['tampil_prestasi'] = $this->M_siswa->tampil_prestasi($id_siswa);
+
+        echo $id_siswa;
+
         $this->load->view('template/header-siswa');
-        $this->load->view('siswa/bantuan');
+        $this->load->view('siswa/prestasi', $data);
         $this->load->view('template/footer');
     }
+
+
+    public function prestasi_lihat()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_siswa->tampil_prestasi($id_siswa);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/prestasi_lihat', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    // akhir prestasi 
 
     public function sertifikat()
     {
