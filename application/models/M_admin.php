@@ -14,8 +14,8 @@ class M_admin extends CI_Model
   function tampil_siswa()
   {
     $this->db->select('*');
-    $this->db->from('tb_kelas');
-    $this->db->join('tb_siswa', 'tb_siswa.id_kelas = tb_kelas.id_kelas');
+    $this->db->from('tb_siswa');
+    $this->db->join('tb_kelas', 'tb_siswa.id_kelas = tb_kelas.id_kelas');
     $query = $this->db->get()->result();
     return $query;
   }
@@ -29,6 +29,19 @@ class M_admin extends CI_Model
   {
     $this->db->where($kode_siswa);
     $this->db->update('tb_siswa', $data_edit);
+  }
+
+  public function cari_siswa($id_siswa)
+  {
+    $this->db->where('id_siswa', $id_siswa);
+    $hasil = $this->db->get('tb_siswa')->result();
+    return $hasil;
+  }
+
+  public function siswa_hapus($id_siswa)
+  {
+    $this->db->where($id_siswa);
+    $this->db->delete('tb_siswa');
   }
 
   // akhir modal siswa

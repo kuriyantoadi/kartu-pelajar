@@ -18,6 +18,8 @@ class Siswa extends CI_Controller
     }
 
     //Login User
+
+
     public function index()
     {
         $ses_id = $this->session->userdata('ses_id');
@@ -26,6 +28,26 @@ class Siswa extends CI_Controller
         $this->load->view('template/header-siswa');
         $this->load->view('siswa/dashboard', $data);
         $this->load->view('template/footer');
+    }
+
+    public function prestasi()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+        $data['tampil_prestasi'] = $this->M_siswa->tampil_prestasi($id_siswa);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/prestasi', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function page()
+    {
+        $this->load->view('siswa/page-blank');
+    }
+
+    public function page2()
+    {
+        $this->load->view('siswa/page-blank2');
     }
 
     public function password()
@@ -62,17 +84,7 @@ class Siswa extends CI_Controller
 
 
     //awal prestasi
-    public function prestasi()
-    {
-        $id_siswa = $this->session->userdata('ses_id');
-        $data['tampil_prestasi'] = $this->M_siswa->tampil_prestasi($id_siswa);
 
-        echo $id_siswa;
-
-        $this->load->view('template/header-siswa');
-        $this->load->view('siswa/prestasi', $data);
-        $this->load->view('template/footer');
-    }
 
 
     public function prestasi_lihat()

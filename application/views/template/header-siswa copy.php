@@ -1,8 +1,8 @@
-<?php
-$ses_nama = $this->session->userdata('ses_user');
-$ses_id = $this->session->userdata('ses_id');
+<!-- <?php
+        $ses_nama = $this->session->userdata('ses_user');
+        $ses_id = $this->session->userdata('ses_id');
 
-?>
+        ?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,8 +23,6 @@ $ses_id = $this->session->userdata('ses_id');
     <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="<?= base_url() ?>assets/css/colors/blue.css" id="theme" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/css/colors/default.css" id="theme" rel="stylesheet">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

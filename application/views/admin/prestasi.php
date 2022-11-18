@@ -12,7 +12,7 @@
             <div class="card-body">
                 <h4 class="card-title">Data Prestasi</h4>
                 <div class="table-responsive m-t-40">
-                    <a href="../Admin/siswa_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
+                    <a href="<?= base_url() ?>Admin/prestasi_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>

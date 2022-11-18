@@ -12,7 +12,7 @@ class M_login extends CI_Model
 
   function admin_login($username, $password)
   {
-    $login = $this->db->query("SELECT * from tb_admin where username='$username' AND password=md5('$password') ");
+    $login = $this->db->query("SELECT * from tb_admin where username='$username' AND password=sha1('$password') ");
     return $login;
   }
 }

@@ -50,30 +50,85 @@ class Admin extends CI_Controller
 
     public function siswa_tambah()
     {
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
         $this->load->view('template/header-admin');
-        $this->load->view('admin/siswa_tambah');
+        $this->load->view('admin/siswa_tambah', $data);
         $this->load->view('template/footer');
     }
 
+
     public function siswa_tambah_up()
+    {
+        $config['upload_path']      = 'assets/photo_siswa/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 2000;
+        $config['encrypt_name']     = TRUE;
+        // $id_lapangan = $this->input->post('id_lapangan');
+
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_siswa')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+            $nisn = $this->input->post('nisn');
+            $nama_siswa = $this->input->post('nama_siswa');
+            $id_kelas = $this->input->post('id_kelas');
+            $password = $this->input->post('password');
+            $tgl_lahir = $this->input->post('tgl_lahir');
+            $tempat_lahir = $this->input->post('tempat_lahir');
+            $agama = $this->input->post('agama');
+            $alamat = $this->input->post('alamat');
+
+            $data_tambah = array(
+                'photo_siswa' => $_data['upload_data']['file_name'],
+                'nisn' => $nisn,
+                'nama_siswa' => $nama_siswa,
+                'id_kelas' => $id_kelas,
+                'password' => sha1($password),
+                'tgl_lahir' => $tgl_lahir,
+                'tempat_lahir' => $tempat_lahir,
+                'agama' => $agama,
+                'alamat' => $alamat
+            );
+
+            $this->M_admin->siswa_tambah_up($data_tambah);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Admin/siswa');
+        }
+    }
+
+    public function siswa_tambah_up2()
     {
         $nisn = $this->input->post('nisn');
         $nama_siswa = $this->input->post('nama_siswa');
+        $id_kelas = $this->input->post('id_kelas');
         $password = $this->input->post('password');
         $tgl_lahir = $this->input->post('tgl_lahir');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $agama = $this->input->post('agama');
-        $kompetensi_keahlian = $this->input->post('kompetensi_keahlian');
         $alamat = $this->input->post('alamat');
 
         $data_tambah = array(
             'nisn' => $nisn,
             'nama_siswa' => $nama_siswa,
+            'id_kelas' => $id_kelas,
             'password' => sha1($password),
             'tgl_lahir' => $tgl_lahir,
             'tempat_lahir' => $tempat_lahir,
             'agama' => $agama,
-            'kompetensi_keahlian' => $kompetensi_keahlian,
             'alamat' => $alamat
         );
 
@@ -97,6 +152,22 @@ class Admin extends CI_Controller
         $this->load->view('template/header-admin');
         $this->load->view('admin/siswa_detail', $data);
         $this->load->view('template/footer');
+    }
+
+    public function siswa_hapus($id_siswa)
+    {
+        $id_siswa = array('id_siswa' => $id_siswa);
+
+        $success = $this->M_admin->siswa_hapus($id_siswa);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/siswa');
     }
 
     // akhir function siswa
@@ -229,6 +300,15 @@ class Admin extends CI_Controller
     public function prestasi()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/prestasi', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function prestasi_tambah($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->cari_siswa($id_siswa);
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/prestasi', $data);

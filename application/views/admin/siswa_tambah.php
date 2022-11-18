@@ -28,7 +28,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Form Tambah Siswa</h4>
 
-                        <?= form_open('Admin/siswa_tambah_up') ?>
+                        <?= form_open_multipart('Admin/siswa_tambah_up') ?>
 
                         <form class="m-t-40" novalidate>
                             <div class="form-group">
@@ -53,7 +53,11 @@
                                 <h5>Kelas <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <select class="form-control" name="id_kelas" id="">
-                                        <option value="">XII TKJ 1</option>
+                                        <?php
+                                        foreach ($tampil_kelas as $row) {
+                                        ?>
+                                            <option value="<?= $row->id_kelas ?>"> <?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -75,12 +79,7 @@
                                     <input type="text" name="agama" class="form-control" required data-validation-required-message="This field is required">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <h5>Kompetensi Keahlian <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="kompetensi_keahlian" class="form-control" required data-validation-required-message="This field is required">
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <h5>Alamat <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -90,9 +89,10 @@
                             <div class="form-group">
                                 <h5>Foto <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <!-- <input type="file" accept="image/*" name="photo" class="form-control" required> -->
+                                    <input type="file" name="photo_siswa" class="form-control" value="" required>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <h5>Status <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -104,8 +104,8 @@
                             </div>
 
                             <div class="text-xs-right">
-                                <button type="submit" class="btn btn-info">Submit</button>
-                                <button type="reset" class="btn btn-inverse">Cancel</button>
+                                <button type="submit" class="btn btn-sm btn-info">Submit</button>
+                                <button type="reset" class="btn btn-sm btn-inverse">Cancel</button>
                             </div>
                         </form>
 

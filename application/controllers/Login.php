@@ -84,7 +84,7 @@ class Login extends CI_Controller
                 $this->session->set_userdata('ses_user', $data['username']);
                 redirect('Admin/dashboard');
             } else {
-                $url = base_url('Login/fa');
+                $url = base_url('Admin/index');
                 echo $this->session->set_flashdata('msg', '
 
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -100,7 +100,7 @@ class Login extends CI_Controller
       Username atau Password Salah<br> Silahkan Login Kembali
     </div>
     ');
-        $url = base_url('Login/fa');
+        $url = base_url('Admin/index');
         redirect($url);
     }
 
