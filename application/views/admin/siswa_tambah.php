@@ -76,7 +76,14 @@
                             <div class="form-group">
                                 <h5>Agama <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="agama" class="form-control" required data-validation-required-message="This field is required">
+                                    <select name="agama" class="form-control" id="" require>
+                                        <option value="">Pilihan</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen">Kristen</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Budha">Budha</option>
+                                    </select>
                                 </div>
                             </div>
 

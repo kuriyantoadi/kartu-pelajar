@@ -110,29 +110,31 @@ class Admin extends CI_Controller
         }
     }
 
-    public function siswa_tambah_up2()
+    public function siswa_edit_up()
     {
+        $id_siswa = $this->input->post('id_siswa');
         $nisn = $this->input->post('nisn');
         $nama_siswa = $this->input->post('nama_siswa');
         $id_kelas = $this->input->post('id_kelas');
-        $password = $this->input->post('password');
         $tgl_lahir = $this->input->post('tgl_lahir');
         $tempat_lahir = $this->input->post('tempat_lahir');
         $agama = $this->input->post('agama');
         $alamat = $this->input->post('alamat');
 
-        $data_tambah = array(
+        $data_edit = array(
+            // 'photo_siswa' => $_data['upload_data']['file_name'],
             'nisn' => $nisn,
             'nama_siswa' => $nama_siswa,
             'id_kelas' => $id_kelas,
-            'password' => sha1($password),
             'tgl_lahir' => $tgl_lahir,
             'tempat_lahir' => $tempat_lahir,
             'agama' => $agama,
             'alamat' => $alamat
         );
 
-        $this->M_admin->siswa_tambah_up($data_tambah);
+        var_dump($id_siswa);
+
+        $this->M_admin->siswa_edit_up($data_edit, $id_siswa);
 
         $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -142,8 +144,9 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/siswa');
+        // redirect('Admin/siswa');
     }
+
 
     public function siswa_detail($id_siswa)
     {
@@ -170,6 +173,41 @@ class Admin extends CI_Controller
         redirect('Admin/siswa');
     }
 
+    public function siswa_hapus_photo($id_siswa, $photo_siswa)
+    {
+        $kode_siswa = array('id_siswa' => $id_siswa);
+
+        $hapus_photo = "assets/photo_siswa/" . $photo_siswa;
+        unlink($hapus_photo);
+
+        $data_edit = array(
+            'photo_siswa' => '',
+        );
+
+        $this->M_admin->siswa_hapus_photo($data_edit, $kode_siswa);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/siswa_edit/' . $id_siswa);
+    }
+
+
+    public function siswa_edit($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/siswa_edit', $data);
+        $this->load->view('template/footer');
+    }
     // akhir function siswa
 
 
@@ -330,35 +368,35 @@ class Admin extends CI_Controller
 
 
 
-    public function siswa_edit_up()
-    {
-        $id_siswa = $this->input->post('id_siswa');
-        $nama_siswa = $this->input->post('nama_siswa');
-        $nisn = $this->input->post('nisn');
-        $kelas = $this->input->post('kelas');
-        $kondisi_mpls = $this->input->post('kondisi_mpls');
+    // public function siswa_edit_up()
+    // {
+    //     $id_siswa = $this->input->post('id_siswa');
+    //     $nama_siswa = $this->input->post('nama_siswa');
+    //     $nisn = $this->input->post('nisn');
+    //     $kelas = $this->input->post('kelas');
+    //     $kondisi_mpls = $this->input->post('kondisi_mpls');
 
-        $kode_siswa = array('id_siswa' => $id_siswa);
+    //     $kode_siswa = array('id_siswa' => $id_siswa);
 
-        $data_edit = array(
-            'nama_siswa' => $nama_siswa,
-            'nisn' => $nisn,
-            'kelas' => $kelas,
-            'kondisi_mpls' => $kondisi_mpls
-        );
+    //     $data_edit = array(
+    //         'nama_siswa' => $nama_siswa,
+    //         'nisn' => $nisn,
+    //         'kelas' => $kelas,
+    //         'kondisi_mpls' => $kondisi_mpls
+    //     );
 
-        $this->M_admin->siswa_edit_up($data_edit, $kode_siswa);
+    //     $this->M_admin->siswa_edit_up($data_edit, $kode_siswa);
 
-        $this->session->set_flashdata('msg', '
-						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Edit data berhasil</strong>
+    //     $this->session->set_flashdata('msg', '
+    // 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    // 						<strong>Edit data berhasil</strong>
 
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>');
-        redirect('Admin/siswa_detail/' . $id_siswa);
-    }
+    // 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    // 							<span aria-hidden="true">&times;</span>
+    // 						</button>
+    // 					</div>');
+    //     redirect('Admin/siswa_detail/' . $id_siswa);
+    // }
 
     public function sertifikat_cetak($id_siswa)
     {
