@@ -136,6 +136,7 @@ $ses_id = $this->session->userdata('ses_id');
                             <a href="<?= base_url() ?>Admin/siswa#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i>Siswa</a>
                             <a href="<?= base_url() ?>Admin/kelas" aria-expanded="false"><i class="mdi mdi-school"></i>Kelas</a>
                             <a href="<?= base_url() ?>Admin/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
+                            <a href="<?= base_url() ?>Admin/point" aria-expanded="false"><i class="mdi mdi-stop-circle"></i>Point</a>
                             <a href="<?= base_url() ?>Admin/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
                             <a href="<?= base_url() ?>Admin/operator" aria-expanded="false"><i class="mdi mdi-account"></i>Operator</a>
                         </li>

@@ -211,6 +211,105 @@ class Admin extends CI_Controller
     // akhir function siswa
 
 
+
+
+    // awal point
+
+    public function point()
+    {
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/point', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function point_tambah()
+    {
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/point_tambah');
+        $this->load->view('template/footer');
+    }
+
+
+    public function point_tambah_up()
+    {
+        $nama_point = $this->input->post('nama_point');
+        $jml_point = $this->input->post('jml_point');
+
+        $data_tambah = array(
+            'nama_point' => $nama_point,
+            'jml_point' => $jml_point
+
+        );
+
+        $this->M_admin->point_tambah($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Point Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/point');
+    }
+
+
+    public function point_hapus($id_point)
+    {
+        $success = $this->M_admin->point_hapus($id_point);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/point');
+    }
+
+    public function point_edit($id_point)
+    {
+        $data['tampil_point'] = $this->M_admin->point_edit($id_point);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/point_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function point_edit_up()
+    {
+        $id_point = $this->input->post('id_point');
+        $nama_point = $this->input->post('nama_point');
+        $jml_point = $this->input->post('jml_point');
+
+        $data_edit = array(
+            'nama_point' => $nama_point,
+            'jml_point' => $jml_point,
+
+        );
+
+        $this->M_admin->point_edit_up($data_edit, $id_point);
+
+        $this->session->set_flashdata('msg', '
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>Edit Point Berhasil</strong>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+        redirect('Admin/point');
+    }
+
+    // akhir point
+
+
+
     // awal function kelas
 
     public function kelas()

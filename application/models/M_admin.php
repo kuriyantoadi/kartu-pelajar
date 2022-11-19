@@ -64,6 +64,43 @@ class M_admin extends CI_Model
 
   // akhir modal siswa
 
+
+
+  // awal modal point
+  function tampil_point()
+  {
+    $tampil = $this->db->get('tb_point')->result();
+    return $tampil;
+  }
+
+  public function point_tambah($data_tambah)
+  {
+    $this->db->insert('tb_point', $data_tambah);
+  }
+
+  public function point_hapus($id_point)
+  {
+    $this->db->where('id_point', $id_point);
+    $this->db->delete('tb_point');
+  }
+
+  function point_edit($id_point)
+  {
+    $this->db->where('id_point', $id_point);
+    $hasil = $this->db->get('tb_point')->result();
+    return $hasil;
+  }
+
+  function point_edit_up($data_edit, $id_point)
+  {
+    $this->db->where('id_point', $id_point);
+    $this->db->update('tb_point', $data_edit);
+  }
+  // ak
+
+  // akhir modal point
+
+
   // awal modal kelas
 
   function tampil_kelas()
