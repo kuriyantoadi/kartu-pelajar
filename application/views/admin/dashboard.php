@@ -7,9 +7,9 @@
             <h3 class="text-themecolor">Halaman Admin</h3>
         </div>
 
-        <div>
+        <!-- <div>
             <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-        </div>
+        </div> -->
     </div>
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
