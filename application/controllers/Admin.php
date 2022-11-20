@@ -132,7 +132,7 @@ class Admin extends CI_Controller
             'alamat' => $alamat
         );
 
-        var_dump($id_siswa);
+        // var_dump($id_siswa);
 
         $this->M_admin->siswa_edit_up($data_edit, $id_siswa);
 
@@ -159,6 +159,53 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function siswa_password($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/siswa_password', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function siswa_password_up()
+    {
+        $id_siswa = $this->input->post('id_siswa');
+        $password_baru = $this->input->post('password_baru');
+        $password_konfimrasi = $this->input->post('password_konfirmasi');
+
+
+        if ($password_baru != $password_konfimrasi) {
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<strong>Password Tidak Sesuai</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Admin/siswa_password/' . $id_siswa);
+        }
+
+        $data_edit = array(
+            'password' => sha1($password_baru),
+        );
+
+        $this->M_admin->siswa_edit_up($data_edit, $id_siswa);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Perubahan Password Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/siswa_detail/' . $id_siswa);
+    }
 
     public function siswa_photo_up()
     {
@@ -475,8 +522,13 @@ class Admin extends CI_Controller
 
     public function pelanggaran_tambah()
     {
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
         $this->load->view('template/header-admin');
-        $this->load->view('admin/pelanggaran_tambah');
+        $this->load->view('admin/pelanggaran_tambah', $data);
         $this->load->view('template/footer');
     }
 

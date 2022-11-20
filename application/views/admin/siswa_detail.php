@@ -30,6 +30,8 @@
                         <h4 class="card-title">Data Siswa</h4>
                         <div class="table-responsive m-t-40">
 
+                            <?= $this->session->flashdata('msg') ?>
+
                             <?php foreach ($tampil_siswa as $row) { ?>
 
                                 <div class="btn-group">
@@ -46,8 +48,8 @@
                                         Pelanggaran
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="lihat_pelanggaran.html">Lihat Pelanggaran</a>
-                                        <a class="dropdown-item" href="tambah_pelanggaran.html">Tambah Pelanggaran</a>
+                                        <a class="dropdown-item" href="">Lihat Pelanggaran</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/pelanggaran_tambah/' . $row->id_siswa) ?>">Tambah Pelanggaran</a>
                                     </div>
                                 </div>
                                 <div class="btn-group">
@@ -57,12 +59,12 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="<?= site_url('Admin/siswa_edit/' . $row->id_siswa) ?>">Profil Siswa</a>
                                         <a class="dropdown-item" href="<?= site_url('Admin/siswa_photo/' . $row->id_siswa) ?>">Photo Siswa</a>
-                                        <a class="dropdown-item" href="<?= site_url('Admin/siswa_photo/' . $row->id_siswa) ?>">Password Siswa</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/siswa_password/' . $row->id_siswa) ?>">Password Siswa</a>
 
                                     </div>
                                 </div>
 
-                                <a href="../Admin/siswa_edit" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a>
+                                <a href="<?= site_url('Admin/siswa_hapus/' . $row->id_siswa) ?>" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a>
 
                             <?php } ?>
 

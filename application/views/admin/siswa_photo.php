@@ -48,6 +48,7 @@
                                         <input type="text" name="nama_siswa" value="<?= $row->nama_siswa ?>" class="form-control" required data-validation-required-message="This field is required" readonly>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <h5>Kelas <span class="text-danger">*</span></h5>
                                     <div class="controls">

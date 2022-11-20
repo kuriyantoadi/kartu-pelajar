@@ -40,11 +40,12 @@
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
-                        <?php
-                        $no = 1;
-                        foreach ($tampil_siswa as $row) {
-                        ?>
-                            <tbody>
+
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($tampil_siswa as $row) {
+                            ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama_siswa ?></td>
@@ -57,8 +58,9 @@
 
                                     </td>
                                 </tr>
-                            </tbody>
-                        <?php } ?>
+                            <?php } ?>
+                        </tbody>
+
 
                     </table>
                 </div>

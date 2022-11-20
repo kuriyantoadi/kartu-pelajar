@@ -40,11 +40,12 @@
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
-                        <?php
-                        $no = 1;
-                        foreach ($tampil_point as $row) {
-                        ?>
-                            <tbody>
+
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($tampil_point as $row) {
+                            ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama_point ?></td>
@@ -55,8 +56,8 @@
 
                                     </td>
                                 </tr>
-                            </tbody>
-                        <?php } ?>
+                            <?php } ?>
+                        </tbody>
 
                     </table>
                 </div>

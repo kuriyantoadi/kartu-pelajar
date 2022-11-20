@@ -53,6 +53,7 @@
                                         <input type="text" name="nama_siswa" value="<?= $row->nama_siswa ?>" class="form-control" required data-validation-required-message="This field is required">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <h5>Kelas <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -66,6 +67,7 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <h5>Tempat Lahir <span class="text-danger">*</span></h5>
                                     <div class="controls">
@@ -97,21 +99,6 @@
                                     <h5>Alamat <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input name="alamat" id="alamat" value="<?= $row->alamat ?>" class="form-control" required placeholder="Alamat siswa"></input>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <h5>Foto <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <!-- <input type="hidden" name="photo_siswa" value="<?= $row->photo_siswa ?>"> -->
-                                        <?php
-                                        $photo_siswa = $row->photo_siswa;
-                                        if ($row->photo_siswa == "") {
-                                        ?>
-                                            <input type="file" name="photo_siswa" class="form-control" value="" required>
-                                        <?php } else { ?>
-                                            <a href="<?= base_url() ?>Admin/siswa_hapus_photo/<?= $row->id_siswa ?>/<?= $row->photo_siswa ?>" class="btn btn-danger btn-sm" style="margin-bottom: 15px;">Hapus Photo</a><br>
-                                            <img width="200px" src="<?= base_url() ?>assets/photo_siswa/<?= $row->photo_siswa ?>" alt="Photo">
-                                        <?php } ?>
                                     </div>
                                 </div>
 
