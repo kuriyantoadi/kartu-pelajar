@@ -30,29 +30,41 @@
                         <h4 class="card-title">Data Siswa</h4>
                         <div class="table-responsive m-t-40">
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-rounded btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Prestasi
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="lihat_prestasi.html">Lihat Prestasi</a>
-                                    <a class="dropdown-item" href="tambah_prestasi.html">Tambah Prestasi</a>
-                                </div>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-rounded btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pelanggaran
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="lihat_pelanggaran.html">Lihat Pelanggaran</a>
-                                    <a class="dropdown-item" href="tambah_pelanggaran.html">Tambah Pelanggaran</a>
-                                </div>
-                            </div>
-                            <!-- <a href="../Admin/siswa_edit" class=" btn btn-rounded btn-sm btn-success">Tambah Prestasi</a>
-                                <a href="../Admin/siswa_edit" class=" btn btn-rounded btn-sm btn-warning">Tambah Pelanggaran</a> -->
-                            <a href="../Admin/siswa_edit" class="btn btn-rounded btn-sm btn-primary">Edit Siswa</a>
-                            <a href="../Admin/siswa_edit" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a>
+                            <?php foreach ($tampil_siswa as $row) { ?>
 
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-rounded btn-sm btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Prestasi
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="lihat_prestasi.html">Lihat Prestasi</a>
+                                        <a class="dropdown-item" href="tambah_prestasi.html">Tambah Prestasi</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-rounded btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Pelanggaran
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="lihat_pelanggaran.html">Lihat Pelanggaran</a>
+                                        <a class="dropdown-item" href="tambah_pelanggaran.html">Tambah Pelanggaran</a>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-rounded btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Edit Siswa
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?= site_url('Admin/siswa_edit/' . $row->id_siswa) ?>">Profil Siswa</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/siswa_photo/' . $row->id_siswa) ?>">Photo Siswa</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/siswa_photo/' . $row->id_siswa) ?>">Password Siswa</a>
+
+                                    </div>
+                                </div>
+
+                                <a href="../Admin/siswa_edit" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a>
+
+                            <?php } ?>
 
                             <table class="table table-bordered mt-4">
 

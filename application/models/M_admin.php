@@ -42,6 +42,11 @@ class M_admin extends CI_Model
   }
 
 
+  public function siswa_photo_up($data_edit, $id_siswa)
+  {
+    $this->db->where('id_siswa', $id_siswa);
+    $this->db->update('tb_siswa', $data_edit);
+  }
 
   function siswa_hapus_photo($data_edit, $id_siswa)
   {

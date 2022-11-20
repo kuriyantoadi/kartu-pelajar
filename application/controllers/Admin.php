@@ -144,7 +144,55 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        // redirect('Admin/siswa');
+        redirect('Admin/siswa');
+    }
+
+
+    public function siswa_photo($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/siswa_photo', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function siswa_photo_up()
+    {
+        $config['upload_path']      = 'assets/photo_siswa/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 2000;
+        $config['encrypt_name']     = TRUE;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_siswa')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+            $id_siswa = $this->input->post('id_siswa');
+
+            $data_edit = array(
+                'photo_siswa' => $_data['upload_data']['file_name'],
+            );
+
+            $this->M_admin->siswa_photo_up($data_edit, $id_siswa);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Admin/siswa_detail/' . $id_siswa);
+        }
     }
 
 
@@ -194,7 +242,7 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/siswa_edit/' . $id_siswa);
+        redirect('Admin/siswa_photo/' . $id_siswa);
     }
 
 
@@ -463,39 +511,6 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    // tekno awal
-
-
-
-    // public function siswa_edit_up()
-    // {
-    //     $id_siswa = $this->input->post('id_siswa');
-    //     $nama_siswa = $this->input->post('nama_siswa');
-    //     $nisn = $this->input->post('nisn');
-    //     $kelas = $this->input->post('kelas');
-    //     $kondisi_mpls = $this->input->post('kondisi_mpls');
-
-    //     $kode_siswa = array('id_siswa' => $id_siswa);
-
-    //     $data_edit = array(
-    //         'nama_siswa' => $nama_siswa,
-    //         'nisn' => $nisn,
-    //         'kelas' => $kelas,
-    //         'kondisi_mpls' => $kondisi_mpls
-    //     );
-
-    //     $this->M_admin->siswa_edit_up($data_edit, $kode_siswa);
-
-    //     $this->session->set_flashdata('msg', '
-    // 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
-    // 						<strong>Edit data berhasil</strong>
-
-    // 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    // 							<span aria-hidden="true">&times;</span>
-    // 						</button>
-    // 					</div>');
-    //     redirect('Admin/siswa_detail/' . $id_siswa);
-    // }
 
     public function sertifikat_cetak($id_siswa)
     {

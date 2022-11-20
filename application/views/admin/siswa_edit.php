@@ -29,7 +29,7 @@
                         <h4 class="card-title">Form Edit Siswa</h4>
 
                         <?=
-                        form_open('Admin/siswa_edit_up');
+                        form_open_multipart('Admin/siswa_edit_up');
                         foreach ($tampil_siswa as $row) {
                         ?>
 
@@ -107,7 +107,7 @@
                                         $photo_siswa = $row->photo_siswa;
                                         if ($row->photo_siswa == "") {
                                         ?>
-                                            <input type="file" name="photo_siswa" class="form-control" value="<?= $row->photo_siswa ?>" required>
+                                            <input type="file" name="photo_siswa" class="form-control" value="" required>
                                         <?php } else { ?>
                                             <a href="<?= base_url() ?>Admin/siswa_hapus_photo/<?= $row->id_siswa ?>/<?= $row->photo_siswa ?>" class="btn btn-danger btn-sm" style="margin-bottom: 15px;">Hapus Photo</a><br>
                                             <img width="200px" src="<?= base_url() ?>assets/photo_siswa/<?= $row->photo_siswa ?>" alt="Photo">
