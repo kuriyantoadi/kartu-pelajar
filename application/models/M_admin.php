@@ -149,6 +149,11 @@ class M_admin extends CI_Model
     $hasil = $this->db->get('tb_admin')->result();
     return $hasil;
   }
+
+  function pelanggaran_tambah_up($data_tambah)
+  {
+    $this->db->insert('tb_pelanggaran', $data_tambah);
+  }
   // akhir pelanggaran
 
 }

@@ -84,6 +84,7 @@ class Admin extends CI_Controller
             $agama = $this->input->post('agama');
             $alamat = $this->input->post('alamat');
 
+
             $data_tambah = array(
                 'photo_siswa' => $_data['upload_data']['file_name'],
                 'nisn' => $nisn,
@@ -93,7 +94,8 @@ class Admin extends CI_Controller
                 'tgl_lahir' => $tgl_lahir,
                 'tempat_lahir' => $tempat_lahir,
                 'agama' => $agama,
-                'alamat' => $alamat
+                'alamat' => $alamat,
+                'status' => 'siswa'
             );
 
             $this->M_admin->siswa_tambah_up($data_tambah);
@@ -532,6 +534,60 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function pelanggaran_tambah_up()
+    {
+        $config['upload_path']      = 'assets/photo_pelanggaran/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 5000;
+        $config['encrypt_name']     = TRUE;
+        // $id_lapangan = $this->input->post('id_lapangan');
+
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_pelanggaran')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+
+
+            $id_kelas = $this->input->post('id_kelas');
+            $id_siswa = $this->input->post('id_siswa');
+            $id_point = $this->input->post('id_point');
+            $tgl_kejadian = $this->input->post('tgl_kejadian');
+            $tgl_input = date('d-m-Y');
+            // $tgl_input = $this->input->post('tgl_input');
+            $id_admin = $this->input->post('id_admin');
+
+
+            $data_tambah = array(
+                'photo_pelanggaran' => $_data['upload_data']['file_name'],
+                'id_siswa' => $id_siswa,
+                'id_point' => $id_point,
+                'id_kelas' => $id_kelas,
+                'tgl_kejadian' => $tgl_kejadian,
+                'tgl_input' => $tgl_input,
+                'id_admin' => $id_admin
+            );
+
+            $this->M_admin->pelanggaran_tambah_up($data_tambah);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            // redirect('Admin/siswa');
+        }
+    }
+
+    //akhir pelanggaran
 
     // awal prestasi
     public function prestasi()

@@ -46,7 +46,7 @@ class Login extends CI_Controller
                 Username atau Password Salah<br> Silahkan Login Kembali
                 </div>'
                 );
-                echo "test";
+                // echo "test";
                 redirect('Login/index');
             }
             redirect('Login/index');
