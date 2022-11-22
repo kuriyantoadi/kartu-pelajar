@@ -515,10 +515,19 @@ class Admin extends CI_Controller
 
     public function pelanggaran()
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['tampil_pelanggaran'] = $this->M_admin->tampil_pelanggaran();
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/pelanggaran', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_detail()
+    {
+        $data['tampil_pelanggaran'] = $this->M_admin->tampil_pelanggaran();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/pelanggaran_detail', $data);
         $this->load->view('template/footer');
     }
 
@@ -553,11 +562,13 @@ class Admin extends CI_Controller
             $_data = array('upload_data' => $this->upload->data());
 
 
+            $tgl_kejadian = $this->input->post('tgl_kejadian');
+            $timestamp = strtotime($tgl_kejadian);
+            $tgl_kejadian = date("d-m-Y", $timestamp);
 
             $id_kelas = $this->input->post('id_kelas');
             $id_siswa = $this->input->post('id_siswa');
             $id_point = $this->input->post('id_point');
-            $tgl_kejadian = $this->input->post('tgl_kejadian');
             $tgl_input = date('d-m-Y');
             // $tgl_input = $this->input->post('tgl_input');
             $id_admin = $this->input->post('id_admin');

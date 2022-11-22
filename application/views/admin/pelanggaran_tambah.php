@@ -46,7 +46,7 @@
                                         <select name="id_point" id="id_point" required class="form-control">
                                             <option value="">Pilih Point</option>
                                             <?php foreach ($tampil_point as $row_point) { ?>
-                                                <option value="<?= $row_point->id_point ?>"> <?= $row_point->id_point ?> ( <?= $row_point->jml_point ?> Point) </option>
+                                                <option value="<?= $row_point->id_point ?>"> <?= $row_point->nama_point ?> ( <?= $row_point->jml_point ?> Point) </option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -58,7 +58,7 @@
                                         <select name="id_admin" id="id_admin" required class="form-control">
                                             <option value="">Pilih Guru BK</option>
                                             <?php foreach ($tampil_bk as $row_bk) { ?>
-                                                <option value="<?= $row_bk->nama ?>"> <?= $row_bk->nama ?> </option>
+                                                <option value="<?= $row_bk->id_admin ?>"> <?= $row_bk->nama ?> </option>
                                             <?php } ?>
                                         </select>
                                     </div>

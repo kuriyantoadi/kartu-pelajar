@@ -27,29 +27,34 @@
                 <h4 class="card-title">Data Pelanggaran</h4>
                 <div class="table-responsive m-t-40">
 
-                    <a href="<?= base_url() ?>Admin/pelanggaran_tambah" class="btn btn-rounded btn-sm btn-primary">Tambah</a>
+                    <!-- <a href="<?= base_url() ?>Admin/pelanggaran_tambah" class="btn btn-rounded btn-sm btn-primary">Tambah</a> -->
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Nama Siswa</th>
                                 <th>Kelas</th>
+                                <th>Pelanggaran</th>
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Siswa</td>
-                                <td>XII TKJ 2</td>
-                                <td>
-                                    <a class="btn btn-sm btn-rounded btn-danger" href=""><i class="fa fa-times"></i></a>
-                                    <a class="btn btn-sm btn-rounded btn-warning" href=""><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-sm btn-rounded btn-info" href=""><i class="fa fa-eye"></i></a>
-                                </td>
-
-                            </tr>
-
+                            <?php
+                            $no = 1;
+                            foreach ($tampil_pelanggaran as $row) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $row->nama_siswa ?></td>
+                                    <td><?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
+                                    <td><?= $row->nama_point ?></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-rounded btn-danger" href=""><i class="fa fa-times"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-warning" href=""><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Admin/pelanggaran_detail/<?= $row->id_siswa ?>"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
