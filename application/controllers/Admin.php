@@ -522,13 +522,84 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function pelanggaran_detail()
+    public function pelanggaran_hapus($id_pelanggaran)
     {
-        $data['tampil_pelanggaran'] = $this->M_admin->tampil_pelanggaran();
+        $id_pelanggaran = array('id_pelanggaran' => $id_pelanggaran);
+
+        $success = $this->M_admin->pelanggaran_hapus($id_pelanggaran);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/pelanggaran');
+    }
+
+    public function pelanggaran_detail($id_pelanggaran)
+    {
+        $data['pelanggaran_detail'] = $this->M_admin->pelanggaran_detail($id_pelanggaran);
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/pelanggaran_detail', $data);
         $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_siswa($id_siswa)
+    {
+        $data['pelanggaran_siswa'] = $this->M_admin->pelanggaran_siswa($id_siswa);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/pelanggaran_siswa', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_edit($id_pelanggaran)
+    {
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
+        $data['pelanggaran_edit'] = $this->M_admin->pelanggaran_edit($id_pelanggaran);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/pelanggaran_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_edit_up()
+    {
+        $tgl_kejadian = $this->input->post('tgl_kejadian');
+        // $timestamp = strtotime($tgl_kejadian);
+        // $tgl_kejadian = date("d-m-Y", $timestamp);
+
+        $id_pelanggaran = $this->input->post('id_pelanggaran');
+        $id_point = $this->input->post('id_point');
+        $tgl_input = date('d-m-Y');
+        $id_admin = $this->input->post('id_admin');
+
+
+        $data_edit = array(
+            'id_point' => $id_point,
+            'tgl_kejadian' => $tgl_kejadian,
+            'tgl_input' => $tgl_input,
+            'id_admin' => $id_admin
+        );
+
+        $this->M_admin->pelanggaraan_edit_up($data_edit, $id_pelanggaran);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Pelanggaran Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/siswa');
     }
 
     public function pelanggaran_tambah()
@@ -594,7 +665,7 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-            // redirect('Admin/siswa');
+            redirect('Admin/siswa');
         }
     }
 
