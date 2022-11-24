@@ -38,8 +38,8 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register.jpg);">
-            <div class="login-box card">
+        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register2.jpg);">
+            <div class="login-box card p-3" style="box-shadow: 5px 10px 50px gray;">
                 <div class="card-body">
 
                     <?= $this->session->flashdata('msg') ?>
