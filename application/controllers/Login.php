@@ -16,6 +16,11 @@ class Login extends CI_Controller
         $this->load->view('siswa/login');
     }
 
+    public function Admin()
+    {
+        $this->load->view('admin/login');
+    }
+
 
     public function login_siswa()
     {
@@ -114,6 +119,6 @@ class Login extends CI_Controller
     public function admin_logout()
     {
         $this->session->sess_destroy();
-        redirect('Admin');
+        redirect('Login/admin');
     }
 }

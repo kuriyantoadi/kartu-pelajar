@@ -39,8 +39,8 @@
                                         Prestasi
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="lihat_prestasi.html">Lihat Prestasi</a>
-                                        <a class="dropdown-item" href="tambah_prestasi.html">Tambah Prestasi</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/prestasi_siswa/' . $row->id_siswa) ?>">Lihat Prestasi</a>
+                                        <a class="dropdown-item" href="<?= site_url('Admin/prestasi_tambah/' . $row->id_siswa) ?>">Tambah Prestasi</a>
                                     </div>
                                 </div>
                                 <div class="btn-group">

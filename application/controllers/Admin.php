@@ -10,21 +10,15 @@ class Admin extends CI_Controller
         $this->load->model('M_admin');
 
         // session login
-        //if ($this->session->userdata('admin') != true) {
-        // $url = base_url('Admin/f');
-        // redirect($url);
-        //}
+        if ($this->session->userdata('admin') != true) {
+            $url = base_url('Login/admin');
+            redirect($url);
+        }
     }
 
     public function index()
     {
         $this->load->view('admin/login');
-    }
-
-    public function f()
-    {
-        // $this->load->view('Admin/login');
-        echo "cetak";
     }
 
     public function dashboard()
@@ -674,7 +668,7 @@ class Admin extends CI_Controller
     // awal prestasi
     public function prestasi()
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['prestasi_tampil'] = $this->M_admin->prestasi_tampil();
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/prestasi', $data);
@@ -683,10 +677,72 @@ class Admin extends CI_Controller
 
     public function prestasi_tambah($id_siswa)
     {
-        $data['tampil_siswa'] = $this->M_admin->cari_siswa($id_siswa);
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa($id_siswa);
 
         $this->load->view('template/header-admin');
-        $this->load->view('admin/prestasi', $data);
+        $this->load->view('admin/prestasi_tambah', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function prestasi_tambah_up()
+    {
+        $config['upload_path']      = 'assets/photo_prestasi/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 4000;
+        $config['encrypt_name']     = TRUE;
+        // $id_lapangan = $this->input->post('id_lapangan');
+
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_prestasi')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+            $id_siswa = $this->input->post('id_siswa');
+            $tanggal_pelaksanaan = $this->input->post('tanggal_pelaksanaan');
+            $nama_kegiatan = $this->input->post('nama_kegiatan');
+            $juara_ke = $this->input->post('juara_ke');
+            $tingkat = $this->input->post('tingkat');
+            $tempat_lomba = $this->input->post('tempat_lomba');
+            $tim_individu = $this->input->post('tim_individu');
+            $penyelenggara_acara = $this->input->post('penyelenggara_acara');
+
+            $data_tambah = array(
+                'photo_prestasi' => $_data['upload_data']['file_name'],
+                'id_siswa' => $id_siswa,
+                'tanggal_pelaksanaan' => $tanggal_pelaksanaan,
+                'nama_kegiatan' => $nama_kegiatan,
+                'juara_ke' => $juara_ke,
+                'tingkat' => $tingkat,
+                'tempat_lomba' => $tempat_lomba,
+                'tim_individu' => $tim_individu,
+                'penyelenggara_acara' => $penyelenggara_acara
+            );
+
+            $this->M_admin->prestasi_tambah_up($data_tambah);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            // redirect('Admin/siswa');
+        }
+    }
+
+    public function prestasi_siswa($id_siswa)
+    {
+        $data['tampil_prestasi'] = $this->M_admin->prestasi_siswa($id_siswa);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/prestasi_siswa', $data);
         $this->load->view('template/footer');
     }
 

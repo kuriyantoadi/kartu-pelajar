@@ -224,4 +224,37 @@ class M_admin extends CI_Model
 
   // akhir pelanggaran
 
+
+  // Prestasi awal 
+
+  public function prestasi_tambah_up($data_tambah)
+  {
+    $this->db->insert('tb_prestasi', $data_tambah);
+  }
+
+  function prestasi_siswa($id_siswa)
+  {
+    $this->db->select('*');
+    $this->db->from('tb_prestasi');
+    $this->db->join('tb_siswa', 'tb_prestasi.id_siswa = tb_siswa.id_siswa');
+    $this->db->where('tb_prestasi.id_siswa', $id_siswa);
+
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  function prestasi_tampil()
+  {
+    $this->db->select('*');
+    $this->db->from('tb_prestasi');
+    $this->db->join('tb_siswa', 'tb_prestasi.id_siswa = tb_siswa.id_siswa');
+    // $this->db->where('tb_prestasi.id_siswa', $id_siswa);
+
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  // Prestasi akhir
+
+
 }

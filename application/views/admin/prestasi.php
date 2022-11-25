@@ -12,30 +12,34 @@
             <div class="card-body">
                 <h4 class="card-title">Data Prestasi</h4>
                 <div class="table-responsive m-t-40">
-                    <a href="<?= base_url() ?>Admin/prestasi_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Prestasi</th>
-                                <th>Juara</th>
-                                <th>Tanggal</th>
+                                <th>Nama Siswa</th>
+                                <th>Nama Kegiatan</th>
+                                <th>Juara Ke</th>
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Lomba Coding</td>
-                                <td>1</td>
-                                <td>06 Desember 2021</td>
-                                <td>
-                                    <a href="#" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
-                                    <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                    <a href="#" data-toggle="tooltip" data-original-title="Hapus" onclick="return confirm('Apakah yakin ingin menghapus?')"> <i class="fa fa-close text-danger"></i> </a>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($prestasi_tampil as $row) {
+                        ?>
+                            <tbody>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td><?= $row->nama_siswa ?></td>
+                                    <td><?= $row->nama_kegiatan ?></td>
+                                    <td><?= $row->juara_ke ?></td>
+                                    <td>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Hapus" onclick="return confirm('Apakah yakin ingin menghapus?')"> <i class="fa fa-close text-danger"></i> </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
