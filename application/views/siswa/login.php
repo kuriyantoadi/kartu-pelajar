@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/images/favicon.png">
-    <title>Login Admin</title>
+    <title>Login Siswa</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -38,8 +38,8 @@
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register.jpg);">
-            <div class="login-box card">
+        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register1.jpg);">
+            <div class="login-box card p-3" style="box-shadow: 5px 10px 50px gray;">
                 <div class="card-body">
 
 
