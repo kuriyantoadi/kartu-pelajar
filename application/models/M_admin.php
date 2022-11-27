@@ -254,6 +254,29 @@ class M_admin extends CI_Model
     return $query;
   }
 
+  function prestasi_hapus($id_prestasi)
+  {
+    $this->db->where($id_prestasi);
+    $this->db->delete('tb_prestasi');
+  }
+
+  function prestasi_detail($id_prestasi)
+  {
+    $this->db->select('*');
+    $this->db->from('tb_prestasi');
+    $this->db->join('tb_siswa', 'tb_prestasi.id_siswa = tb_siswa.id_siswa');
+    $this->db->where('tb_prestasi.id_prestasi', $id_prestasi);
+
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  function prestasi_edit_up($data_edit, $id_prestasi)
+  {
+    $this->db->where('id_prestasi', $id_prestasi);
+    $this->db->update('tb_prestasi', $data_edit);
+  }
+
   // Prestasi akhir
 
 

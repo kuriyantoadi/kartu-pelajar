@@ -134,13 +134,13 @@ class Admin extends CI_Controller
 
         $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Siswa Berhasil</strong>
+							<strong>Edit Siswa Berhasil</strong>
 
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/siswa');
+        redirect('Admin/siswa_detail/' . $id_siswa);
     }
 
 
@@ -228,7 +228,7 @@ class Admin extends CI_Controller
 
             $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Siswa Berhasil</strong>
+							<strong>Edit Photo Siswa Berhasil</strong>
 
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -653,13 +653,13 @@ class Admin extends CI_Controller
 
             $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Siswa Berhasil</strong>
+							<strong>Tambah Pelanggaran Berhasil</strong>
 
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-            redirect('Admin/siswa');
+            redirect('Admin/siswa_detail/' . $id_siswa);
         }
     }
 
@@ -727,13 +727,13 @@ class Admin extends CI_Controller
 
             $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Siswa Berhasil</strong>
+							<strong>Tambah Prestasi Berhasil</strong>
 
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-            // redirect('Admin/siswa');
+            redirect('Admin/siswa_detail/' . $id_siswa);
         }
     }
 
@@ -746,6 +746,74 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function prestasi_hapus($id_prestasi)
+    {
+        $id_prestasi = array('id_prestasi' => $id_prestasi);
+
+        $success = $this->M_admin->prestasi_hapus($id_prestasi);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Prestasi Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/prestasi');
+    }
+
+
+    public function prestasi_detail($id_prestasi)
+    {
+        $data['tampil_prestasi_detail'] = $this->M_admin->prestasi_detail($id_prestasi);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/prestasi_detail', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function prestasi_edit($id_prestasi)
+    {
+        $data['tampil_prestasi_detail'] = $this->M_admin->prestasi_detail($id_prestasi);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/prestasi_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function prestasi_edit_up()
+    {
+        $id_prestasi = $this->input->post('id_prestasi');
+        $tanggal_pelaksanaan = $this->input->post('tanggal_pelaksanaan');
+        $nama_kegiatan = $this->input->post('nama_kegiatan');
+        $juara_ke = $this->input->post('juara_ke');
+        $tingkat = $this->input->post('tingkat');
+        $tempat_lomba = $this->input->post('tempat_lomba');
+        $tim_individu = $this->input->post('tim_individu');
+        $penyelenggara_acara = $this->input->post('penyelenggara_acara');
+
+        $data_edit = array(
+            'tanggal_pelaksanaan' => $tanggal_pelaksanaan,
+            'nama_kegiatan' => $nama_kegiatan,
+            'juara_ke' => $juara_ke,
+            'tingkat' => $tingkat,
+            'tempat_lomba' => $tempat_lomba,
+            'tim_individu' => $tim_individu,
+            'penyelenggara_acara' => $penyelenggara_acara
+        );
+
+        $this->M_admin->prestasi_edit_up($data_edit, $id_prestasi);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Prestasi Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/prestasi_detail/' . $id_prestasi);
+    }
     // akhir prestasi
 
 
