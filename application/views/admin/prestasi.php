@@ -36,9 +36,9 @@
                                     <td><?= $row->nama_kegiatan ?></td>
                                     <td><?= $row->juara_ke ?></td>
                                     <td>
-                                        <a href="<?= site_url('Admin/prestasi_detail/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
-                                        <a href="<?= site_url('Admin/prestasi_edit/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                        <a href="<?= site_url('Admin/prestasi_hapus/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Hapus" onclick="return confirm('Apakah yakin ingin menghapus data prestasi ini?')"> <i class="fa fa-close text-danger"></i> </a>
+                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/prestasi_hapus/<?= $row->id_prestasi ?>" onclick="return confirm('Anda yakin menghapus data prestasi  ?')"><i class="fa fa-times"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/prestasi_edit/' . $row->id_prestasi); ?>"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Admin/prestasi_detail/<?= $row->id_prestasi ?>" title="Prestasi detail"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
