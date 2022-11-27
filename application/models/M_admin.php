@@ -280,4 +280,39 @@ class M_admin extends CI_Model
   // Prestasi akhir
 
 
+
+
+  // admin awal
+  function admin_tampil()
+  {
+    $tampil = $this->db->get('tb_admin')->result();
+    return $tampil;
+  }
+
+  public function admin_tambah_up($data_tambah)
+  {
+    $this->db->insert('tb_admin', $data_tambah);
+  }
+
+  public function cari_admin($id_admin)
+  {
+    $this->db->where('id_admin', $id_admin);
+    $hasil = $this->db->get('tb_admin')->result();
+    return $hasil;
+  }
+
+  function admin_edit_up($data_edit, $id_admin)
+  {
+    $this->db->where('id_admin', $id_admin);
+    $this->db->update('tb_admin', $data_edit);
+  }
+
+  function admin_hapus($id_admin)
+  {
+    $this->db->where($id_admin);
+    $this->db->delete('tb_admin');
+  }
+
+  // admin akhir
+
 }

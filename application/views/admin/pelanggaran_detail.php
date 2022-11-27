@@ -53,7 +53,7 @@
                             </table>
 
                             <div class="text-xs-right">
-                                <button type="submit" class="btn btn-sm btn-info">Edit</button>
+                                <a href="<?= site_url('Admin/pelanggaran_edit/' . $row->id_pelanggaran) ?>" class="btn btn-sm btn-info">Edit</a>
                                 <a href="<?= base_url() ?>Admin/pelanggaran" class="btn btn-sm btn-inverse">Kembali</a>
                             </div>
                         <?php } ?>

@@ -593,7 +593,7 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/siswa');
+        redirect('Admin/pelanggaran');
     }
 
     public function pelanggaran_tambah()
@@ -815,6 +815,153 @@ class Admin extends CI_Controller
         redirect('Admin/prestasi_detail/' . $id_prestasi);
     }
     // akhir prestasi
+
+
+    // awal admin
+
+    public function admin()
+    {
+        $data['tampil'] = $this->M_admin->admin_tampil();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/admin', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function admin_tambah()
+    {
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/admin_tambah');
+        $this->load->view('template/footer');
+    }
+
+
+    public function admin_tambah_up()
+    {
+        $nama = $this->input->post('nama');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $status_akun = $this->input->post('status_akun');
+
+        $data_tambah = array(
+            'nama' => $nama,
+            'username' => $username,
+            'password' => sha1($username),
+            'status_akun' => $status_akun,
+            'status' => $status_akun
+        );
+
+        $this->M_admin->admin_tambah_up($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/admin');
+    }
+
+    public function admin_edit($id_admin)
+    {
+        $data['tampil'] = $this->M_admin->cari_admin($id_admin);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/admin_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function admin_edit_up()
+    {
+        $id_admin = $this->input->post('id_admin');
+        $nama = $this->input->post('nama');
+        $username = $this->input->post('username');
+        $status_akun = $this->input->post('status_akun');
+
+        $data_edit = array(
+            'nama' => $nama,
+            'username' => $username,
+            'status_akun' => $status_akun
+        );
+
+        $this->M_admin->admin_edit_up($data_edit, $id_admin);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/admin/');
+    }
+
+    public function admin_hapus($id_admin)
+    {
+        $id_admin = array('id_admin' => $id_admin);
+
+        $success = $this->M_admin->admin_hapus($id_admin);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/admin');
+    }
+
+
+    public function admin_password($id_admin)
+    {
+        $data['tampil'] = $this->M_admin->cari_admin($id_admin);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/admin_password', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function admin_password_up()
+    {
+        $id_admin = $this->input->post('id_admin');
+        $password_baru = $this->input->post('password_baru');
+        $password_konfirmasi = $this->input->post('password_konfirmasi');
+
+        if ($password_baru != $password_konfirmasi) {
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            // redirect('Admin/admin_password/' . $id_admin);
+        }
+
+        $data_edit = array(
+            'password' => $password_baru
+        );
+
+        $this->M_admin->admin_edit_up($data_edit, $id_admin);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Ganti Password Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/admin/');
+    }
+
+    // akhir admin
 
 
     // Password
