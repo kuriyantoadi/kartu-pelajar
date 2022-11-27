@@ -13,14 +13,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Daftar Prestasi Siswa</h4>
+                        <h4 class="card-title">Detail Prestasi Siswa</h4>
+
+                        <?= $this->session->flashdata('msg') ?>
+
 
                         <?php
                         $no = 1;
-                        foreach ($tampil_prestasi as $row) {
+                        foreach ($tampil_prestasi_detail as $row) {
                         ?>
-
-                            <h5 style="margin-top: 30px;">Prestasi ke- <?= $no++ ?></h5>
 
                             <table class="table table-bordered">
 
@@ -67,7 +68,7 @@
                             </table>
                         <?php } ?>
                         <div class="text-xs-right">
-                            <a href="<?= site_url('Admin/siswa_detail/' . $row->id_siswa) ?>" class="btn btn-sm btn-inverse">Kembali</a>
+                            <a href="<?= site_url('Admin/prestasi/') ?>" class="btn btn-sm btn-inverse">Kembali</a>
                         </div>
 
                         </form>

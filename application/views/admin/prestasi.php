@@ -12,6 +12,9 @@
             <div class="card-body">
                 <h4 class="card-title">Data Prestasi</h4>
                 <div class="table-responsive m-t-40">
+
+                    <?= $this->session->flashdata('msg') ?>
+
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -33,9 +36,9 @@
                                     <td><?= $row->nama_kegiatan ?></td>
                                     <td><?= $row->juara_ke ?></td>
                                     <td>
-                                        <a href="#" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
-                                        <a href="#" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
-                                        <a href="#" data-toggle="tooltip" data-original-title="Hapus" onclick="return confirm('Apakah yakin ingin menghapus?')"> <i class="fa fa-close text-danger"></i> </a>
+                                        <a href="<?= site_url('Admin/prestasi_detail/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
+                                        <a href="<?= site_url('Admin/prestasi_edit/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                        <a href="<?= site_url('Admin/prestasi_hapus/' . $row->id_prestasi); ?>" data-toggle="tooltip" data-original-title="Hapus" onclick="return confirm('Apakah yakin ingin menghapus data prestasi ini?')"> <i class="fa fa-close text-danger"></i> </a>
                                     </td>
                                 </tr>
                             </tbody>
