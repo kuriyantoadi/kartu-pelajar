@@ -50,7 +50,7 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama_point ?></td>
                                     <td><?= $row->jml_point ?></td>
-                                    <td>
+                                    <td style="white-space: nowrap;">
                                         <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/point_hapus/<?= $row->id_point ?>" onclick="return confirm('Anda yakin menghapus data siswa <?= $row->nama_point ?> ?')"><i class="fa fa-times"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/point_edit/' . $row->id_point); ?>"><i class="fa fa-pencil"></i></a>
 

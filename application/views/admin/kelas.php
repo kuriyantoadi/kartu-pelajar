@@ -54,7 +54,7 @@
                                     <td><?= $row->kode_kelas ?></td>
                                     <td><?= $row->angkatan ?></td>
 
-                                    <td>
+                                    <td style="white-space: nowrap;">
                                         <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Admin/kelas_hapus/' . $row->id_kelas) ?>" title="hapus kelas" onclick="return confirm('Anda yakin menghapus data kelas <?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas  ?> ?')"><i class="fa fa-times"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/kelas_edit/' . $row->id_kelas) ?>"> <i class=" fa fa-pencil"></i></a>
 
