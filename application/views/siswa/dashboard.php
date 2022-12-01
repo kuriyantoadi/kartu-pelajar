@@ -2,55 +2,10 @@
 
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Data Siswa</h4>
-            <div class="table-responsive m-t-40">
-                <table class="table table-bordered mt-4">
-
-                    <?php foreach ($tampil as $row) { ?>
-
-                        <tbody>
-                            <tr>
-                                <td class="col-4">Foto</td>
-                                <td>:
-                                    <img src="#" alt="Photo">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Nama Siswa</td>
-                                <td>: <?= $row->nama_siswa ?></td>
-                            </tr>
-                            <tr>
-                                <td>NISN</td>
-                                <td>: <?= $row->nisn ?></td>
-                            </tr>
-                            <tr>
-                                <td>Tempat Lahir</td>
-                                <td>: <?= $row->tempat_lahir ?></td>
-                            </tr>
-                            <tr>
-                                <td>Tanggal Lahir</td>
-                                <td>: <?= $row->tgl_lahir ?></td>
-                            </tr>
-                            <tr>
-                                <td>Agama</td>
-                                <td>: <?= $row->agama ?></td>
-                            </tr>
-                            <tr>
-                                <td>kompetensi keahlian</td>
-                                <td>: <?= $row->kompetensi_keahlian ?></td>
-                            </tr>
-                            <tr>
-                                <td>Alamat</td>
-                                <td>: <?= $row->alamat ?></td>
-                            </tr>
-                            <tr>
-                                <td>Status</td>
-                                <td>: <?= $row->status ?></td>
-                            </tr>
-                        </tbody>
-
-                    <?php } ?>
-                </table>
+            <h4 class="card-title">Sistem Informasi Kartu Pelajar Siswa</h4>
+            <div class="table-responsive m-t-30">
+                <p>Sistem informasi kartu pelajar SMK Negeri 1 Kragilan berisi informasi tentang prestasi dan pelanggaran siswa yang sudah di lakukan.
+                    Data dicatat dalam sistem agar siswa dan guru dapat melihat catatan secara online dan realtime.</p>
             </div>
         </div>
     </div>

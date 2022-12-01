@@ -22,14 +22,24 @@ class Siswa extends CI_Controller
 
     public function index()
     {
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/dashboard');
+        $this->load->view('template/footer');
+    }
+
+    public function profil()
+    {
         $ses_id = $this->session->userdata('ses_id');
         $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
 
         $this->load->view('template/header-siswa');
-        $this->load->view('siswa/dashboard', $data);
+        $this->load->view('siswa/profil', $data);
         $this->load->view('template/footer');
     }
 
+
+    // awal prestasi
     public function prestasi()
     {
         $id_siswa = $this->session->userdata('ses_id');
@@ -39,6 +49,43 @@ class Siswa extends CI_Controller
         $this->load->view('siswa/prestasi', $data);
         $this->load->view('template/footer');
     }
+
+    public function prestasi_detail($id_prestasi)
+    {
+        $data['tampil_prestasi_detail'] = $this->M_siswa->prestasi_detail($id_prestasi);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/prestasi_detail', $data);
+        $this->load->view('template/footer');
+    }
+
+    // akhir prestasi
+
+
+
+    // awal pelanggaran
+
+    public function pelanggaran()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+        $data['tampil_pelanggaran'] = $this->M_siswa->tampil_pelanggaran($id_siswa);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/pelanggaran', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_detail($id_pelanggaran)
+    {
+        $data['pelanggaran_detail'] = $this->M_siswa->pelanggaran_detail($id_pelanggaran);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/pelanggaran_detail', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    // akhir pelanggaran
 
     public function page()
     {

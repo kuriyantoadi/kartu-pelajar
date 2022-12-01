@@ -38,20 +38,20 @@
                                     <h5>Nama Admin <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="hidden" name="id_admin" value="<?= $row->id_admin ?>">
-                                        <input type="text" class="form-control" name="nama" value="<?= $row->nama ?>" require>
+                                        <input type="text" class="form-control" name="nama" value="<?= $row->nama ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group m-t-40">
                                     <h5>Username <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" class="form-control" name="username" value="<?= $row->username ?>" require>
+                                        <input type="text" class="form-control" name="username" value="<?= $row->username ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group m-t-40">
                                     <h5>Status Akun <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <select name="status_akun" id="" class="form-control" require>
+                                        <select name="status_akun" id="" class="form-control" required>
                                             <option value="<?= $row->status_akun ?>">Pilihan ( <?= $row->status_akun ?> )</option>
                                             <option value="admin">Non Aktif</option>
                                             <option value="guru_bk">Guru BK</option>

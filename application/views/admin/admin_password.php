@@ -28,6 +28,8 @@
                     <div class="card-body">
                         <h4 class="card-title">Form Reset Password</h4>
 
+                        <?= $this->session->flashdata('msg') ?>
+
                         <?=
                         form_open('Admin/admin_password_up');
                         foreach ($tampil as $row) {

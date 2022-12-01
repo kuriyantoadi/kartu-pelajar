@@ -30,36 +30,35 @@
 
                         <?= form_open('Admin/admin_tambah_up') ?>
 
-                        <form class="m-t-40" novalidate>
+                        <form class="m-t-40">
                             <div class="form-group m-t-40">
                                 <h5>Nama Admin <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="nama" require>
+                                    <input type="text" class="form-control" name="nama" required>
                                 </div>
                             </div>
                             <div class="form-group m-t-40">
                                 <h5>Username <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="username" require>
+                                    <input type="text" class="form-control" name="username" required>
                                 </div>
                             </div>
                             <div class="form-group m-t-40">
                                 <h5>Password <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="password" class="form-control" name="password" require>
+                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                             </div>
                             <div class="form-group m-t-40">
                                 <h5>Status Akun <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <select name="status_akun" id="" class="form-control" require>
+                                    <select name="status_akun" id="" class="form-control" required>
                                         <option value="">Pilihan</option>
                                         <option value="admin">Non Aktif</option>
                                         <option value="guru_bk">Guru BK</option>
                                         <option value="guru_walas">Guru Wali Kelas</option>
                                         <option value="guru_pds">Guru Pembina PDS</option>
                                         <option value="admin">Guru Super Admin</option>
-
                                     </select>
                                 </div>
                             </div>

@@ -843,9 +843,11 @@ class Admin extends CI_Controller
         $password = $this->input->post('password');
         $status_akun = $this->input->post('status_akun');
 
+        $username_val = str_replace(' ', '', $username);
+
         $data_tambah = array(
             'nama' => $nama,
-            'username' => $username,
+            'username' => $username_val,
             'password' => sha1($username),
             'status_akun' => $status_akun,
             'status' => $status_akun
@@ -880,9 +882,11 @@ class Admin extends CI_Controller
         $username = $this->input->post('username');
         $status_akun = $this->input->post('status_akun');
 
+        $username_val = str_replace(' ', '', $username);
+
         $data_edit = array(
             'nama' => $nama,
-            'username' => $username,
+            'username' => $username_val,
             'status_akun' => $status_akun
         );
 
@@ -931,26 +935,15 @@ class Admin extends CI_Controller
         $password_baru = $this->input->post('password_baru');
         $password_konfirmasi = $this->input->post('password_konfirmasi');
 
-        if ($password_baru != $password_konfirmasi) {
+        if ($password_baru == $password_konfirmasi) {
+
+            $data_edit = array(
+                'password' => $password_baru
+            );
+
+            $this->M_admin->admin_edit_up($data_edit, $id_admin);
 
             $this->session->set_flashdata('msg', '
-						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Edit Admin Berhasil</strong>
-
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>');
-            // redirect('Admin/admin_password/' . $id_admin);
-        }
-
-        $data_edit = array(
-            'password' => $password_baru
-        );
-
-        $this->M_admin->admin_edit_up($data_edit, $id_admin);
-
-        $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
 							<strong>Ganti Password Admin Berhasil</strong>
 
@@ -958,7 +951,18 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/admin/');
+            redirect('Admin/admin/');
+        }
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<strong>Password Konfirmasi Tidak Sesuai</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/admin_password/' . $id_admin);
     }
 
     // akhir admin
