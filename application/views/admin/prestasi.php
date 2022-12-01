@@ -3,9 +3,6 @@
         <div class="col-md-5 align-self-center">
             <h3 class="text-themecolor">Halaman Prestasi</h3>
         </div>
-        <div>
-            <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-        </div>
     </div>
     <div class="container-fluid">
         <div class="card">
