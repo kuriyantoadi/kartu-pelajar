@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Daftar Pelanggaran Siswa</h4>
 
-                        <?=
+                        <?php
                         $no = 1;
                         foreach ($pelanggaran_siswa as $row) {
                         ?>
@@ -57,7 +57,7 @@
                             </table>
                         <?php } ?>
                         <div class="text-xs-right">
-                            <a href="<?= site_url('Admin/siswa_detail/' . $row->id_siswa) ?>" class="btn btn-sm btn-inverse">Kembali</a>
+                            <!-- <a href="<?= site_url('Admin/siswa_detail/' . $row->id_siswa) ?>" class="btn btn-sm btn-inverse">Kembali</a> -->
                         </div>
 
                         </form>
