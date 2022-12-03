@@ -257,7 +257,7 @@
         <aside class="left-sidebar">
             <div class="scroll-sidebar">
                 <div class="user-profile">
-                    <div class="profile-img"> <img src="../assets/images/users/profile.png" alt="user" />
+                    <div class="profile-img"> <img src="../assets/images/users/teacher.png" alt="user" />
                         <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
                     </div>
                     <div class="profile-text">

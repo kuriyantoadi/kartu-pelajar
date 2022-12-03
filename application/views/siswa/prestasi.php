@@ -24,7 +24,7 @@
                                 <td><?= $row->juara_ke ?></td>
                                 <td><?= $row->tanggal_pelaksanaan ?></td>
                                 <td>
-                                    <a href="<?= site_url('Siswa/prestasi_detail/' . $row->id_prestasi) ?>" data-toggle="tooltip" data-original-title="Lihat"><i class="fa fa-eye text-inverse m-r-10"></i> </a>
+                                    <a class="btn btn-sm btn-rounded btn-info" href="<?= site_url('Siswa/prestasi_detail/' . $row->id_prestasi) ?>" title="Prestasi detail"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         <?php } ?>
