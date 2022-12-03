@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title">Daftar Pelanggaran Siswa</h4>
 
-                        <?php
+                        <?=
                         $no = 1;
                         foreach ($pelanggaran_siswa as $row) {
                         ?>
