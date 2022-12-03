@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Profil Siswa</h4>
-            <div class="table-responsive m-t-40">
+            <div class="table-responsive m-t-10">
                 <table class="table table-bordered mt-4">
 
                     <?php foreach ($tampil as $row) { ?>
