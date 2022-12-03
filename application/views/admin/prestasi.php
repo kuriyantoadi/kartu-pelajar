@@ -29,6 +29,7 @@
                             foreach ($prestasi_tampil as $row) {
                             ?>
                                 <tr>
+
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama_siswa ?></td>
                                     <td><?= $row->nama_kegiatan ?></td>
@@ -38,6 +39,7 @@
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/prestasi_edit/' . $row->id_prestasi); ?>"><i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Admin/prestasi_detail/<?= $row->id_prestasi ?>" title="Prestasi detail"><i class="fa fa-eye"></i></a>
                                     </td>
+
                                 </tr>
                             <?php } ?>
                         </tbody>

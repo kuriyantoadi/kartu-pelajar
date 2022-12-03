@@ -25,11 +25,12 @@
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
-                        <?php
-                        $no = 1;
-                        foreach ($tampil_kelas as $row) {
-                        ?>
-                            <tbody>
+
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($tampil_kelas as $row) {
+                            ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->tingkatan ?></td>
@@ -43,8 +44,9 @@
 
                                     </td>
                                 </tr>
-                            </tbody>
-                        <?php } ?>
+                            <?php } ?>
+                        </tbody>
+
 
                     </table>
                 </div>
