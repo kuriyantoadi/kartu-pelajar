@@ -37,11 +37,7 @@
                                 <div class="form-group">
                                     <h5>Kelas <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <?php
-                                        foreach ($tampil_kelas as $row_kelas) {
-                                        ?>
-                                            <input type="text" value="<?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?>" class="form-control" disabled>
-                                        <?php } ?>
+                                        <input type="text" value="<?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?>" class="form-control" disabled>
                                     </div>
                                 </div>
 

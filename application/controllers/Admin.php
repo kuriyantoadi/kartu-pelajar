@@ -594,9 +594,9 @@ class Admin extends CI_Controller
         redirect('Admin/pelanggaran');
     }
 
-    public function pelanggaran_tambah()
+    public function pelanggaran_tambah($id_siswa)
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
         $data['tampil_point'] = $this->M_admin->tampil_point();
         $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
         $data['tampil_bk'] = $this->M_admin->tampil_bk();
@@ -675,7 +675,7 @@ class Admin extends CI_Controller
 
     public function prestasi_tambah($id_siswa)
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa($id_siswa);
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/prestasi_tambah', $data);
