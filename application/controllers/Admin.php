@@ -159,8 +159,6 @@ class Admin extends CI_Controller
     public function siswa_password($id_siswa)
     {
         $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
-        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
-
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/siswa_password', $data);
