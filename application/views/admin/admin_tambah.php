@@ -35,13 +35,13 @@
                             <div class="form-group m-t-40">
                                 <h5>Status Akun <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <select name="status_akun" id="" class="form-control" required>
+                                    <select name="status" id="" class="form-control" required>
                                         <option value="">Pilihan</option>
-                                        <option value="admin">Non Aktif</option>
+                                        <option value="non-aktif">Non Aktif</option>
                                         <option value="guru_bk">Guru BK</option>
                                         <option value="guru_walas">Guru Wali Kelas</option>
                                         <option value="guru_pds">Guru Pembina PDS</option>
-                                        <option value="admin">Guru Super Admin</option>
+                                        <option value="admin">Admin</option>
                                     </select>
                                 </div>
                             </div>

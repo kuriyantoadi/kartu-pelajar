@@ -12,7 +12,7 @@
 
                     <?= $this->session->flashdata('msg') ?>
 
-                    <a href="<?= site_url('Admin/admin_tambah'); ?>" class="btn btn-primary btn-sm">Tambah</a>
+                    <a href="<?= site_url('Admin/admin_tambah'); ?>" class="btn btn-primary btn-sm btn-rounded">Tambah</a>
 
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>

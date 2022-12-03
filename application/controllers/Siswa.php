@@ -111,6 +111,19 @@ class Siswa extends CI_Controller
     {
         $id_siswa = $this->input->post('id_siswa');
         $password_baru = $this->input->post('password_baru');
+        $password_konfirmasi = $this->input->post('password_konfirmasi');
+
+        if ($password_baru != $password_konfirmasi) {
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<strong>Password Konfirmasi Tidak Sesuai</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Siswa/password');
+        }
 
         $data_edit = array(
             'password' => sha1($password_baru),

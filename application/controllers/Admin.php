@@ -28,8 +28,49 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function profil()
+    {
+        $ses_id = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_admin->admin_profil($ses_id);
 
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/profil', $data);
+        $this->load->view('template/footer');
+    }
 
+    public function profil_edit()
+    {
+        $ses_id = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_admin->admin_profil($ses_id);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/profil_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function profil_edit_up()
+    {
+        $id_admin = $this->input->post('id_admin');
+        $nama = $this->input->post('nama');
+        $username = $this->input->post('username');
+
+        $data_edit = array(
+            'nama' => $nama,
+            'username' => $username
+        );
+
+        $this->M_admin->admin_edit_up($data_edit, $id_admin);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Profil Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/profil/');
+    }
 
     // awal function siswa
 
@@ -839,7 +880,7 @@ class Admin extends CI_Controller
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $status_akun = $this->input->post('status_akun');
+        $status = $this->input->post('status');
 
         $username_val = str_replace(' ', '', $username);
 
@@ -847,8 +888,7 @@ class Admin extends CI_Controller
             'nama' => $nama,
             'username' => $username_val,
             'password' => sha1($username),
-            'status_akun' => $status_akun,
-            'status' => $status_akun
+            'status' => $status
         );
 
         $this->M_admin->admin_tambah_up($data_tambah);
@@ -878,14 +918,14 @@ class Admin extends CI_Controller
         $id_admin = $this->input->post('id_admin');
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
-        $status_akun = $this->input->post('status_akun');
+        $status = $this->input->post('status');
 
         $username_val = str_replace(' ', '', $username);
 
         $data_edit = array(
             'nama' => $nama,
             'username' => $username_val,
-            'status_akun' => $status_akun
+            'status' => $status
         );
 
         $this->M_admin->admin_edit_up($data_edit, $id_admin);

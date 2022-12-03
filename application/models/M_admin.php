@@ -289,6 +289,14 @@ class M_admin extends CI_Model
     return $tampil;
   }
 
+  function admin_profil($ses_id)
+  {
+    $this->db->where('id_admin', $ses_id);
+    $hasil = $this->db->get('tb_admin')->result();
+    return $hasil;
+  }
+
+
   public function admin_tambah_up($data_tambah)
   {
     $this->db->insert('tb_admin', $data_tambah);
