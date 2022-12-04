@@ -26,9 +26,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <h5>Status Akun <span class="text-danger">*</span></h5>
+                                    <h5>Status<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="status_akun" class="form-control" value="<?= $row->status_akun ?>" required data-validation-required-message="This field is required" disabled>
+                                        <input type="text" name="status" class="form-control" value="<?= $row->status ?>" required data-validation-required-message="This field is required" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group">

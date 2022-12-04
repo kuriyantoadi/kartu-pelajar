@@ -145,7 +145,7 @@ class M_admin extends CI_Model
 
   function tampil_bk()
   {
-    $this->db->where('status_akun', 'guru_bk');
+    $this->db->where('status', 'guru_bk');
     $hasil = $this->db->get('tb_admin')->result();
     return $hasil;
   }

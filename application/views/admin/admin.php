@@ -20,7 +20,7 @@
                                 <th>No</th>
                                 <th>Nama Admin</th>
                                 <th>Username</th>
-                                <th>Status Akun</th>
+                                <th>Status</th>
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
@@ -34,7 +34,7 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama ?></td>
                                     <td><?= $row->username ?></td>
-                                    <td><?= $row->status_akun ?></td>
+                                    <td><?= $row->status ?></td>
                                     <td style="white-space: nowrap;">
                                         <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/admin_hapus/<?= $row->id_admin ?>" onclick="return confirm('Anda yakin menghapus data Admin <?= $row->nama ?> ?')"><i class="fa fa-times"></i></a>
                                         <!-- <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/admin_edit/' . $row->id_admin); ?>"><i class="fa fa-pencil"></i></a> -->
