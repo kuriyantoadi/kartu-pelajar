@@ -34,8 +34,8 @@
                                 <div class="form-group m-t-40">
                                     <h5>Status Akun <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <select name="status_akun" id="" class="form-control" required>
-                                            <option value="<?= $row->status_akun ?>">Pilihan ( <?= $row->status_akun ?> )</option>
+                                        <select name="status" id="" class="form-control" required>
+                                            <option value="<?= $row->status ?>">Pilihan ( <?= $row->status ?> )</option>
                                             <option value="admin">Non Aktif</option>
                                             <option value="guru_bk">Guru BK</option>
                                             <option value="guru_walas">Guru Wali Kelas</option>
