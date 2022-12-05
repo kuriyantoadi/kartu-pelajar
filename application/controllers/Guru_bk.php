@@ -55,86 +55,86 @@ class Guru_bk extends CI_Controller
 
 
     // awal pelanggaran
-    public function pelanggaran_siswa($id_siswa)
-    {
-        $data['pelanggaran_siswa'] = $this->M_admin->pelanggaran_siswa($id_siswa);
+    // public function pelanggaran_siswa($id_siswa)
+    // {
+    //     $data['pelanggaran_siswa'] = $this->M_admin->pelanggaran_siswa($id_siswa);
 
-        $this->load->view('template/header-bk');
-        $this->load->view('guru_bk/pelanggaran_siswa', $data);
-        $this->load->view('template/footer');
-    }
-
-
-    public function pelanggaran_tambah($id_siswa)
-    {
-        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
-        $data['tampil_point'] = $this->M_admin->tampil_point();
-        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
-        $data['tampil_bk'] = $this->M_admin->tampil_bk();
-
-        $data['ses_id'] = $this->session->userdata('ses_id');
-
-        $this->load->view('template/header-bk');
-        $this->load->view('guru_bk/pelanggaran_tambah', $data);
-        $this->load->view('template/footer');
-    }
+    //     $this->load->view('template/header-bk');
+    //     $this->load->view('guru_bk/pelanggaran_siswa', $data);
+    //     $this->load->view('template/footer');
+    // }
 
 
-    public function pelanggaran_tambah_up()
-    {
-        $config['upload_path']      = 'assets/photo_pelanggaran/';
-        $config['allowed_types']    = 'gif|jpg|png';
-        $config['max_size']         = 5000;
-        $config['encrypt_name']     = TRUE;
-        // $id_lapangan = $this->input->post('id_lapangan');
+    // public function pelanggaran_tambah($id_siswa)
+    // {
+    //     $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+    //     $data['tampil_point'] = $this->M_admin->tampil_point();
+    //     $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+    //     $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
+    //     $data['ses_id'] = $this->session->userdata('ses_id');
+
+    //     $this->load->view('template/header-bk');
+    //     $this->load->view('guru_bk/pelanggaran_tambah', $data);
+    //     $this->load->view('template/footer');
+    // }
 
 
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('photo_pelanggaran')) {
-            $error = array('error' => $this->upload->display_errors());
-            echo var_dump($error);
-            // $this->load->view('upload', $error);
-        } else {
-            $_data = array('upload_data' => $this->upload->data());
-
-            $id_admin = $this->session->userdata('ses_id');
+    // public function pelanggaran_tambah_up()
+    // {
+    //     $config['upload_path']      = 'assets/photo_pelanggaran/';
+    //     $config['allowed_types']    = 'gif|jpg|png';
+    //     $config['max_size']         = 5000;
+    //     $config['encrypt_name']     = TRUE;
+    //     // $id_lapangan = $this->input->post('id_lapangan');
 
 
-            $tgl_kejadian = $this->input->post('tgl_kejadian');
-            $timestamp = strtotime($tgl_kejadian);
-            $tgl_kejadian = date("d-m-Y", $timestamp);
+    //     $this->load->library('upload', $config);
+    //     if (!$this->upload->do_upload('photo_pelanggaran')) {
+    //         $error = array('error' => $this->upload->display_errors());
+    //         echo var_dump($error);
+    //         // $this->load->view('upload', $error);
+    //     } else {
+    //         $_data = array('upload_data' => $this->upload->data());
 
-            $id_kelas = $this->input->post('id_kelas');
-            $id_siswa = $this->input->post('id_siswa');
-            $id_point = $this->input->post('id_point');
-            $tgl_input = date('d-m-Y');
-            // $tgl_input = $this->input->post('tgl_input');
-            // $id_admin = $this->input->post('id_admin');
+    //         $id_admin = $this->session->userdata('ses_id');
 
 
-            $data_tambah = array(
-                'photo_pelanggaran' => $_data['upload_data']['file_name'],
-                'id_siswa' => $id_siswa,
-                'id_point' => $id_point,
-                'id_kelas' => $id_kelas,
-                'tgl_kejadian' => $tgl_kejadian,
-                'tgl_input' => $tgl_input,
-                'id_admin' => $id_admin
-            );
+    //         $tgl_kejadian = $this->input->post('tgl_kejadian');
+    //         $timestamp = strtotime($tgl_kejadian);
+    //         $tgl_kejadian = date("d-m-Y", $timestamp);
 
-            $this->M_admin->pelanggaran_tambah_up($data_tambah);
+    //         $id_kelas = $this->input->post('id_kelas');
+    //         $id_siswa = $this->input->post('id_siswa');
+    //         $id_point = $this->input->post('id_point');
+    //         $tgl_input = date('d-m-Y');
+    //         // $tgl_input = $this->input->post('tgl_input');
+    //         // $id_admin = $this->input->post('id_admin');
 
-            $this->session->set_flashdata('msg', '
-						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Pelanggaran Berhasil</strong>
 
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>');
-            redirect('Guru_bk/siswa_detail/' . $id_siswa);
-        }
-    }
+    //         $data_tambah = array(
+    //             'photo_pelanggaran' => $_data['upload_data']['file_name'],
+    //             'id_siswa' => $id_siswa,
+    //             'id_point' => $id_point,
+    //             'id_kelas' => $id_kelas,
+    //             'tgl_kejadian' => $tgl_kejadian,
+    //             'tgl_input' => $tgl_input,
+    //             'id_admin' => $id_admin
+    //         );
+
+    //         $this->M_admin->pelanggaran_tambah_up($data_tambah);
+
+    //         $this->session->set_flashdata('msg', '
+    // 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
+    // 						<strong>Tambah Pelanggaran Berhasil</strong>
+
+    // 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    // 							<span aria-hidden="true">&times;</span>
+    // 						</button>
+    // 					</div>');
+    //         redirect('Guru_bk/siswa_detail/' . $id_siswa);
+    //     }
+    // }
     // akhir pelanggaran
 
 
@@ -214,5 +214,261 @@ class Guru_bk extends CI_Controller
     }
 
     // akhir prestasi
+
+
+    // awal point
+
+    public function point()
+    {
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/point', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function point_tambah()
+    {
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/point_tambah');
+        $this->load->view('template/footer');
+    }
+
+
+    public function point_tambah_up()
+    {
+        $nama_point = $this->input->post('nama_point');
+        $jml_point = $this->input->post('jml_point');
+
+        $data_tambah = array(
+            'nama_point' => $nama_point,
+            'jml_point' => $jml_point
+
+        );
+
+        $this->M_admin->point_tambah($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Point Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Guru_bk/point');
+    }
+
+
+    public function point_hapus($id_point)
+    {
+        $success = $this->M_admin->point_hapus($id_point);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Guru_bk/point');
+    }
+
+    public function point_edit($id_point)
+    {
+        $data['tampil_point'] = $this->M_admin->point_edit($id_point);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('guru_bk/point_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function point_edit_up()
+    {
+        $id_point = $this->input->post('id_point');
+        $nama_point = $this->input->post('nama_point');
+        $jml_point = $this->input->post('jml_point');
+
+        $data_edit = array(
+            'nama_point' => $nama_point,
+            'jml_point' => $jml_point,
+        );
+
+        $this->M_admin->point_edit_up($data_edit, $id_point);
+
+        $this->session->set_flashdata('msg', '
+              <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                <strong>Edit Point Berhasil</strong>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+        redirect('Guru_bk/point');
+    }
+
+    // akhir point
+
+
+
+    // awal pelanggaran
+    public function pelanggaran()
+    {
+        $data['tampil_pelanggaran'] = $this->M_admin->tampil_pelanggaran();
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/pelanggaran', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_hapus($id_pelanggaran)
+    {
+        $id_pelanggaran = array('id_pelanggaran' => $id_pelanggaran);
+
+        $success = $this->M_admin->pelanggaran_hapus($id_pelanggaran);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Data Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/pelanggaran');
+    }
+
+    public function pelanggaran_detail($id_pelanggaran)
+    {
+        $data['pelanggaran_detail'] = $this->M_admin->pelanggaran_detail($id_pelanggaran);
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/pelanggaran_detail', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_siswa($id_siswa)
+    {
+        $data['pelanggaran_siswa'] = $this->M_admin->pelanggaran_siswa($id_siswa);
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/pelanggaran_siswa', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_edit($id_pelanggaran)
+    {
+        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
+        $data['pelanggaran_edit'] = $this->M_admin->pelanggaran_edit($id_pelanggaran);
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/pelanggaran_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function pelanggaran_edit_up()
+    {
+        $tgl_kejadian = $this->input->post('tgl_kejadian');
+        // $timestamp = strtotime($tgl_kejadian);
+        // $tgl_kejadian = date("d-m-Y", $timestamp);
+
+        $id_pelanggaran = $this->input->post('id_pelanggaran');
+        $id_point = $this->input->post('id_point');
+        $tgl_input = date('d-m-Y');
+        $id_admin = $this->input->post('id_admin');
+
+
+        $data_edit = array(
+            'id_point' => $id_point,
+            'tgl_kejadian' => $tgl_kejadian,
+            'tgl_input' => $tgl_input,
+            'id_admin' => $id_admin
+        );
+
+        $this->M_admin->pelanggaraan_edit_up($data_edit, $id_pelanggaran);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Pelanggaran Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Guru_bk/pelanggaran');
+    }
+
+    public function pelanggaran_tambah($id_siswa)
+    {
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['tampil_point'] = $this->M_admin->tampil_point();
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
+        $this->load->view('template/header-bk');
+        $this->load->view('Guru_bk/pelanggaran_tambah', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function pelanggaran_tambah_up()
+    {
+        $config['upload_path']      = 'assets/photo_pelanggaran/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 5000;
+        $config['encrypt_name']     = TRUE;
+        // $id_lapangan = $this->input->post('id_lapangan');
+
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_pelanggaran')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+
+            $tgl_kejadian = $this->input->post('tgl_kejadian');
+            $timestamp = strtotime($tgl_kejadian);
+            $tgl_kejadian = date("d-m-Y", $timestamp);
+
+            $id_kelas = $this->input->post('id_kelas');
+            $id_siswa = $this->input->post('id_siswa');
+            $id_point = $this->input->post('id_point');
+            $tgl_input = date('d-m-Y');
+            // $tgl_input = $this->input->post('tgl_input');
+            $id_admin = $this->input->post('id_admin');
+
+
+            $data_tambah = array(
+                'photo_pelanggaran' => $_data['upload_data']['file_name'],
+                'id_siswa' => $id_siswa,
+                'id_point' => $id_point,
+                'id_kelas' => $id_kelas,
+                'tgl_kejadian' => $tgl_kejadian,
+                'tgl_input' => $tgl_input,
+                'id_admin' => $id_admin
+            );
+
+            $this->M_admin->pelanggaran_tambah_up($data_tambah);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Pelanggaran Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Guru_bk/siswa_detail/' . $id_siswa);
+        }
+    }
+
+    //akhir pelanggaran
 
 }
