@@ -12,7 +12,7 @@
                         <h4 class="card-title">Tambah Pelanggaran </h4>
 
                         <?=
-                        form_open_multipart('Guru_bk/pelanggaran_tambah_up');
+                        form_open_multipart('Pembina_pds/pelanggaran_tambah_up');
                         foreach ($tampil_siswa as $row) {
                         ?>
                             <form class="m-t-40" novalidate>

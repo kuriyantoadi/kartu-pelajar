@@ -32,7 +32,7 @@
                                     <td><?= $row->nama_siswa ?></td>
                                     <td><?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
                                     <td style="white-space: nowrap;">
-                                        <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Guru_bk/siswa_detail/<?= $row->id_siswa ?>" title="siswa detail"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Pembina_pds/siswa_detail/<?= $row->id_siswa ?>" title="siswa detail"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>

@@ -39,35 +39,29 @@
                                 <div class="form-group">
                                     <h5>Nama Point Pelanggaran<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="nama_siswa" value="<?= $row->nama_siswa ?>" class="form-control" required data-validation-required-message="This field is required" disabled>
+                                        <div class="controls">
+                                            <select name="id_admin" id="id_admin" required class="form-control">
+                                                <option value="<?= $row->id_admin ?>">Pilih Guru BK ( <?= $row->nama ?> )</option>
+                                                <?php foreach ($tampil_bk as $row_bk) { ?>
+                                                    <option value="<?= $row_bk->id_admin ?>"> <?= $row_bk->nama ?> </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <h5>Guru BK<span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <select name="id_admin" id="id_admin" required class="form-control">
-                                            <option value="<?= $row->id_admin ?>">Pilih Guru BK ( <?= $row->nama ?> )</option>
-                                            <?php foreach ($tampil_bk as $row_bk) { ?>
-                                                <option value="<?= $row_bk->id_admin ?>"> <?= $row_bk->nama ?> </option>
-                                            <?php } ?>
-                                        </select>
+                                    <div class="form-group">
+                                        <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" value="<?= $row->tgl_kejadian ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <input type="text" value="<?= $row->tgl_kejadian ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
+                                    <div class="text-xs-right">
+                                        <button type="submit" class="btn btn-sm btn-info">Submit</button>
+                                        <a href="<?php site_url('Guru_bk/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
                                     </div>
-                                </div>
-
-                                <div class="text-xs-right">
-                                    <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                                    <a href="<?php site_url('Guru_bk/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
-                                </div>
-                                <?= form_close() ?>
-                            <?php } ?>
+                                    <?= form_close() ?>
+                                <?php } ?>
                             </form>
                     </div>
                 </div>

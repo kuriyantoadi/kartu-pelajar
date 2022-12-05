@@ -61,8 +61,8 @@ $ses_id = $this->session->userdata('ses_id');
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Admin/profil"><i class="ti-user"></i> Profil Saya</a></li>
-                                    <li><a href="<?= base_url() ?>Admin/password"><i class="ti-settings"></i> Password</a></li>
+                                    <li><a href="<?= base_url() ?>Pembina_pds/profil"><i class="ti-user"></i> Profil Saya</a></li>
+                                    <li><a href="<?= base_url() ?>Pembina_pds/password"><i class="ti-settings"></i> Password</a></li>
                                     <li><a href="<?= base_url() ?>Login/admin_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -78,26 +78,15 @@ $ses_id = $this->session->userdata('ses_id');
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">PEMBINA PDS</li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
                         </li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/kelas" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Kelas </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>
                         </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i><span class="hide-menu">Prestasi </span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/point" aria-expanded="false"><i class="mdi mdi-stop-circle"></i><span class="hide-menu">Point </span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/admin" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Admin </span></a>
-                        </li>
+
                     </ul>
                 </nav>
             </div>

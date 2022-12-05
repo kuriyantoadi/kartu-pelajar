@@ -49,8 +49,8 @@
                             </table>
 
                             <div class="text-xs-right">
-                                <a href="<?= site_url('Guru_bk/pelanggaran_edit/' . $row->id_pelanggaran) ?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="<?= base_url() ?>Guru_bk/pelanggaran" class="btn btn-sm btn-inverse">Kembali</a>
+                                <a href="<?= site_url('Pembina_pds/pelanggaran_edit/' . $row->id_pelanggaran) ?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?= base_url() ?>Pembina_pds/pelanggaran" class="btn btn-sm btn-inverse">Kembali</a>
                             </div>
                         <?php } ?>
                         </form>

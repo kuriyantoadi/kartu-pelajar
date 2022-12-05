@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Halaman Guru_bk</h3>
+            <h3 class="text-themecolor">Halaman Guru BK</h3>
         </div>
     </div>
     <div class="container-fluid">
