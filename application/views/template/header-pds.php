@@ -1,6 +1,6 @@
 <?php
-    $ses_nama = $this->session->userdata('ses_user');
-    $ses_id = $this->session->userdata('ses_id');
+$ses_nama = $this->session->userdata('ses_user');
+$ses_id = $this->session->userdata('ses_id');
 
 ?>
 
@@ -15,6 +15,7 @@
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/images/logosmk.png">
     <title>Kartu Siswa SMKN 1 Kragilan</title>
+
     <link href="<?= base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/colors/blue.css" id="theme" rel="stylesheet">
@@ -37,6 +38,8 @@
                         </b>
                         <span>
                             <h3 class="d-inline">Kartu Siswa</h3>
+                            <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
                         </span>
                     </a>
                 </div>
@@ -44,11 +47,10 @@
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
                         <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-
                     </ul>
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url() ?>/assets/images/users/teacher.png" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
@@ -59,9 +61,9 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="<?= base_url() ?>Siswa/password"><i class="ti-settings"></i> Password</a></li>
-                                    <li><a href="<?= base_url() ?>Login/siswa_logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="<?= base_url() ?>Admin/profil"><i class="ti-user"></i> Profil Saya</a></li>
+                                    <li><a href="<?= base_url() ?>Admin/password"><i class="ti-settings"></i> Password</a></li>
+                                    <li><a href="<?= base_url() ?>Login/admin_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -69,26 +71,34 @@
                 </div>
             </nav>
         </header>
-
         <aside class="left-sidebar">
             <div class="scroll-sidebar">
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li class="nav-small-cap">SISWA</li>
+                        <li class="nav-small-cap">PEMBINA PDS</li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
-
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/kelas" aria-expanded="false"><i class="mdi mdi-school"></i><span class="hide-menu">Kelas </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i><span class="hide-menu">Prestasi </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/point" aria-expanded="false"><i class="mdi mdi-stop-circle"></i><span class="hide-menu">Point </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Admin/admin" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Admin </span></a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </aside>
-        <div class="page-wrapper">
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Halaman Siswa</h3>
-                </div>
-            </div>
