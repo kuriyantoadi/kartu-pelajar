@@ -246,50 +246,6 @@ class Guru_bk extends CI_Controller
         redirect('Guru_bk/prestasi');
     }
 
-
-    public function prestasi_edit($id_prestasi)
-    {
-        $data['tampil_prestasi_detail'] = $this->M_admin->prestasi_detail($id_prestasi);
-
-        $this->load->view('template/header-bk');
-        $this->load->view('guru_bk/prestasi_edit', $data);
-        $this->load->view('template/footer');
-    }
-
-    public function prestasi_edit_up()
-    {
-        $id_prestasi = $this->input->post('id_prestasi');
-        $tanggal_pelaksanaan = $this->input->post('tanggal_pelaksanaan');
-        $nama_kegiatan = $this->input->post('nama_kegiatan');
-        $juara_ke = $this->input->post('juara_ke');
-        $tingkat = $this->input->post('tingkat');
-        $tempat_lomba = $this->input->post('tempat_lomba');
-        $tim_individu = $this->input->post('tim_individu');
-        $penyelenggara_acara = $this->input->post('penyelenggara_acara');
-
-        $data_edit = array(
-            'tanggal_pelaksanaan' => $tanggal_pelaksanaan,
-            'nama_kegiatan' => $nama_kegiatan,
-            'juara_ke' => $juara_ke,
-            'tingkat' => $tingkat,
-            'tempat_lomba' => $tempat_lomba,
-            'tim_individu' => $tim_individu,
-            'penyelenggara_acara' => $penyelenggara_acara
-        );
-
-        $this->M_admin->prestasi_edit_up($data_edit, $id_prestasi);
-
-        $this->session->set_flashdata('msg', '
-						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<strong>Tambah Prestasi Berhasil</strong>
-
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>');
-        redirect('Guru_bk/prestasi_detail/' . $id_prestasi);
-    }
-
     // akhir prestasi
 
 

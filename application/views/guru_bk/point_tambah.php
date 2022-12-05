@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title ">Form Tambah Point</h4>
 
-                        <?= form_open('Admin/point_tambah_up') ?>
+                        <?= form_open('Guru_bk/point_tambah_up') ?>
 
                         <form class="m-t-40" novalidate>
                             <div class="form-group m-t-40">
@@ -30,7 +30,7 @@
 
                             <div class="text-xs-right">
                                 <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                                <a href="<?= base_url() ?>Admin/kelas" class="btn btn-sm btn-inverse">Kembali</a>
+                                <a href="<?= base_url() ?>Guru_bk/kelas" class="btn btn-sm btn-inverse">Kembali</a>
                             </div>
                         </form>
 

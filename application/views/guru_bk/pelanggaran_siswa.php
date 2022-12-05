@@ -63,7 +63,7 @@
                             <?php } ?>
                         <?php } ?>
                         <div class="text-xs-right">
-                            <!-- <a href="<?= site_url('Admin/siswa_detail/' . $row->id_siswa) ?>" class="btn btn-sm btn-inverse">Kembali</a> -->
+                            <!-- <a href="<?= site_url('Guru_bk/siswa_detail/' . $row->id_siswa) ?>" class="btn btn-sm btn-inverse">Kembali</a> -->
                         </div>
 
                         </form>

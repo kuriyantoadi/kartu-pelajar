@@ -12,7 +12,7 @@
                         <h4 class="card-title">Edit Pelanggaran </h4>
 
                         <?=
-                        form_open_multipart('Admin/pelanggaran_edit_up');
+                        form_open_multipart('Guru_bk/pelanggaran_edit_up');
                         foreach ($pelanggaran_edit as $row) {
                         ?>
                             <form class="m-t-40" novalidate>
@@ -69,7 +69,7 @@
 
                                 <div class="text-xs-right">
                                     <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                                    <a href="<?php site_url('Admin/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
+                                    <a href="<?php site_url('Guru_bk/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
                                 </div>
                                 <?= form_close() ?>
                             <?php } ?>

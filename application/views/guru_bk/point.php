@@ -13,7 +13,7 @@
                     <?= $this->session->flashdata('msg') ?>
 
 
-                    <a href="<?= base_url() ?>Admin/point_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
+                    <a href="<?= base_url() ?>Guru_bk/point_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -34,8 +34,8 @@
                                     <td><?= $row->nama_point ?></td>
                                     <td><?= $row->jml_point ?></td>
                                     <td style="white-space: nowrap;">
-                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/point_hapus/<?= $row->id_point ?>" onclick="return confirm('Anda yakin menghapus data siswa <?= $row->nama_point ?> ?')"><i class="fa fa-times"></i></a>
-                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/point_edit/' . $row->id_point); ?>"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Guru_bk/point_hapus/<?= $row->id_point ?>" onclick="return confirm('Anda yakin menghapus data siswa <?= $row->nama_point ?> ?')"><i class="fa fa-times"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Guru_bk/point_edit/' . $row->id_point); ?>"><i class="fa fa-pencil"></i></a>
 
                                     </td>
                                 </tr>
