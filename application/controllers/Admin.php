@@ -1028,6 +1028,41 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function walas_tambah_up()
+    {
+        $id_admin = $this->input->post('id_admin');
+        $id_kelas = $this->input->post('id_kelas');
+
+        $data_tambah = array(
+            'id_admin' => $id_admin,
+            'id_kelas' => $id_kelas
+
+        );
+
+        $this->M_admin->walas_tambah_up($data_tambah);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Wali Kelas Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/walas');
+    }
+
+    public function walas_edit($id_walas)
+    {
+        $data['tampil'] = $this->M_admin->cari_walas($id_walas);
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_walas'] = $this->M_admin->admin_walas();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/walas_edit', $data);
+        $this->load->view('template/footer');
+    }
+
     // akhir walas
 
     // Password

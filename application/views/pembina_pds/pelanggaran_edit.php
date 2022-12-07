@@ -12,7 +12,7 @@
                         <h4 class="card-title">Edit Pelanggaran </h4>
 
                         <?=
-                        form_open_multipart('Pembina_pds/pelanggaran_edit_up');
+                        form_open('Pembina_pds/pelanggaran_edit_up');
                         foreach ($pelanggaran_edit as $row) {
                         ?>
                             <form class="m-t-40" novalidate>
@@ -39,14 +39,12 @@
                                 <div class="form-group">
                                     <h5>Nama Point Pelanggaran<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <div class="controls">
-                                            <select name="id_admin" id="id_admin" required class="form-control">
-                                                <option value="<?= $row->id_admin ?>">Pilih Guru BK ( <?= $row->nama ?> )</option>
-                                                <?php foreach ($tampil_bk as $row_bk) { ?>
-                                                    <option value="<?= $row_bk->id_admin ?>"> <?= $row_bk->nama ?> </option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                        <select name="id_point" id="id_point" required class="form-control">
+                                            <option value="<?= $row->id_point ?>">Pilihan Awal ( <?= $row->nama_point ?> )</option>
+                                            <?php foreach ($tampil_point as $row_point) { ?>
+                                                <option value="<?= $row_point->id_point ?>"> <?= $row_point->nama_point ?> ( <?= $row_point->jml_point ?> Point) </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -63,7 +61,7 @@
                                 </div>
                                 <?= form_close() ?>
                             <?php } ?>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>
