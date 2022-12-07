@@ -93,6 +93,11 @@ class Login extends CI_Controller
                 $this->session->set_userdata('ses_id', $data['id_admin']);
                 $this->session->set_userdata('ses_user', $data['username']);
                 redirect('Pembina_pds/dashboard');
+            } elseif ($data['status'] == 'guru_walas') {
+                $this->session->set_userdata('guru_walas', true);
+                $this->session->set_userdata('ses_id', $data['id_admin']);
+                $this->session->set_userdata('ses_user', $data['username']);
+                redirect('Walas/dashboard');
             } else {
                 $url = base_url('Admin/index');
                 echo $this->session->set_flashdata('msg', '

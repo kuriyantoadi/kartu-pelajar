@@ -288,7 +288,7 @@ class Pembina_pds extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/pelanggaran');
+        redirect('Pembina_pds/pelanggaran');
     }
     //akhir pelanggaran 
 

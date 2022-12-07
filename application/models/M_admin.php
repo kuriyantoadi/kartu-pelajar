@@ -323,4 +323,56 @@ class M_admin extends CI_Model
 
   // admin akhir
 
+
+  // walas awal
+
+
+  function walas()
+  {
+    $this->db->select('*');
+    $this->db->from('tb_walas');
+    $this->db->join('tb_kelas', 'tb_walas.id_kelas = tb_kelas.id_kelas');
+    $this->db->join('tb_admin', 'tb_walas.id_admin = tb_admin.id_admin');
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  public function admin_walas()
+  {
+    $this->db->where('status', 'guru_walas');
+    $hasil = $this->db->get('tb_admin')->result();
+    return $hasil;
+  }
+
+  public function walas_tambah_up($data_tambah)
+  {
+    $this->db->insert('tb_walas', $data_tambah);
+  }
+
+
+  public function cari_walas($id_walas)
+  {
+    $this->db->select('*');
+    $this->db->from('tb_walas');
+    $this->db->join('tb_kelas', 'tb_walas.id_kelas = tb_kelas.id_kelas');
+    $this->db->join('tb_admin', 'tb_walas.id_admin = tb_admin.id_admin');
+    $this->db->where('id_walas', $id_walas);
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  function walas_edit_up($data_edit, $id_walas)
+  {
+    $this->db->where('id_walas', $id_walas);
+    $this->db->update('tb_walas', $data_edit);
+  }
+
+  public function walas_hapus($id_walas)
+  {
+    $this->db->where($id_walas);
+    $this->db->delete('tb_walas');
+  }
+
+  // walas akhir
+
 }
