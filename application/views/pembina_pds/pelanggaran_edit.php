@@ -48,21 +48,22 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="form-group">
-                                        <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" value="<?= $row->tgl_kejadian ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
-                                        </div>
+                                <div class="form-group">
+                                    <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <input type="date" value="<?= $row->tgl_kejadian ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
                                     </div>
+                                </div>
 
-                                    <div class="text-xs-right">
-                                        <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                                        <a href="<?php site_url('Guru_bk/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
-                                    </div>
-                                    <?= form_close() ?>
-                                <?php } ?>
-                            </form>
+                                <div class="text-xs-right">
+                                    <button type="submit" class="btn btn-sm btn-info">Submit</button>
+                                    <a href="<?php site_url('Guru_bk/pelanggaraan') ?> " class="btn btn-sm btn-inverse">Cancel</a>
+                                </div>
+                                <?= form_close() ?>
+                            <?php } ?>
+                        </form>
                     </div>
                 </div>
             </div>
