@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" value="<?= $row->tgl_kejadian ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
+                                        <input type="date" value="<?= date('Y-m-d', strtotime($row->tgl_kejadian)) ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
                                     </div>
                                 </div>
 
