@@ -78,16 +78,27 @@ $ses_id = $this->session->userdata('ses_id');
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">Wali Kelas</li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Walas/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Walas/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Walas/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i><span class="hide-menu">Prestasi </span></a>
                         </li>
                         <li>
-                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Walas/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>
                         </li>
 
                     </ul>
                 </nav>
             </div>
         </aside>
+
+        <div class="page-wrapper">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Halaman Wali Kelas</h3>
+                </div>
+            </div>
