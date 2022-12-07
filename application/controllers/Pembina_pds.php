@@ -268,7 +268,9 @@ class Pembina_pds extends CI_Controller
         $id_pelanggaran = $this->input->post('id_pelanggaran');
         $id_point = $this->input->post('id_point');
         $tgl_input = date('d-m-Y');
-        $id_admin = $this->input->post('id_admin');
+
+        $id_admin = $this->session->userdata('ses_id');
+        // $id_admin = $this->input->post('id_admin');
 
 
         $data_edit = array(
