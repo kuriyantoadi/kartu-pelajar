@@ -361,6 +361,18 @@ class M_admin extends CI_Model
     return $query;
   }
 
+  function walas_edit_up($data_edit, $id_walas)
+  {
+    $this->db->where('id_walas', $id_walas);
+    $this->db->update('tb_walas', $data_edit);
+  }
+
+  public function walas_hapus($id_walas)
+  {
+    $this->db->where($id_walas);
+    $this->db->delete('tb_walas');
+  }
+
   // walas akhir
 
 }

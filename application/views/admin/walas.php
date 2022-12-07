@@ -33,7 +33,7 @@
                                     <td><?= $row->nama ?></td>
                                     <td><?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
                                     <td style="white-space: nowrap;">
-                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/walas_hapus/<?= $row->id_walas ?>" onclick="return confirm('Anda yakin menghapus data siswa <?= $row->nama ?> ?')"><i class="fa fa-times"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/walas_hapus/<?= $row->id_walas ?>" onclick="return confirm('Anda yakin menghapus data wali kelas <?= $row->nama ?> ?')"><i class="fa fa-times"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/walas_edit/' . $row->id_walas); ?>"><i class="fa fa-pencil"></i></a>
                                     </td>
                                 </tr>

@@ -20,6 +20,8 @@
                             ?>
                                 <div class="form-group">
                                     <h5>Nama Wali Kelas <span class="text-danger">*</span></h5>
+                                    <input type="hidden" name="id_walas" value="<?= $row->id_walas ?>">
+
                                     <div class="controls">
                                         <select class="form-control" name="id_admin" id="">
                                             <option value="<?= $row->id_admin ?>">Pilihan Awal ( <?= $row->nama ?> )</option>

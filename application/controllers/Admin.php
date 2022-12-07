@@ -1063,6 +1063,46 @@ class Admin extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    public function walas_edit_up()
+    {
+        $id_walas = $this->input->post('id_walas');
+        $id_admin = $this->input->post('id_admin');
+        $id_kelas = $this->input->post('id_kelas');
+
+        $data_edit = array(
+            'id_admin' => $id_admin,
+            'id_kelas' => $id_kelas
+        );
+
+        $this->M_admin->walas_edit_up($data_edit, $id_walas);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Wali Kelas Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/walas/');
+    }
+
+    public function walas_hapus($id_walas)
+    {
+        $id_walas = array('id_walas' => $id_walas);
+
+        $success = $this->M_admin->walas_hapus($id_walas);
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Hapus Wali Kelas Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Admin/walas');
+    }
     // akhir walas
 
     // Password
