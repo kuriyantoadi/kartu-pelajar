@@ -976,7 +976,7 @@ class Admin extends CI_Controller
         if ($password_baru == $password_konfirmasi) {
 
             $data_edit = array(
-                'password' => $password_baru
+                'password' => sha1($password_baru)
             );
 
             $this->M_admin->admin_edit_up($data_edit, $id_admin);
