@@ -50,10 +50,6 @@
                                         <td><?= $row->tgl_input ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Tanggal Input</td>
-                                        <td><?= $row->tgl_input ?></td>
-                                    </tr>
-                                    <tr>
                                         <td class="col-4">Photo Pelanggaran</td>
                                         <td>
                                             <img width="200px" src="<?= base_url() ?>assets/photo_pelanggaran/<?= $row->photo_pelanggaran ?>" alt="Photo">
