@@ -42,7 +42,18 @@
                                 <?php foreach ($siswa_detail as $row) { ?>
 
                                     <tbody>
+                                        <tr>
+                                            <td>Total Point</td>
+                                            <td>
+                                                <?php if ($total_point->total_point == NULL) {  ?>
 
+                                                    <button class="btn btn-sm btn-success btn-rounded">Tidak memiliki point</button>
+                                                <?php } else { ?>
+                                                    <a href="<?= site_url('Guru_bk/pelanggaran_siswa/' . $row->id_siswa) ?>" class="btn btn-sm btn-danger btn-rounded"><?= $total_point->total_point ?> Point</a>
+
+                                                <?php } ?>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <td>Nama Siswa</td>
                                             <td>: <?= $row->nama_siswa ?></td>
@@ -76,6 +87,7 @@
                                             <td>Status</td>
                                             <td>: <?= $row->status ?></td>
                                         </tr>
+
                                         <tr>
                                             <td class="col-4">Foto</td>
                                             <td>:

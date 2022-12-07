@@ -9,6 +9,8 @@ class Siswa extends CI_Controller
         parent::__construct();
         // $this->load->model('M_login');
         $this->load->model('M_siswa');
+        $this->load->model('M_guru_bk');
+
 
         // session login
         if ($this->session->userdata('siswa') != true) {
@@ -86,6 +88,26 @@ class Siswa extends CI_Controller
 
 
     // akhir pelanggaran
+
+
+    // awal point
+    public function point_siswa()
+    {
+        $ses_id = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
+
+        $data['total_point'] = $this->M_guru_bk->total_point($ses_id);
+
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/point_siswa', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    // akhir point
+
+
 
     public function page()
     {

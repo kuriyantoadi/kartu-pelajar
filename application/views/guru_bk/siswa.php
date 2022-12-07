@@ -23,6 +23,7 @@
                         </thead>
 
                         <tbody>
+
                             <?php
                             $no = 1;
                             foreach ($tampil_siswa as $row) {

@@ -83,6 +83,9 @@ $ses_id = $this->session->userdata('ses_id');
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/prestasi" aria-expanded="false"><i class="mdi mdi-trophy"></i>Prestasi</a>
                         </li>
                         <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/point_siswa" aria-expanded="false"><i class="mdi mdi-stop-circle"></i>Point</a>
+                        </li>
+                        <li>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
                         </li>
                     </ul>

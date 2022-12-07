@@ -8,6 +8,8 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_admin');
+        $this->load->model('M_guru_bk');
+
 
         // session login
         if ($this->session->userdata('admin') != true) {
@@ -281,6 +283,7 @@ class Admin extends CI_Controller
     public function siswa_detail($id_siswa)
     {
         $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['total_point'] = $this->M_guru_bk->total_point($id_siswa);
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/siswa_detail', $data);
@@ -1033,15 +1036,37 @@ class Admin extends CI_Controller
         $id_admin = $this->input->post('id_admin');
         $id_kelas = $this->input->post('id_kelas');
 
-        $data_tambah = array(
-            'id_admin' => $id_admin,
-            'id_kelas' => $id_kelas
+        $cek_walas = $this->M_admin->cek_walas($id_admin);
 
-        );
+        // //tampil id_admin
+        // foreach ($cek_walas as $row) {
+        //     $id_admin = $row->id_admin;
+        // }
 
-        $this->M_admin->walas_tambah_up($data_tambah);
+        if (!empty($cek_walas)) {
 
-        $this->session->set_flashdata('msg', '
+            //jika wali kelas sudah menjadi mempunyai kelas
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<strong>Wali kelas yang anda pilih, sudah memiliki kelas</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Admin/walas');
+        } else {
+
+            //jika wali kelas belum menjadi mempunyai kelas
+            $data_tambah = array(
+                'id_admin' => $id_admin,
+                'id_kelas' => $id_kelas
+
+            );
+
+            $this->M_admin->walas_tambah_up($data_tambah);
+
+            $this->session->set_flashdata('msg', '
 						<div class="alert alert-primary alert-dismissible fade show" role="alert">
 							<strong>Tambah Wali Kelas Berhasil</strong>
 
@@ -1049,7 +1074,8 @@ class Admin extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Admin/walas');
+            redirect('Admin/walas');
+        }
     }
 
     public function walas_edit($id_walas)

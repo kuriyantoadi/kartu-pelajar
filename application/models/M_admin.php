@@ -350,6 +350,14 @@ class M_admin extends CI_Model
   }
 
 
+
+  public function cek_walas($id_admin)
+  {
+    $this->db->where('id_admin', $id_admin);
+    $hasil = $this->db->get('tb_walas')->result();
+    return $hasil;
+  }
+
   public function cari_walas($id_walas)
   {
     $this->db->select('*');
