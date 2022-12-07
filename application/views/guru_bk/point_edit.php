@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h4 class="card-title ">Form Edit Point</h4>
 
-                        <?= form_open('Admin/point_edit_up') ?>
+                        <?= form_open('Guru_bk/point_edit_up') ?>
                         <?php foreach ($tampil_point as $row) {   ?>
 
                             <form class="m-t-40" novalidate>

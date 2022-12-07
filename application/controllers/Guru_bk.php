@@ -519,7 +519,9 @@ class Guru_bk extends CI_Controller
             $id_point = $this->input->post('id_point');
             $tgl_input = date('d-m-Y');
             // $tgl_input = $this->input->post('tgl_input');
-            $id_admin = $this->input->post('id_admin');
+
+            $id_admin = $this->session->userdata('ses_id');
+            // $id_admin = $this->input->post('id_admin');
 
 
             $data_tambah = array(
