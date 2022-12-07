@@ -17,14 +17,14 @@
                             <div class="form-group m-t-40">
                                 <h5>Nama Point <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" class="form-control" name="nama_point">
+                                    <input type="text" class="form-control" name="nama_point" required>
                                 </div>
                             </div>
 
                             <div class="form-group m-t-20">
                                 <h5>Jumlah Point Point <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="number" class="form-control" name="jml_point">
+                                    <input type="number" class="form-control" name="jml_point" required>
                                 </div>
                             </div>
 

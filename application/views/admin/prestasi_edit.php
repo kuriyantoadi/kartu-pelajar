@@ -32,7 +32,7 @@
                                 <div class="form-group">
                                     <h5>Tanggal Pelaksanaan <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="tanggal_pelaksanaan" value="<?= $row->tanggal_pelaksanaan ?>" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
+                                        <input type="date" name="tanggal_pelaksanaan" value="<?= date('Y-m-d', strtotime($row->tanggal_pelaksanaan)) ?>" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
                                     </div>
                                 </div>
                                 <div class="form-group">
