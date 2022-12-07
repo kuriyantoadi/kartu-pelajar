@@ -12,7 +12,7 @@
                         <h4 class="card-title">Edit Pelanggaran </h4>
 
                         <?=
-                        form_open_multipart('Guru_bk/pelanggaran_edit_up');
+                        form_open_multipart('Pembina_pds/pelanggaran_edit_up');
                         foreach ($pelanggaran_edit as $row) {
                         ?>
                             <form class="m-t-40" novalidate>

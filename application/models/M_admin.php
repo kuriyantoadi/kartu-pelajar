@@ -323,4 +323,40 @@ class M_admin extends CI_Model
 
   // admin akhir
 
+
+  // walas awal
+
+
+  function walas()
+  {
+    $this->db->select('*');
+    $this->db->from('tb_walas');
+    $this->db->join('tb_kelas', 'tb_walas.id_kelas = tb_kelas.id_kelas');
+    $this->db->join('tb_admin', 'tb_walas.id_admin = tb_admin.id_admin');
+    $query = $this->db->get()->result();
+    return $query;
+  }
+
+  public function admin_walas()
+  {
+    $this->db->where('status', 'guru_walas');
+    $hasil = $this->db->get('tb_admin')->result();
+    return $hasil;
+  }
+
+
+  // function tampil_pelanggaran()
+  // {
+  //   $this->db->select('*');
+  //   $this->db->from('tb_pelanggaran');
+  //   $this->db->join('tb_siswa', 'tb_pelanggaran.id_siswa = tb_siswa.id_siswa');
+  //   $this->db->join('tb_kelas', 'tb_pelanggaran.id_kelas = tb_kelas.id_kelas');
+  //   $this->db->join('tb_admin', 'tb_pelanggaran.id_admin = tb_admin.id_admin');
+  //   $this->db->join('tb_point', 'tb_pelanggaran.id_point = tb_point.id_point');
+
+  //   $query = $this->db->get()->result();
+  //   return $query;
+  // }
+  // walas akhir
+
 }

@@ -1006,6 +1006,30 @@ class Admin extends CI_Controller
     // akhir admin
 
 
+    // awal walas
+
+    public function walas()
+    {
+        $data['tampil'] = $this->M_admin->walas();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/walas', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function walas_tambah()
+    {
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+        $data['tampil_walas'] = $this->M_admin->admin_walas();
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/walas_tambah', $data);
+        $this->load->view('template/footer');
+    }
+
+    // akhir walas
+
     // Password
     public function password()
     {
