@@ -38,14 +38,14 @@
                             <div class="form-group">
                                 <h5>Password Baru <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="password_baru" value="" class="form-control" required data-validation-required-message="This field is required" require>
+                                    <input type="password" name="password_baru" value="" class="form-control" required data-validation-required-message="This field is required" require>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <h5>Password Konfirmasi <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="password_konfirmasi" value="" class="form-control" required data-validation-required-message="This field is required" require>
+                                    <input type="password" name="password_konfirmasi" value="" class="form-control" required data-validation-required-message="This field is required" require>
                                 </div>
                             </div>
 
