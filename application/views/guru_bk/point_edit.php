@@ -32,7 +32,7 @@
 
                                 <div class="text-xs-right">
                                     <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                                    <a href="<?= base_url() ?>Admin/kelas" class="btn btn-sm btn-inverse">Kembali</a>
+                                    <a href="<?= base_url() ?>Guru_bk/point" class="btn btn-sm btn-inverse">Kembali</a>
                                 </div>
                             </form>
 
