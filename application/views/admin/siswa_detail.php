@@ -103,7 +103,7 @@
                                         <tr>
                                             <td class="col-4">Foto</td>
                                             <td>:
-                                                <img width="100px" src="<?= base_url() ?>assets/photo_siswa/<?= $row->photo_siswa ?>" alt="Photo">
+                                                <img width="100px" src="<?= base_url() ?>assets/photo_siswa/<?= $row->photo_siswa ?>" alt="Photo Siswa Belum Input">
                                             </td>
                                         </tr>
                                     </tbody>

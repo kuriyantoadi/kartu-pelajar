@@ -43,7 +43,6 @@
                         </table>
 
                         <div class="text-xs-right">
-                            <a href="<?= site_url('Walas/pelanggaran_edit/' . $row->id_pelanggaran) ?>" class="btn btn-sm btn-info">Edit</a>
                             <a href="<?= base_url() ?>Walas/pelanggaran" class="btn btn-sm btn-inverse">Kembali</a>
                         </div>
                     <?php } ?>
