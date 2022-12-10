@@ -34,21 +34,26 @@ class Pembina_pds extends CI_Controller
     // Password
     public function password()
     {
+        $id_admin = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_admin->cari_admin($id_admin);
+
         $this->load->view('template/header-pds');
-        $this->load->view('pembina_pds/password');
+        $this->load->view('pembina_pds/password', $data);
         $this->load->view('template/footer');
     }
 
+
     public function password_up()
     {
-        $id_admin = $this->input->post('id_admin');
+        $id_admin = $this->session->userdata('ses_id');
+
         $password_baru = $this->input->post('password_baru');
         $password_konfirmasi = $this->input->post('password_konfirmasi');
 
         if ($password_baru == $password_konfirmasi) {
 
             $data_edit = array(
-                'password' => $password_baru
+                'password' => sha1($password_baru)
             );
 
             $this->M_admin->admin_edit_up($data_edit, $id_admin);
@@ -61,7 +66,7 @@ class Pembina_pds extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-            redirect('Pembina_pds/profil/');
+            redirect('pembina_pds/password/');
         }
 
         $this->session->set_flashdata('msg', '
@@ -72,8 +77,9 @@ class Pembina_pds extends CI_Controller
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>');
-        redirect('Pembina_pds/profil/' . $id_admin);
+        redirect('pembina_pds/password/' . $id_admin);
     }
+    // password akhir
 
     public function profil()
     {

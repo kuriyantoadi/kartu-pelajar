@@ -470,4 +470,55 @@ class Guru_bk extends CI_Controller
 
     //akhir pelanggaran
 
+
+    // password 
+    public function password_up()
+    {
+        $id_admin = $this->session->userdata('ses_id');
+
+        $password_baru = $this->input->post('password_baru');
+        $password_konfirmasi = $this->input->post('password_konfirmasi');
+
+        if ($password_baru == $password_konfirmasi) {
+
+            $data_edit = array(
+                'password' => sha1($password_baru)
+            );
+
+            $this->M_admin->admin_edit_up($data_edit, $id_admin);
+
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Ganti Password Admin Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Guru_bk/password/');
+        }
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<strong>Password Konfirmasi Tidak Sesuai</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Guru_bk/password/' . $id_admin);
+    }
+
+    public function password()
+    {
+        $id_admin = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_admin->tampil_bk($id_admin);
+
+
+        $this->load->view('template/header-bk');
+        $this->load->view('guru_bk/password', $data);
+        $this->load->view('template/footer');
+    }
+
+    // password akhir
 }

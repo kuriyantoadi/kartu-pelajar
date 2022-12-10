@@ -14,7 +14,7 @@
                         <?= $this->session->flashdata('msg') ?>
 
                         <?=
-                        form_open('Pembina_pds/password_up');
+                        form_open('Guru_bk/password_up');
                         foreach ($tampil as $row) {
                         ?>
                             <form class="m-t-40" novalidate>

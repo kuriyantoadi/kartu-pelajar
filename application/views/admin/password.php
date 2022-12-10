@@ -10,6 +10,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Form Reset Password</h4>
+
+                        <?php
+                        echo form_open('Admin/password_up');
+                        ?>
+
                         <form class="m-t-40" novalidate>
                             <div class="form-group">
                                 <h5>Password Baru <span class="text-danger">*</span></h5>
@@ -29,6 +34,7 @@
                                 <button type="reset" class="btn btn-sm btn-inverse">Cancel</button>
                             </div>
                         </form>
+                        <?= form_close() ?>
                     </div>
                 </div>
             </div>

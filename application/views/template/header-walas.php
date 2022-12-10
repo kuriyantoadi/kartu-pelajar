@@ -61,8 +61,7 @@ $ses_id = $this->session->userdata('ses_id');
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="<?= base_url() ?>Pembina_pds/profil"><i class="ti-user"></i> Profil Saya</a></li>
-                                    <li><a href="<?= base_url() ?>Pembina_pds/password"><i class="ti-settings"></i> Password</a></li>
+                                    <li><a href="<?= base_url() ?>Walas/password"><i class="ti-settings"></i> Password</a></li>
                                     <li><a href="<?= base_url() ?>Login/admin_logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
