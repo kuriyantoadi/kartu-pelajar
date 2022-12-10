@@ -57,6 +57,7 @@ class Walas extends CI_Controller
     }
 
 
+
     public function siswa_edit_up()
     {
         $id_siswa = $this->input->post('id_siswa');
@@ -253,11 +254,27 @@ class Walas extends CI_Controller
     // awal prestasi
     public function prestasi()
     {
-        $data['prestasi_tampil'] = $this->M_admin->prestasi_tampil();
+        $id_admin = $this->session->userdata('ses_id');
+        $cek_walas = $this->M_walas->cek_walas($id_admin);
 
-        $this->load->view('template/header-walas');
-        $this->load->view('walas/prestasi', $data);
-        $this->load->view('template/footer');
+        //tampil kelas
+        foreach ($cek_walas as $row) {
+            $id_kelas = $row->id_kelas;
+        }
+
+        if (empty($cek_walas)) {
+            //jika akun tidak tersambung dengan data kelas diwali kelas
+            $this->load->view('template/header-walas');
+            $this->load->view('walas/siswa_kosong');
+            $this->load->view('template/footer');
+        } else {
+            // jika akun tersambung dengan data kelas
+            $data['prestasi_tampil'] = $this->M_walas->prestasi_perkelas($id_kelas);
+
+            $this->load->view('template/header-walas');
+            $this->load->view('walas/prestasi', $data);
+            $this->load->view('template/footer');
+        }
     }
 
     public function prestasi_tambah($id_siswa)
@@ -408,28 +425,29 @@ class Walas extends CI_Controller
 
     public function pelanggaran()
     {
-        $data['tampil_pelanggaran'] = $this->M_admin->tampil_pelanggaran();
+        $id_admin = $this->session->userdata('ses_id');
+        $cek_walas = $this->M_walas->cek_walas($id_admin);
 
-        $this->load->view('template/header-walas');
-        $this->load->view('walas/pelanggaran', $data);
-        $this->load->view('template/footer');
+        //tampil kelas
+        foreach ($cek_walas as $row) {
+            $id_kelas = $row->id_kelas;
+        }
+
+        if (empty($cek_walas)) {
+            //jika akun tidak tersambung dengan data kelas diwali kelas
+            $this->load->view('template/header-walas');
+            $this->load->view('walas/siswa_kosong');
+            $this->load->view('template/footer');
+        } else {
+            // jika akun tersambung dengan data kelas
+            $data['tampil_pelanggaran'] = $this->M_walas->pelanggaran_perkelas($id_kelas);
+
+            $this->load->view('template/header-walas');
+            $this->load->view('walas/pelanggaran', $data);
+            $this->load->view('template/footer');
+        }
     }
 
-    public function pelanggaran_hapus($id_pelanggaran)
-    {
-        $id_pelanggaran = array('id_pelanggaran' => $id_pelanggaran);
-
-        $success = $this->M_admin->pelanggaran_hapus($id_pelanggaran);
-        $this->session->set_flashdata('msg', '
-						<div class="alert alert-warning alert-dismissible fade show" role="alert">
-							<strong>Hapus Data Berhasil</strong>
-
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>');
-        redirect('Walas/pelanggaran');
-    }
 
     public function pelanggaran_detail($id_pelanggaran)
     {
@@ -444,7 +462,7 @@ class Walas extends CI_Controller
     {
         $data['pelanggaran_siswa'] = $this->M_admin->pelanggaran_siswa($id_siswa);
 
-        $this->load->view('template/header-admin');
+        $this->load->view('template/header-walas');
         $this->load->view('walas/pelanggaran_siswa', $data);
         $this->load->view('template/footer');
     }

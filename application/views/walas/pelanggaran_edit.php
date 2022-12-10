@@ -19,18 +19,6 @@
                             </div>
 
                             <div class="form-group">
-                                <h5>Kelas <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="hidden" name="id_kelas" value="<?= $row->id_kelas ?>">
-                                    <?php
-                                    foreach ($tampil_kelas as $row_kelas) {
-                                    ?>
-                                        <input type=" text" value="<?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?>" class="form-control" disabled>
-                                    <?php } ?>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
                                 <h5>Nama Point Pelanggaran<span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <select name="id_point" id="id_point" required class="form-control">

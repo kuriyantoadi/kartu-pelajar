@@ -25,7 +25,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="<?= site_url('Walas/pelanggaran_siswa/' . $row->id_siswa) ?>">Siswa Pelanggaran</a>
-                                    <a class="dropdown-item" href="<?= site_url('Walas/pelanggaran_tambah/' . $row->id_siswa) ?>">Tambah Pelanggaran</a>
+                                    <!-- <a class="dropdown-item" href="<?= site_url('Walas/pelanggaran_tambah/' . $row->id_siswa) ?>">Tambah Pelanggaran</a> -->
                                 </div>
                             </div>
                             <div class="btn-group">
