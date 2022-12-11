@@ -45,18 +45,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <h5>Guru BK<span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <select name="id_admin" id="id_admin" required class="form-control">
-                                            <option value="<?= $row->id_admin ?>">Pilih Guru BK ( <?= $row->nama ?> )</option>
-                                            <?php foreach ($tampil_bk as $row_bk) { ?>
-                                                <option value="<?= $row_bk->id_admin ?>"> <?= $row_bk->nama ?> </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <h5>Tanggal Melanggar <span class="text-danger">*</span></h5>
                                     <div class="controls">
                                         <input type="date" value="<?= date('Y-m-d', strtotime($row->tgl_kejadian)) ?>" name="tgl_kejadian" class="form-control" required data-validation-required-message="This field is required" placeholder="MM/DD/YYYY" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">

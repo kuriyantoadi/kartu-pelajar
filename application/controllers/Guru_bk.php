@@ -370,14 +370,10 @@ class Guru_bk extends CI_Controller
     public function pelanggaran_edit_up()
     {
         $tgl_kejadian = $this->input->post('tgl_kejadian');
-        // $timestamp = strtotime($tgl_kejadian);
-        // $tgl_kejadian = date("d-m-Y", $timestamp);
-
         $id_pelanggaran = $this->input->post('id_pelanggaran');
         $id_point = $this->input->post('id_point');
         $tgl_input = date('d-m-Y');
-        $id_admin = $this->input->post('id_admin');
-
+        $id_admin = $this->session->userdata('ses_id');
 
         $data_edit = array(
             'id_point' => $id_point,
