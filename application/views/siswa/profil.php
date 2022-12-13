@@ -9,6 +9,8 @@
                     <?php foreach ($tampil as $row) { ?>
 
                         <tbody>
+                            <a style="margin-top: 40px;" href="<?= site_url('Siswa/profil_edit') ?>" class="btn btn-primary btn-sm btn-rounded">Edit Profil</a>
+
                             <tr>
                                 <td class="col-4">Foto</td>
                                 <td>:

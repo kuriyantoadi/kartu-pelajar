@@ -10,7 +10,7 @@ class Siswa extends CI_Controller
         // $this->load->model('M_login');
         $this->load->model('M_siswa');
         $this->load->model('M_guru_bk');
-
+        $this->load->model('M_admin');
 
         // session login
         if ($this->session->userdata('siswa') != true) {
@@ -180,6 +180,54 @@ class Siswa extends CI_Controller
     }
 
 
+    public function profil_edit()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+
+        $data['tampil_siswa'] = $this->M_admin->siswa_detail($id_siswa);
+        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/profil_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function profil_edit_up()
+    {
+        $id_siswa = $this->session->userdata('ses_id');
+
+        $nisn = $this->input->post('nisn');
+        $nama_siswa = $this->input->post('nama_siswa');
+        $id_kelas = $this->input->post('id_kelas');
+        $tgl_lahir = $this->input->post('tgl_lahir');
+        $tempat_lahir = $this->input->post('tempat_lahir');
+        $agama = $this->input->post('agama');
+        $alamat = $this->input->post('alamat');
+
+        $data_edit = array(
+            // 'photo_siswa' => $_data['upload_data']['file_name'],
+            'nisn' => $nisn,
+            'nama_siswa' => $nama_siswa,
+            'id_kelas' => $id_kelas,
+            'tgl_lahir' => $tgl_lahir,
+            'tempat_lahir' => $tempat_lahir,
+            'agama' => $agama,
+            'alamat' => $alamat
+        );
+
+        $this->M_admin->siswa_edit_up($data_edit, $id_siswa);
+
+        $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Edit Siswa Berhasil</strong>
+
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+        redirect('Siswa/profil/');
+    }
     // akhir prestasi 
 
     public function sertifikat()
