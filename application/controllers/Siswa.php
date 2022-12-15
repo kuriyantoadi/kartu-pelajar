@@ -40,6 +40,16 @@ class Siswa extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function cetak()
+    {
+        // $ses_id = $this->session->userdata('ses_id');
+        // $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/cetak');
+        $this->load->view('template/footer');
+    }
+
 
     // awal prestasi
     public function prestasi()
