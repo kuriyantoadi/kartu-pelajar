@@ -41,14 +41,13 @@
             <p>Jakarta</p>
         </div>
     </div>
+    <button class="btn btn-primary" onclick="downloadHTML('capture1')">Download Tampak Depan</button>
 
     <hr>
-    
+
     <div id="capture2" class="container">
         <img class="img" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_BELAKANG.svg" alt="kartu pelajar">
     </div>
-
-    <button class="btn btn-primary" onclick="downloadHTML('capture1')">Download Tampak Depan</button>
     <button class="btn btn-primary" onclick="downloadHTML('capture2')">Download Tampak Belakang</button>
 
     <script src="<?= base_url() ?>assets/js/html2canvas.min.js"></script>
