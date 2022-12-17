@@ -88,6 +88,9 @@ $ses_id = $this->session->userdata('ses_id');
                         <li>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i>Pelanggaran</a>
                         </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Siswa/cetak" aria-expanded="false"><i class="mdi mdi-account-card-details"></i>Cetak Kartu</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
