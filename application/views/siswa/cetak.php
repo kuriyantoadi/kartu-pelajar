@@ -21,7 +21,7 @@
 
         .nama {
             position: absolute;
-            top: 10.68%;
+            top: 20.68%;
             left: 47%;
             transform: translate(-20%, -7%);
             font-size: 9px;
@@ -33,7 +33,7 @@
 
         .jk {
             position: absolute;
-            top: 14.20%;
+            top: 28.20%;
             left: 47%;
             transform: translate(-20%, -7%);
             font-size: 9px;
@@ -43,20 +43,9 @@
             margin: 0;
         }
 
-        /* .nisn {
-            position: absolute;
-            top: 18.20%;
-            left: 47%;
-            transform: translate(-20%, -7%);
-            font-size: 9x;
-            color: black;
-            line-height: 10%;
-            margin: 0;
-        } */
-
         .nisn {
             position: absolute;
-            top: 18.20%;
+            top: 36%;
             left: 47%;
             transform: translate(-20%, -7%);
             font-size: 9px;
@@ -64,18 +53,53 @@
             /* line-height: 0.001px; */
             line-height: 10%;
             margin: 0;
-
         }
 
         .tgl_lahir {
             position: absolute;
-            top: 21.20%;
+            top: 43%;
+            left: 47%;
+            transform: translate(-20%, -7%);
+            font-size: 9px;
+            color: black;
+            /* line-height: 0.001px; */
+            line-height: 10%;
+            margin: 0;
+        }
+
+        .agama {
+            position: absolute;
+            top: 52%;
+            left: 48.6%;
+            transform: translate(-20%, -7%);
+            font-size: 9px;
+            color: black;
+            line-height: 10%;
+            margin: 0;
+        }
+
+        .jurusan {
+            position: absolute;
+            top: 58%;
             left: 48.6%;
             transform: translate(-20%, -7%);
             font-size: 9px;
             color: black;
             /* line-height: 0.001px; */
             line-height: 10%;
+            margin: 0;
+
+        }
+
+        .alamat {
+            position: absolute;
+            top: 64%;
+            left: 48.6%;
+            transform: translate(-20%, -7%);
+            font-size: 9px;
+            color: black;
+            /* line-height: 0.001px; */
+            line-height: 20%;
             margin: 0;
 
         }
@@ -99,16 +123,16 @@
             Serang, 2006-11-16
         </div>
 
-        <div class="tgl_lahir">
-            Cilayang Maja RT/RW 8/3
+        <div class="agama">
+            Islam
         </div>
 
-        <div class="tgl_lahir">
+        <div class="jurusan">
             Rekayasa Perangkat Lunak
         </div>
 
-        <div class="tgl_lahir">
-            Jakarta
+        <div class="alamat">
+            Cilayang Maja RT/RW 8/3
         </div>
 
     </div>
