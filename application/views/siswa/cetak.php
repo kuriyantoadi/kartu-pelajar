@@ -5,145 +5,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
     <title>Document</title>
 
     <style>
-        .img {
+        .img-data {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .container {
-            width: 319px;
+        .container-data {
+            width: 473px;
             position: relative;
         }
 
-        .nama {
+        .text-data {
+            font-family: serif;
             position: absolute;
-            top: 20.68%;
-            left: 47%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
+            top: 25%;
+            left: 50%;
+            transform: translate(-20%, -9%);
+            font-size: 16px;
+            line-height: 5px;
             color: black;
-            /* line-height: 0.001px; */
-            line-height: 10%;
-            margin: 0;
-        }
-
-        .jk {
-            position: absolute;
-            top: 28.20%;
-            left: 47%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            /* line-height: 0.001px; */
-            line-height: 10%;
-            margin: 0;
-        }
-
-        .nisn {
-            position: absolute;
-            top: 36%;
-            left: 47%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            /* line-height: 0.001px; */
-            line-height: 10%;
-            margin: 0;
-        }
-
-        .tgl_lahir {
-            position: absolute;
-            top: 43%;
-            left: 47%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            /* line-height: 0.001px; */
-            line-height: 10%;
-            margin: 0;
-        }
-
-        .agama {
-            position: absolute;
-            top: 52%;
-            left: 48.6%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            line-height: 10%;
-            margin: 0;
-        }
-
-        .jurusan {
-            position: absolute;
-            top: 58%;
-            left: 48.6%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            /* line-height: 0.001px; */
-            line-height: 10%;
-            margin: 0;
-
-        }
-
-        .alamat {
-            position: absolute;
-            top: 64%;
-            left: 48.6%;
-            transform: translate(-20%, -7%);
-            font-size: 9px;
-            color: black;
-            /* line-height: 0.001px; */
-            line-height: 20%;
-            margin: 0;
-
         }
     </style>
 </head>
 
 <body>
-    <div id="capture1" class="container">
-        <img class="img" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_DEPAN.svg" alt="kartu pelajar">
-        <div class="nama">
-            Adelia Safitri
+    <div id="capture1" class="container-data mx-auto">
+        <img class="img-data" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_DEPAN.svg" alt="kartu pelajar">
+        <div class="text-data">
+            <p>Adelia Safitri</p>
+            <p>Perempuan</p>
+            <p>0066488322</p>
+            <p>Serang, 2006-11-16</p>
+            <p>Islam</p>
+            <p>Rekayasa Perangkat Lunak</p>
+            <p>Cilayang Maja RT/RW 8/3</p>
         </div>
-        <div class="jk">
-            Perempuan
-        </div>
-        <div class="nisn">
-            0066488322
-        </div>
-
-        <div class="tgl_lahir">
-            Serang, 2006-11-16
-        </div>
-
-        <div class="agama">
-            Islam
-        </div>
-
-        <div class="jurusan">
-            Rekayasa Perangkat Lunak
-        </div>
-
-        <div class="alamat">
-            Cilayang Maja RT/RW 8/3
-        </div>
-
     </div>
-    <button class="btn btn-primary" onclick="downloadHTML('capture1')">Download Tampak Depan</button>
+    <div class="text-center m-t-20 m-b-20">
+        <button class="btn btn-sm btn-primary" onclick="downloadHTML('capture1')">Download Tampak Depan</button>
+    </div>
 
     <hr>
 
-    <div id="capture2" class="container">
-        <img class="img" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_BELAKANG.svg" alt="kartu pelajar">
+    <div id="capture2" class="container-data mx-auto">
+        <img class="img-data" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_BELAKANG.svg" alt="kartu pelajar">
     </div>
-    <button class="btn btn-primary" onclick="downloadHTML('capture2')">Download Tampak Belakang</button>
+    <div class="text-center m-t-20 m-b-20">
+        <button class="btn btn-sm btn-primary" onclick="downloadHTML('capture2')">Download Tampak Belakang</button>
+    </div>
 
     <script src="<?= base_url() ?>assets/js/html2canvas.min.js"></script>
     <script>
@@ -151,7 +65,7 @@
             html2canvas(document.getElementById(capture), {
                 allowTaint: true,
                 useCORS: true,
-                scale: 3
+                scale: 2
             }).then(canvas => {
                 const base64image = canvas.toDataURL("image/png");
                 var anchor = document.createElement('a');
