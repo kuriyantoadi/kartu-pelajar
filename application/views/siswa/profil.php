@@ -35,11 +35,11 @@
                                 <td>: <?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
                             </tr>
                             <tr>
-                                <td>Tempat Lahir <b>(Bln/Tgl/Thn)</b></td>
+                                <td>Tempat Lahir </td>
                                 <td>: <?= $row->tempat_lahir ?></td>
                             </tr>
                             <tr>
-                                <td>Tanggal Lahir</td>
+                                <td>Tanggal Lahir <b>(Bln/Tgl/Thn)</b></td>
                                 <td>: <?= $row->tgl_lahir ?></td>
                             </tr>
                             <tr>
