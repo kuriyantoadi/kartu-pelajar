@@ -15,7 +15,7 @@
                                 <h5>NISN <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="hidden" name="id_siswa" value="<?= $row->id_siswa ?>">
-                                    <input type="number" value="<?= $row->nisn ?>" name="nisn" class="form-control" required data-validation-required-message="This field is required" readonly>
+                                    <input type="number" value="<?= $row->nisn ?>" name="nisn" class="form-control" required data-validation-required-message="This field is required" required>
                                 </div>
                             </div>
                             <!-- <div class="form-group">
