@@ -254,7 +254,7 @@ class Siswa extends CI_Controller
     {
         $config['upload_path']      = 'assets/photo_siswa/';
         $config['allowed_types']    = 'gif|jpg|png';
-        $config['max_size']         = 2000;
+        $config['max_size']         = 4000;
         $config['encrypt_name']     = TRUE;
 
         $this->load->library('upload', $config);
