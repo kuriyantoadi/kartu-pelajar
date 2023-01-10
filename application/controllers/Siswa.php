@@ -237,6 +237,78 @@ class Siswa extends CI_Controller
 						</div>');
         redirect('Siswa/profil/');
     }
+
+
+    public function photo_edit()
+    {
+        $ses_id = $this->session->userdata('ses_id');
+        $data['tampil'] = $this->M_siswa->tampil_siswa($ses_id);
+
+        $this->load->view('template/header-siswa');
+        $this->load->view('siswa/photo_edit', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    public function siswa_photo_up()
+    {
+        $config['upload_path']      = 'assets/photo_siswa/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']         = 2000;
+        $config['encrypt_name']     = TRUE;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_siswa')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
+
+            $id_siswa = $this->input->post('id_siswa');
+
+            $data_edit = array(
+                'photo_siswa' => $_data['upload_data']['file_name'],
+            );
+
+            $this->M_admin->siswa_photo_up($data_edit, $id_siswa);
+
+            $this->session->set_flashdata('msg', '
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <strong>Edit Photo Siswa Berhasil</strong>
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>');
+            redirect('Siswa/profil/');
+        }
+    }
+
+
+    public function siswa_hapus_photo($id_siswa, $photo_siswa)
+    {
+        $kode_siswa = array('id_siswa' => $id_siswa);
+
+        $hapus_photo = "assets/photo_siswa/" . $photo_siswa;
+        unlink($hapus_photo);
+
+        $data_edit = array(
+            'photo_siswa' => '',
+        );
+
+        $this->M_siswa->siswa_hapus_photo($data_edit, $kode_siswa);
+
+        $this->session->set_flashdata('msg', '
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Hapus Data Berhasil</strong>
+
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>');
+        redirect('Siswa/profil');
+    }
     // akhir prestasi 
 
     public function sertifikat()
