@@ -39,7 +39,7 @@
                                 <td>: <?= $row->tempat_lahir ?></td>
                             </tr>
                             <tr>
-                                <td>Tanggal Lahir <b>(Bln/Tgl/Thn)</b></td>
+                                <td>Tanggal Lahir <b>(Thn/Bln/Tgl)</b></td>
                                 <td>: <?= $row->tgl_lahir ?></td>
                             </tr>
                             <tr>
