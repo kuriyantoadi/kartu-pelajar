@@ -30,7 +30,7 @@ $ses_id = $this->session->userdata('ses_id');
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="<?= base_url() ?>/Siswa">
+                    <a class="navbar-brand" href="<?= base_url() ?>Siswa">
                         <b>
                             <img src="<?= base_url() ?>assets/images/logosmk.png" width="50" alt="homepage" class="dark-logo" />
                             <img src="<?= base_url() ?>assets/images/logosmk.png" width="50" alt="homepage" class="light-logo" />
