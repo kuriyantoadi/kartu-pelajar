@@ -20,6 +20,12 @@ class M_siswa extends CI_Model
   }
 
 
+function siswa_hapus_photo($data_edit, $id_siswa)
+  {
+    $this->db->where($id_siswa);
+    $this->db->update('tb_siswa', $data_edit);
+  }
+
   // awal prestasi 
   function tampil_prestasi($id_siswa)
   {
@@ -77,5 +83,7 @@ class M_siswa extends CI_Model
     $query = $this->db->get()->result();
     return $query;
   }
+
+
   // akhir pelanggaran
 }
