@@ -32,6 +32,20 @@
                             </div>
 
                             <div class="form-group">
+                                <h5>Jenis Kelamin <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <select class="form-control" name="id_kelas" id="">
+                                        <option value="<?= $row->jenis_kelamin ?>"> Pilihan Awal ( <?= $row->jenis_kelamin ?> )</option>
+                                        <?php
+                                        foreach ($tampil_kelas as $row_jk) {
+                                        ?>
+                                            <option value="<?= $row_jk->jenis_kelamin ?>"> <?= $row_jk->jenis_kelamin ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <h5>Kelas <span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <select class="form-control" name="id_kelas" id="">
