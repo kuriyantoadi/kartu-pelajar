@@ -251,14 +251,26 @@ class Pembina_pds extends CI_Controller
     }
 
 
+    // public function pelanggaran_edit($id_pelanggaran)
+    // {
+    //     $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+    //     $data['tampil_point'] = $this->M_admin->tampil_point();
+    //     // $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+    //     $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
+
+    //     $data['tampil_bk'] = $this->M_admin->tampil_bk();
+
+    //     $data['pelanggaran_edit'] = $this->M_admin->pelanggaran_edit($id_pelanggaran);
+
+    //     $this->load->view('template/header-pds');
+    //     $this->load->view('pembina_pds/pelanggaran_edit', $data);
+    //     $this->load->view('template/footer');
+    // }
+
     public function pelanggaran_edit($id_pelanggaran)
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
-        $data['tampil_point'] = $this->M_admin->tampil_point();
-        $data['tampil_kelas'] = $this->M_admin->tampil_kelas();
-        $data['tampil_bk'] = $this->M_admin->tampil_bk();
-
-        $data['pelanggaran_edit'] = $this->M_admin->pelanggaran_edit($id_pelanggaran);
+        $data['pelanggaran_detail'] = $this->M_admin->pelanggaran_detail($id_pelanggaran);
 
         $this->load->view('template/header-pds');
         $this->load->view('pembina_pds/pelanggaran_edit', $data);
