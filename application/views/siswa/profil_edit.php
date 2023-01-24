@@ -36,11 +36,10 @@
                                 <div class="controls">
                                     <select class="form-control" name="id_kelas" id="">
                                         <option value="<?= $row->jenis_kelamin ?>"> Pilihan Awal ( <?= $row->jenis_kelamin ?> )</option>
-                                        <?php
-                                        foreach ($tampil_kelas as $row_jk) {
-                                        ?>
-                                            <option value="<?= $row_jk->jenis_kelamin ?>"> <?= $row_jk->jenis_kelamin ?></option>
-                                        <?php } ?>
+
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+
                                     </select>
                                 </div>
                             </div>
