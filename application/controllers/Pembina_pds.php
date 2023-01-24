@@ -270,7 +270,7 @@ class Pembina_pds extends CI_Controller
 
     public function pelanggaran_edit($id_pelanggaran)
     {
-        $data['pelanggaran_detail'] = $this->M_admin->pelanggaran_detail($id_pelanggaran);
+        $data['pelanggaran_edit'] = $this->M_admin->pelanggaran_detail($id_pelanggaran);
 
         $this->load->view('template/header-pds');
         $this->load->view('pembina_pds/pelanggaran_edit', $data);
