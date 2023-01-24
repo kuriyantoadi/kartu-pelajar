@@ -154,6 +154,7 @@ class Admin extends CI_Controller
         $id_siswa = $this->input->post('id_siswa');
         $nisn = $this->input->post('nisn');
         $nama_siswa = $this->input->post('nama_siswa');
+        $jenis_kelamin = $this->input->post('jenis_kelamin');
         $id_kelas = $this->input->post('id_kelas');
         $tgl_lahir = $this->input->post('tgl_lahir');
         $tempat_lahir = $this->input->post('tempat_lahir');
@@ -164,6 +165,7 @@ class Admin extends CI_Controller
             // 'photo_siswa' => $_data['upload_data']['file_name'],
             'nisn' => $nisn,
             'nama_siswa' => $nama_siswa,
+            'jenis_kelamin' => $jenis_kelamin,
             'id_kelas' => $id_kelas,
             'tgl_lahir' => $tgl_lahir,
             'tempat_lahir' => $tempat_lahir,
