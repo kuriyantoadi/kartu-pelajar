@@ -71,6 +71,10 @@
                                             <td>Nama Siswa</td>
                                             <td>: <?= $row->nama_siswa ?></td>
                                         </tr>
+                                         <tr>
+                                            <td>Jenis Kelamin</td>
+                                            <td>: <?= $row->jenis_kelamin ?></td>
+                                        </tr>
                                         <tr>
                                             <td>NISN</td>
                                             <td>: <?= $row->nisn ?></td>
