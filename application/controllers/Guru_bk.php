@@ -414,9 +414,10 @@ class Guru_bk extends CI_Controller
         $config['allowed_types']    = 'gif|jpg|png';
         $config['max_size']         = 5000;
         $config['encrypt_name']     = TRUE;
-        $config['maintain_ratio']= TRUE;
-        $config['quality']     = '30%';
-        $config['image_library']='gd2';
+        $config['maintain_ratio']   = TRUE;
+        $config['quality']          = '30%';
+        $config['image_library']    ='gd2';
+         $config['width']= 600;
 
         // $id_lapangan = $this->input->post('id_lapangan');
 
