@@ -323,10 +323,6 @@ class Guru_bk extends CI_Controller
     public function pelanggaran_hapus($id_pelanggaran)
     {
         $id_pelanggaran = array('id_pelanggaran' => $id_pelanggaran);
-        $photo_pelanggaran = array('photo_pelanggaran' => $photo_pelanggaran);
-
-        delete_files('./assets/photo_pelanggaran/', $photo_pelanggaran);
-
 
         $success = $this->M_admin->pelanggaran_hapus($id_pelanggaran);
         $this->session->set_flashdata('msg', '
