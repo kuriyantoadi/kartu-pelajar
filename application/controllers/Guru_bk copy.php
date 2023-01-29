@@ -9,7 +9,6 @@ class Guru_bk extends CI_Controller
         parent::__construct();
         $this->load->model('M_guru_bk');
         $this->load->model('M_admin');
-        $this->load->library('upload');
 
 
         // session login
@@ -323,10 +322,6 @@ class Guru_bk extends CI_Controller
     public function pelanggaran_hapus($id_pelanggaran)
     {
         $id_pelanggaran = array('id_pelanggaran' => $id_pelanggaran);
-        $photo_pelanggaran = array('photo_pelanggaran' => $photo_pelanggaran);
-
-        delete_files('./assets/photo_pelanggaran/', $photo_pelanggaran);
-
 
         $success = $this->M_admin->pelanggaran_hapus($id_pelanggaran);
         $this->session->set_flashdata('msg', '
@@ -413,131 +408,64 @@ class Guru_bk extends CI_Controller
     }
 
 
-    function pelanggaran_tambah_up(){
-		$config['upload_path'] = './assets/photo_pelanggaran/'; //path folder
-	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-	    $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
+    public function pelanggaran_tambah_up()
+    {
+        $config['upload_path']      = 'assets/photo_pelanggaran/';
+        $config['allowed_types']    = 'gif|jpg|png';
         $config['max_size']         = 5000;
+        $config['encrypt_name']     = TRUE;
+        $config['maintain_ratio']   = FALSE;
+        $config['quality']          = '30%';
+        $config['image_library']    = 'gd2';
+        $config['image_width']= 600;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('photo_pelanggaran')) {
+            $error = array('error' => $this->upload->display_errors());
+            echo var_dump($error);
+            // $this->load->view('upload', $error);
+        } else {
+            $_data = array('upload_data' => $this->upload->data());
 
 
-	    $this->upload->initialize($config);
-	    if(!empty($_FILES['photo_pelanggaran']['name'])){
+            $tgl_kejadian = $this->input->post('tgl_kejadian');
+            $timestamp = strtotime($tgl_kejadian);
+            $tgl_kejadian = date("d-m-Y", $timestamp);
 
-	        if ($this->upload->do_upload('photo_pelanggaran')){
-	            $gbr = $this->upload->data();
-	            //Compress Image
-	            $config['image_library']='gd2';
-	            $config['source_image']='./assets/photo_pelanggaran/'.$gbr['file_name'];
-	            $config['create_thumb']= FALSE;
-	            $config['maintain_ratio']= True;
-	            $config['quality']= '70%';
-	            $config['width']= 600;
-	            // $config['height']= 400;
-	            $config['new_image']= './assets/photo_pelanggaran/'.$gbr['file_name'];
-	            $this->load->library('image_lib', $config);
-	            $this->image_lib->resize();
-                // $gambar=$gbr['file_name'];
+            $id_kelas = $this->input->post('id_kelas');
+            $id_siswa = $this->input->post('id_siswa');
+            $id_point = $this->input->post('id_point');
+            $tgl_input = date('d-m-Y');
+            // $tgl_input = $this->input->post('tgl_input');
 
-	            $tgl_kejadian = $this->input->post('tgl_kejadian');
-                $timestamp = strtotime($tgl_kejadian);
-                $tgl_kejadian = date("d-m-Y", $timestamp);
-
-                $id_kelas = $this->input->post('id_kelas');
-                $id_siswa = $this->input->post('id_siswa');
-                $id_point = $this->input->post('id_point');
-                $tgl_input = date('d-m-Y');
-                // $tgl_input = $this->input->post('tgl_input');
-
-                $id_admin = $this->session->userdata('ses_id');
-                // $id_admin = $this->input->post('id_admin');
+            $id_admin = $this->session->userdata('ses_id');
+            // $id_admin = $this->input->post('id_admin');
 
 
-                $data_tambah = array(
-                    'photo_pelanggaran' => $gbr['file_name'],
-                    'id_siswa' => $id_siswa,
-                    'id_point' => $id_point,
-                    'id_kelas' => $id_kelas,
-                    'tgl_kejadian' => $tgl_kejadian,
-                    'tgl_input' => $tgl_input,
-                    'id_admin' => $id_admin
-                );
+            $data_tambah = array(
+                'photo_pelanggaran' => $_data['upload_data']['file_name'],
+                'id_siswa' => $id_siswa,
+                'id_point' => $id_point,
+                'id_kelas' => $id_kelas,
+                'tgl_kejadian' => $tgl_kejadian,
+                'tgl_input' => $tgl_input,
+                'id_admin' => $id_admin
+            );
 
-                $this->M_admin->pelanggaran_tambah_up($data_tambah);
+            $this->M_admin->pelanggaran_tambah_up($data_tambah);
 
-                $this->session->set_flashdata('msg', '
-                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                <strong>Tambah Pelanggaran Berhasil</strong>
+            $this->session->set_flashdata('msg', '
+						<div class="alert alert-primary alert-dismissible fade show" role="alert">
+							<strong>Tambah Pelanggaran Berhasil</strong>
 
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>');
-                redirect('Guru_bk/siswa_detail/' . $id_siswa);
-			}
-	                 
-	    }else{
-			echo "Image yang diupload kosong";
-		}
-				
-	}
-    
-    
-    // public function pelanggaran_tambah_up()
-    // {
-    //     $config['upload_path']      = './assets/photo_pelanggaran/';
-    //     $config['allowed_types']    = 'gif|jpg|png';
-    //     $config['max_size']         = 5000;
-    //     $config['encrypt_name']     = TRUE;
-    //     $config['maintain_ratio']   = FALSE;
-    //     $config['quality']          = '30%';
-    //     $config['image_library']    = 'gd2';
-    //     $config['image_width']= 600;
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>');
+            redirect('Guru_bk/siswa_detail/' . $id_siswa);
+        }
+    }
 
-    //     $this->load->library('upload', $config);
-    //     if (!$this->upload->do_upload('photo_pelanggaran')) {
-    //         $error = array('error' => $this->upload->display_errors());
-    //         echo var_dump($error);
-    //         // $this->load->view('upload', $error);
-    //     } else {
-    //         $_data = array('upload_data' => $this->upload->data());
-
-    //         $tgl_kejadian = $this->input->post('tgl_kejadian');
-    //         $timestamp = strtotime($tgl_kejadian);
-    //         $tgl_kejadian = date("d-m-Y", $timestamp);
-
-    //         $id_kelas = $this->input->post('id_kelas');
-    //         $id_siswa = $this->input->post('id_siswa');
-    //         $id_point = $this->input->post('id_point');
-    //         $tgl_input = date('d-m-Y');
-    //         // $tgl_input = $this->input->post('tgl_input');
-
-    //         $id_admin = $this->session->userdata('ses_id');
-    //         // $id_admin = $this->input->post('id_admin');
-
-
-    //         $data_tambah = array(
-    //             'photo_pelanggaran' => $_data['upload_data']['file_name'],
-    //             'id_siswa' => $id_siswa,
-    //             'id_point' => $id_point,
-    //             'id_kelas' => $id_kelas,
-    //             'tgl_kejadian' => $tgl_kejadian,
-    //             'tgl_input' => $tgl_input,
-    //             'id_admin' => $id_admin
-    //         );
-
-    //         $this->M_admin->pelanggaran_tambah_up($data_tambah);
-
-    //         $this->session->set_flashdata('msg', '
-	// 					<div class="alert alert-primary alert-dismissible fade show" role="alert">
-	// 						<strong>Tambah Pelanggaran Berhasil</strong>
-
-	// 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	// 							<span aria-hidden="true">&times;</span>
-	// 						</button>
-	// 					</div>');
-    //         redirect('Guru_bk/siswa_detail/' . $id_siswa);
-    //     }
-    // }
     //akhir pelanggaran
 
 

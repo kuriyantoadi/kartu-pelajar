@@ -34,7 +34,7 @@
                                     <td><?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
                                     <td><?= $row->nama_point ?></td>
                                     <td style="white-space: nowrap;">
-                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Guru_bk/pelanggaran_hapus/' . $row->id_pelanggaran) ?>" onclick="return confirm('Anda yakin menghapus siswa <?= $row->nama_siswa ?> dengan pelanggaran <?= $row->nama_point ?> ?')"><i class="fa fa-times"></i></a>
+                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Guru_bk/pelanggaran_hapus/' . $row->id_pelanggaran .'/'. $row->photo_pelanggaran ) ?>" onclick="return confirm('Anda yakin menghapus siswa <?= $row->nama_siswa ?> dengan pelanggaran <?= $row->nama_point ?> ?')"><i class="fa fa-times"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Guru_bk/pelanggaran_edit/' . $row->id_pelanggaran) ?>"><i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Guru_bk/pelanggaran_detail/<?= $row->id_pelanggaran ?>"><i class="fa fa-eye"></i></a>
                                     </td>
