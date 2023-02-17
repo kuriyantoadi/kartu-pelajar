@@ -37,13 +37,15 @@
     <div id="capture1" class="container-data mx-auto">
         <img class="img-data" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_DEPAN.svg" alt="kartu pelajar">
         <div class="text-data">
-            <p>Adelia Safitri</p>
-            <p>Perempuan</p>
-            <p>0066488322</p>
-            <p>Serang, 2006-11-16</p>
-            <p>Islam</p>
-            <p>Rekayasa Perangkat Lunak</p>
-            <p>Cilayang Maja RT/RW 8/3</p>
+            <?php foreach ($tampil as $row) { ?>
+            <p><?= $row->nama_siswa ?></p>
+            <p><?= $row->jenis_kelamin ?></p>
+            <p><?= $row->nisn ?></p>
+            <p><?= $row->tempat_lahir ?>, <?= $row->tgl_lahir ?></p>
+            <p><?= $row->agama ?></p>
+            <p><?= $row->jurusan ?></p>
+            <p><?= $row->alamat ?></p>
+            <?php } ?>
         </div>
     </div>
     <div class="text-center m-t-20 m-b-20">
