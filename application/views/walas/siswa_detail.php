@@ -40,7 +40,7 @@
                                 </div>
                             </div>
 
-                            <a href="<?= site_url('Walas/siswa_hapus/' . $row->id_siswa) ?>" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a>
+                            <!-- <a href="<?= site_url('Walas/siswa_hapus/' . $row->id_siswa) ?>" class="btn btn-rounded btn-sm btn-danger" onclick="return confirm('Apakah yakin ingin menghapus?')">Hapus Siswa</a> -->
 
                         <?php } ?>
 
