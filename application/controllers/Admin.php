@@ -127,6 +127,7 @@ class Admin extends CI_Controller
                 'nisn' => $nisn,
                 'nama_siswa' => $nama_siswa,
                 'id_kelas' => $id_kelas,
+                'jenis_kelamin' => $jenis_kelamin,
                 'password' => sha1($password),
                 'tgl_lahir' => $tgl_lahir,
                 'tempat_lahir' => $tempat_lahir,

@@ -44,6 +44,20 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <h5>Jenis Kelamin <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <select class="form-control" name="jenis_kelamin" id="">
+                                        <option value="">Pilihan</option>
+
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <h5>Tempat Lahir <span class="text-danger">*</span></h5>
                                 <div class="controls">
