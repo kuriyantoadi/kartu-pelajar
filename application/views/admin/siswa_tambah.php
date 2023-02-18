@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <h5>Foto <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="file" name="photo_siswa" class="form-control" value="" required>
+                                    <input type="file" name="photo_siswa" class="form-control" value="">
                                 </div>
                             </div>
 

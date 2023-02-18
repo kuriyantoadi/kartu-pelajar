@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <h5>Tanggal Lahir <b>(Thn/Bln/Tgl)</b><span class="text-danger">*</span></h5>
+                                <h5>Tanggal Lahir <b>(Bln/Tgl/Thn)</b><span class="text-danger">*</span></h5>
                                 <div class="controls">
                                     <input type="date" name="tgl_lahir" value="<?= date('Y-m-d', strtotime($row->tgl_lahir)) ?>" class="form-control" required data-validation-required-message="This field is required" placeholder="dd/mm/yyyy" data-validation-regex-regex="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})">
                                 </div>
