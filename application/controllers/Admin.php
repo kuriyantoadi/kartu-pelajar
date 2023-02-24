@@ -115,6 +115,7 @@ class Admin extends CI_Controller
             $nisn = $this->input->post('nisn');
             $nama_siswa = $this->input->post('nama_siswa');
             $id_kelas = $this->input->post('id_kelas');
+            $jenis_kelamin = $this->input->post('jenis_kelamin');
             $password = $this->input->post('password');
             $tgl_lahir = $this->input->post('tgl_lahir');
             $tempat_lahir = $this->input->post('tempat_lahir');
