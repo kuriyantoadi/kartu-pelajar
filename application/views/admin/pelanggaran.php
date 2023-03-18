@@ -13,7 +13,9 @@
                     <?= $this->session->flashdata('msg') ?>
 
                     <!-- <a href="<?= base_url() ?>Admin/pelanggaran_tambah" class="btn btn-rounded btn-sm btn-primary">Tambah</a> -->
-                    <table id="myTable" class="table table-bordered table-striped">
+                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+
+                    <!-- <table id="myTable" class="table table-bordered table-striped"> -->
                         <thead>
                             <tr>
                                 <th>No</th>
