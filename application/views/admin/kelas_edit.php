@@ -29,6 +29,8 @@
                                             <option value="X">X</option>
                                             <option value="XI">XI</option>
                                             <option value="XII">XII</option>
+                                            <option value="Alumni">Alumni</option>
+
                                         </select>
                                     </div>
                                 </div>
