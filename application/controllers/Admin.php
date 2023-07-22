@@ -98,7 +98,7 @@ class Admin extends CI_Controller
     public function siswa_tambah_up()
     {
         $config['upload_path']      = 'assets/photo_siswa/';
-        $config['allowed_types']    = 'gif|jpg|png';
+        $config['allowed_types']    = 'gif|jpg|png|jpeg';
         $config['max_size']         = 2000;
         $config['encrypt_name']     = TRUE;
         // $id_lapangan = $this->input->post('id_lapangan');
