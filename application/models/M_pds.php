@@ -24,5 +24,12 @@ class M_pds extends CI_Model
         return $query;
     }
 
+    function tampil_kelas()
+    {
+        $this->db->where('kondisi', 'aktif');
+        $hasil = $this->db->get('tb_kelas')->result();
+        return $hasil;
+    }
+
     // akhir siswa
 }

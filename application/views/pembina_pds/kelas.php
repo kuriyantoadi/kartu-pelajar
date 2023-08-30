@@ -18,10 +18,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tingkatan</th>
-                                <th>Jurusan</th>
-                                <th>Kode Kelas</th>
-                                <th>Angkatan</th>
+                                <th>Kelas</th>
                                 <th>Pilihan</th>
                             </tr>
                         </thead>
@@ -33,15 +30,12 @@
                             ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td><?= $row->tingkatan ?></td>
-                                    <td><?= $row->jurusan ?></td>
-                                    <td><?= $row->kode_kelas ?></td>
-                                    <td><?= $row->angkatan ?></td>
+                                    <td><?= $row->tingkatan ?> <?= $row->kode_jurusan ?> <?= $row->kode_kelas ?></td>
 
                                     <td style="white-space: nowrap;">
-                                        <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Admin/kelas_hapus/' . $row->id_kelas) ?>" title="hapus kelas" onclick="return confirm('Anda yakin menghapus data kelas <?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas  ?> ?')"><i class="fa fa-times"></i></a>
-                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/kelas_edit/' . $row->id_kelas) ?>"> <i class=" fa fa-pencil"></i></a>
-                                        <a class="btn btn-sm btn-rounded btn-primary" href="<?= site_url('Admin/kelas_siswa/' . $row->id_kelas) ?>"> <i class=" fa fa-eye"></i></a>
+                                        <!-- <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Admin/kelas_hapus/' . $row->id_kelas) ?>" title="hapus kelas" onclick="return confirm('Anda yakin menghapus data kelas <?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas  ?> ?')"><i class="fa fa-times"></i></a> -->
+                                        <!-- <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Admin/kelas_edit/' . $row->id_kelas) ?>"> <i class=" fa fa-pencil"></i></a> -->
+                                        <a class="btn btn-sm btn-rounded btn-primary" href="<?= site_url('Pembina_pds/kelas_siswa/' . $row->id_kelas) ?>"> <i class=" fa fa-eye"></i></a>
 
                                     </td>
                                 </tr>

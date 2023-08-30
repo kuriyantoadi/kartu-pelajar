@@ -9,8 +9,8 @@
 <script src="<?= base_url() ?>assets/js/jquery.slimscroll.js"></script>
 <script src="<?= base_url() ?>assets/js/waves.js"></script>
 <script src="<?= base_url() ?>assets/js/sidebarmenu.js"></script>
-<script src="<?= base_url() ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-<script src="<?= base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- <script src="<?= base_url() ?>assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script> -->
+<!-- <script src="<?= base_url() ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script> -->
 <script src="<?= base_url() ?>assets/js/custom.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
@@ -68,7 +68,18 @@
         'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+
+    // select search
+    var select_box_element = document.querySelector('#select_box');
+
+    dselect(select_box_element, {
+        search: true
+    });
+
 </script>
+
+   
 </body>
 
 </html>

@@ -31,6 +31,29 @@ class Pembina_pds extends CI_Controller
         $this->load->view('template/footer');
     }
 
+
+    // kelas awal
+    public function kelas_siswa($id_kelas)
+    {
+        $data['tampil_siswa'] = $this->M_admin->kelas_siswa($id_kelas);
+
+        $this->load->view('template/header-pds');
+        $this->load->view('pembina_pds/kelas_siswa', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function kelas()
+    {
+        $data['tampil_kelas'] = $this->M_pds->tampil_kelas();
+
+        $this->load->view('template/header-pds');
+        $this->load->view('pembina_pds/kelas', $data);
+        $this->load->view('template/footer');
+    }
+
+
+    // kelas akhir
+
     // Password
     public function password()
     {

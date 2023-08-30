@@ -80,8 +80,11 @@ $ses_id = $this->session->userdata('ses_id');
                         <li>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/dashboard" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/siswa" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
+                        </li> -->
+                        <li>
+                            <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/kelas" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Siswa </span></a>
                         </li>
                         <li>
                             <a class="waves-effect waves-dark" href="<?= base_url() ?>Pembina_pds/pelanggaran" aria-expanded="false"><i class="mdi mdi-alert"></i><span class="hide-menu">Pelanggaran </span></a>

@@ -76,7 +76,7 @@ class Admin extends CI_Controller
 
     // awal function siswa
 
-    public function siswa_bc()
+    public function siswa()
     {
         $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
 
@@ -84,53 +84,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/siswa', $data);
         $this->load->view('template/footer');
     }
-
-// code awal
-
-    public function siswa()
-    {
-        $this->load->view('admin/siswa');
-
-    }
-
-    // function view_data_query()
-    // {
-    //     $query  = "SELECT * FROM tb_kelas JOIN tb_siswa ON tb_siswa.id_kelas = tb_kelas.id_kelas;";
-    //     $search = array('nama_siswa','tingkatan','jurusan','kode_kelas');
-    //     $where  = null; 
-    //     // $where  = array('nama_kategori' => 'Tutorial');
-        
-    //     // jika memakai IS NULL pada where sql
-    //     $isWhere = null;
-    //     // $isWhere = 'artikel.deleted_at IS NULL';
-    //     header('Content-Type: application/json');
-    //     echo $this->M_admin->get_tables_query($query,$search,$where,$isWhere);
-    // }
-
-
-    function view_data_query()
-    {
-        try {
-            $query  = "SELECT * FROM tb_kelas JOIN tb_siswa ON tb_siswa.id_kelas = tb_kelas.id_kelas;";
-            $search = array('nama_siswa','kelas');
-            $where  = NULL; 
-            $isWhere = NULL;
-
-            // Jika model M_admin telah dibuat dengan benar
-            $this->load->model('M_admin');
-            $result = $this->M_admin->get_tables_query($query, $search, $where, $isWhere);
-
-            header('Content-Type: application/json');
-            echo json_encode($result);
-        } catch (Exception $e) {
-            // Tambahkan penanganan kesalahan di sini
-            header('Content-Type: application/json');
-            echo json_encode(array('error' => $e->getMessage()));
-        }
-    }
-
-// code akhir
-
 
     public function siswa_tambah()
     {
@@ -502,6 +455,15 @@ class Admin extends CI_Controller
 
         $this->load->view('template/header-admin');
         $this->load->view('admin/kelas', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function kelas_siswa($id_kelas)
+    {
+        $data['tampil_siswa'] = $this->M_admin->kelas_siswa($id_kelas);
+
+        $this->load->view('template/header-admin');
+        $this->load->view('admin/kelas_siswa', $data);
         $this->load->view('template/footer');
     }
 

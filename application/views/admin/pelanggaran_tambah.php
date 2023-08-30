@@ -32,17 +32,31 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <h5>Nama Point Pelanggaran<span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <select name="id_point" id="id_point" required class="form-control">
+                                        <select name="id_point" id="id_point" required id="select-state">
                                             <option value="">Pilih Point</option>
                                             <?php foreach ($tampil_point as $row_point) { ?>
                                                 <option value="<?= $row_point->id_point ?>"> <?= $row_point->nama_point ?> ( <?= $row_point->jml_point ?> Point) </option>
                                             <?php } ?>
                                         </select>
                                     </div>
+                                </div> -->
+
+                                <div class="form-group">
+                                    <h5>Nama Point Pelanggaran<span class="text-danger">*</span></h5>
+                                    <div class="controls">
+                                        <select name="id_point"  id="select_box" class="form-control" required>
+                                            <!-- <option value="">Pilih Point</option> -->
+                                            <?php foreach ($tampil_point as $row_point) { ?>
+                                                <option value="<?= $row_point->id_point ?>"> <?= $row_point->nama_point ?> ( <?= $row_point->jml_point ?> Point) </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
+
+                                   
 
                                 <div class="form-group">
                                     <h5>Guru BK<span class="text-danger">*</span></h5>
