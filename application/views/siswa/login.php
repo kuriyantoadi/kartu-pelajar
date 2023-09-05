@@ -14,12 +14,12 @@
 
 </head>
 
-<body class="img js-fullheight" style="background-image: url(<?= base_url() ?>assets/login/images/bg.jpg);">
+<body class="img js-fullheight" style="background-image: url(<?= base_url() ?>assets/login/images/bg-1.jpg);">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section">Admin Kartu Pelajar</h2>
+                    <h2 class="heading-section">Kartu Pelajar</h2>
                     <p style="color: white;">SMK Negeri 1 Kragilan</p>
 
                 </div>
