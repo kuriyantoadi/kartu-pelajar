@@ -12,7 +12,7 @@
 
                     <?= $this->session->flashdata('msg') ?>
 
-                    <a href="<?= base_url() ?>Admin/siswa_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
+                    <!-- <a href="<?= base_url() ?>Admin/siswa_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a> -->
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -33,9 +33,7 @@
                                     <td><?= $row->nama_siswa ?></td>
                                     <td><?= $row->tingkatan . ' ' . $row->kode_jurusan . ' ' . $row->kode_kelas ?></td>
                                     <td style="white-space: nowrap;">
-                                        <!-- <a class="btn btn-sm btn-rounded btn-danger" href="<?= base_url() ?>Admin/siswa_hapus/<?= $row->id_siswa ?>" onclick="return confirm('Anda yakin menghapus data siswa <?= $row->nama_siswa ?> ?')"><i class="fa fa-times"></i></a> -->
-                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Pembina_pds/siswa_edit/' . $row->id_siswa); ?>"><i class="fa fa-pencil"></i></a>
-                                        <!-- <a class="btn btn-sm btn-rounded btn-primary" href="<?= site_url('Admin/siswa_password/' . $row->id_siswa); ?>"><i class="fa fa-key"></i></a> -->
+                                        <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Pembina_pds/pelanggaran_tambah/' . $row->id_siswa); ?>" title="pelanggaran tambah"><i class="fa fa-exclamation-circle"></i></a>
                                         <a class="btn btn-sm btn-rounded btn-info" href="<?= base_url() ?>Pembina_pds/siswa_detail/<?= $row->id_siswa ?>" title="siswa detail"><i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>

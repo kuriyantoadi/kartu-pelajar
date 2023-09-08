@@ -31,7 +31,7 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $row->nama_siswa ?></td>
-                                    <td><?= $row->tingkatan . ' ' . $row->jurusan . ' ' . $row->kode_kelas ?></td>
+                                    <td><?= $row->tingkatan . ' ' . $row->kode_jurusan . ' ' . $row->kode_kelas ?></td>
                                     <td><?= $row->nama_point ?></td>
                                     <td style="white-space: nowrap;">
                                         <a class="btn btn-sm btn-rounded btn-warning" href="<?= site_url('Pembina_pds/pelanggaran_edit/' . $row->id_pelanggaran) ?>"><i class="fa fa-pencil"></i></a>

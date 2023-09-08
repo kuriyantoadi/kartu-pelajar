@@ -13,7 +13,7 @@
                     <?= $this->session->flashdata('msg') ?>
 
 
-                    <a href="<?= base_url() ?>Admin/kelas_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a>
+                    <!-- <a href="<?= base_url() ?>Admin/kelas_tambah" class=" btn btn-rounded btn-sm btn-primary">Tambah</a> -->
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
                             <tr>

@@ -37,8 +37,12 @@
                                         <td>Nama Point</td>
                                         <td><?= $row->nama_point ?></td>
                                     </tr>
+                                     <tr>
+                                        <td>Point Pelanggaran</td>
+                                        <td><button class="btn btn-danger btn-sm"><?= $row->jml_point ?></button></td>
+                                    </tr>
                                     <tr>
-                                        <td>Guru BK</td>
+                                        <td>Guru Input Point</td>
                                         <td><?= $row->nama ?></td>
                                     </tr>
                                     <tr>

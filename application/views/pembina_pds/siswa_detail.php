@@ -1,7 +1,7 @@
 <div class="page-wrapper">
     <div class="row page-titles">
         <div class="col-md-5 align-self-center">
-            <h3 class="text-themecolor">Halaman Guru BK</h3>
+            <h3 class="text-themecolor">Halaman PDS</h3>
         </div>
     </div>
     <div class="container-fluid">
@@ -16,15 +16,9 @@
 
                             <?php foreach ($tampil_siswa as $row) { ?>
 
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-rounded btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Pelanggaran
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="<?= site_url('Pembina_pds/pelanggaran_siswa/' . $row->id_siswa) ?>">Siswa Pelanggaran</a>
-                                        <a class="dropdown-item" href="<?= site_url('Pembina_pds/pelanggaran_tambah/' . $row->id_siswa) ?>">Tambah Pelanggaran</a>
-                                    </div>
-                                </div>
+                                <a href="<?= site_url('Pembina_pds/pelanggaran_siswa/' . $row->id_siswa) ?>" class="btn btn-warning btn-sm rounded">Riwayat Pelanggaran</a>
+                                <a href="<?= site_url('Pembina_pds/pelanggaran_tambah/' . $row->id_siswa) ?>" class="btn btn-danger btn-sm rounded">Tambah Pelanggaran</a>
+                                    
 
                             <?php } ?>
 

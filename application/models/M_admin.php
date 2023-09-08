@@ -76,6 +76,7 @@ class M_admin extends CI_Model
   // awal modal point
   function tampil_point()
   {
+    $this->db->order_by('nama_point', 'ASC');
     $tampil = $this->db->get('tb_point')->result();
     return $tampil;
   }
@@ -175,6 +176,7 @@ class M_admin extends CI_Model
     $this->db->join('tb_kelas', 'tb_pelanggaran.id_kelas = tb_kelas.id_kelas');
     $this->db->join('tb_admin', 'tb_pelanggaran.id_admin = tb_admin.id_admin');
     $this->db->join('tb_point', 'tb_pelanggaran.id_point = tb_point.id_point');
+    $this->db->where('tb_kelas.kondisi', 'aktif');
 
     $query = $this->db->get()->result();
     return $query;
@@ -188,6 +190,7 @@ class M_admin extends CI_Model
     $this->db->join('tb_kelas', 'tb_pelanggaran.id_kelas = tb_kelas.id_kelas');
     $this->db->join('tb_admin', 'tb_pelanggaran.id_admin = tb_admin.id_admin');
     $this->db->join('tb_point', 'tb_pelanggaran.id_point = tb_point.id_point');
+    $this->db->order_by('tb_kelas.tingkatan', 'ASC');
     $this->db->where('id_pelanggaran', $id_pelanggaran);
 
     $query = $this->db->get()->result();
