@@ -37,6 +37,7 @@
                                         <select name="status" id="" class="form-control" required>
                                             <option value="<?= $row->status ?>">Pilihan ( <?= $row->status ?> )</option>
                                             <option value="admin">Non Aktif</option>
+                                            <option value="guru">Guru</option>
                                             <option value="guru_bk">Guru BK</option>
                                             <option value="guru_walas">Guru Wali Kelas</option>
                                             <option value="guru_pds">Guru Pembina PDS</option>
