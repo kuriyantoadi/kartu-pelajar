@@ -190,7 +190,7 @@ class Pembina_pds extends CI_Controller
 
     function pelanggaran_tambah_up(){
 		$config['upload_path'] = './assets/photo_pelanggaran/'; //path folder
-	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+	    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp|heif|heic|raw'; //type yang dapat diakses bisa anda sesuaikan
 	    $config['encrypt_name'] = TRUE; //Enkripsi nama yang terupload
         $config['max_size']         = 5000;
 
