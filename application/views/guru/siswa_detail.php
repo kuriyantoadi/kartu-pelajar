@@ -25,7 +25,7 @@
                                         <a class="dropdown-item" href="<?= site_url('Guru/prestasi_tambah/' . $row->id_siswa) ?>">Tambah Prestasi</a>
                                     </div>
                                 </div>
-                                <div class="btn-group">
+                                <!-- <div class="btn-group">
                                     <button type="button" class="btn btn-rounded btn-sm btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Pelanggaran
                                     </button>
@@ -33,7 +33,9 @@
                                         <a class="dropdown-item" href="<?= site_url('Guru/pelanggaran_siswa/' . $row->id_siswa) ?>">Siswa Pelanggaran</a>
                                         <a class="dropdown-item" href="<?= site_url('Guru/pelanggaran_tambah/' . $row->id_siswa) ?>">Tambah Pelanggaran</a>
                                     </div>
-                                </div>
+                                </div> -->
+                                <a class="btn btn-sm btn-rounded btn-danger" href="<?= site_url('Guru/pelanggaran_tambah/' . $row->id_siswa); ?>" title="pelanggaran tambah"><i class="fa fa-plus-circle"> Point </i></a>
+
 
                             <?php } ?>
 

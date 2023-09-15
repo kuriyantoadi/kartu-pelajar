@@ -113,6 +113,10 @@ class M_admin extends CI_Model
 
   function tampil_kelas()
   {
+    $this->db->order_by('tb_kelas.tingkatan', 'ASC');
+    $this->db->order_by('tb_kelas.kode_jurusan', 'ASC');
+    $this->db->order_by('tb_kelas.kode_kelas', 'ASC');
+    $this->db->where('tb_kelas.kondisi', 'aktif');
     $tampil = $this->db->get('tb_kelas')->result();
     return $tampil;
   }
