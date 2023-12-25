@@ -9,6 +9,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('M_admin');
         $this->load->model('M_guru_bk');
+        $this->load->model('M_ajax');
 
 
         // session login
@@ -78,12 +79,46 @@ class Admin extends CI_Controller
 
     public function siswa()
     {
-        $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
+        // $data['tampil_siswa'] = $this->M_admin->tampil_siswa();
 
         $this->load->view('template/header-admin');
-        $this->load->view('admin/siswa', $data);
+        $this->load->view('admin/siswa');
         $this->load->view('template/footer');
     }
+
+
+    // awal ajax
+
+    function get_ajax() {
+        $list = $this->M_ajax->get_datatables();
+        $data = array();
+        $no = @$_POST['start'];
+        foreach ($list as $item) {
+            $no++;
+            $row = array();
+            $row[] = $no.".";
+            $row[] = $item->nama_siswa;
+            $row[] = $item->tingkatan.' '. $item->kode_jurusan. ' '.$item->kode_kelas.' = '.$item->angkatan;
+            $row[] = '
+                    <a href="' . site_url('Admin/siswa_hapus/' . $item->id_siswa) . '" onclick="return confirm(\'Anda yakin menghapus data siswa ' . $item->nama_siswa . '?\');" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></a>
+                    <a href="' . site_url('Admin/siswa_edit/' . $item->id_siswa) . '" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i></a>
+                    <a href="' . site_url('Admin/siswa_password/' . $item->id_siswa) . '" class="btn btn-primary btn-sm"><i class="fa fa-key"></i></a>
+                    <a href="' . site_url('Admin/siswa_detail/' . $item->id_siswa) . '" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
+            ';            
+            // add html for action
+            $data[] = $row;
+        }
+        $output = array(
+                    "draw" => @$_POST['draw'],
+                    "recordsTotal" => $this->M_ajax->count_all(),
+                    "recordsFiltered" => $this->M_ajax->count_filtered(),
+                    "data" => $data,
+                );
+        // output to json format
+        echo json_encode($output);
+    }
+
+    // akhir ajax
 
     public function siswa_tambah()
     {

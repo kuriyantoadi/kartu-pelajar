@@ -25,6 +25,11 @@ $ses_id = $this->session->userdata('ses_id');
     <script src="<?= base_url() ?>assets/library_box/bootstrap-5/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/library_box/dselect.js"></script>
 
+
+    <!-- Datatables -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body class="fix-header card-no-border">
