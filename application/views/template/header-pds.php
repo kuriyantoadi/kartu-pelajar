@@ -21,7 +21,7 @@ $ses_id = $this->session->userdata('ses_id');
     <link href="<?= base_url() ?>assets/css/colors/blue.css" id="theme" rel="stylesheet">
 
     <!-- select search -->
-    <link href="<?= base_url() ?>assets/library_box/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="<?= base_url() ?>assets/library_box/bootstrap-5/bootstrap.min.css" rel="stylesheet" /> -->
     <script src="<?= base_url() ?>assets/library_box/bootstrap-5/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/library_box/dselect.js"></script>
 </head>
