@@ -43,11 +43,12 @@
             <p><?= $row->nisn ?></p>
             <p><?= $row->tempat_lahir ?>, <?= $row->tgl_lahir ?></p>
             <p><?= $row->agama ?></p>
-            <p><?= $row->jurusan ?></p>
-            <p><?= $row->alamat ?></p>
+            <p style="font-size: 13px;"><?= $row->jurusan ?></p>
+            <p style="font-size: 13px;"><?= $row->alamat ?></p>
             <?php } ?>
         </div>
     </div>
+
     <div class="text-center m-t-20 m-b-20">
         <button class="btn btn-sm btn-primary" onclick="downloadHTML('capture1')">Download Tampak Depan</button>
     </div>
