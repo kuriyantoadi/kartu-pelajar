@@ -12,6 +12,20 @@
     <link href="<?= base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/colors/blue.css" id="theme" rel="stylesheet">
+
+    <style type="text/css">
+        .login-register-v2 {
+            display: flex; /* Menggunakan flexbox */
+            justify-content: center; /* Menempatkan konten secara horizontal di tengah */
+            align-items: center; /* Menempatkan konten secara vertikal di tengah */
+            background-image: url(<?= base_url() ?>assets/images/background/login-register1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -20,8 +34,10 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
         </svg>
     </div>
+
     <section id="wrapper">
-        <div class="login-register" style="background-image:url(<?= base_url() ?>assets/images/background/login-register1.jpg);">
+        <div class="login-register-v2" style="background-image:url(<?= base_url() ?>assets/images/background/login-register1.jpg);">
+            
             <div class="login-box card p-3" style="box-shadow: 5px 10px 50px gray;">
                 <div class="card-body">
 
