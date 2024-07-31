@@ -520,7 +520,8 @@ class Admin extends CI_Controller
             'tingkatan' => $tingkatan,
             'jurusan' => $jurusan,
             'kode_kelas' => $kode_kelas,
-            'angkatan' => $angkatan
+            'angkatan' => $angkatan,
+            'kondisi' => 'aktif'
         );
 
         $this->M_admin->kelas_tambah_up($data_tambah);
