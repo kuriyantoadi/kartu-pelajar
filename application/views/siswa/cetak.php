@@ -38,7 +38,7 @@
         <img class="img-data" src="<?= base_url() ?>assets/images/KARTU_PELAJAR_DEPAN.svg" alt="kartu pelajar">
         <div class="text-data">
             <?php foreach ($tampil as $row) { ?>
-            <p><?= $row->nama_siswa ?></p>
+            <p style="font-size: 13px;"><?= $row->nama_siswa ?></p>
             <p><?= $row->jenis_kelamin ?></p>
             <p><?= $row->nisn ?></p>
             <p><?= $row->tempat_lahir ?>, <?= $row->tgl_lahir ?></p>
